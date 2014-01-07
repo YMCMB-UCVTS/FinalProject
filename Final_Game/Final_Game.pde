@@ -8,6 +8,12 @@ import ddf.minim.effects.*;
 Minim minim;
 AudioPlayer player;
 
+Button b1, b2, b3, b4;
+Game1 g1;
+Game2 g2;
+Game3 g3;
+Game4 g4;
+
 PImage intro;
 boolean start;
 boolean gameover;
@@ -32,8 +38,13 @@ void setup() {
   minim = new Minim(this);
   player = minim.loadFile("PYD.mp3"); 
   player.play(); 
-  //introminim = new Minim(this);
+  //loc = new PVector((width/2) - x, (height/2)- y);
+  b1 = new Button(30, 0);
+  b2 = new Button(-30, 0);
+  b3 = new Button(30, -60);
+  b4 = new Button(-30, -60);
 }
+
 void menu() {
   if (!INTRO)
   {
@@ -46,18 +57,20 @@ void menu() {
     textSize(16);
     fill(255);
     text("Choose What You Want To Play", mainmenux, mainmenuy - 105);
+    b1.display();
+    b2.display();
+    b3.display();
+    b4.display();
   }
 }
+
 void intro() {
-  if (INTRO)
-  {
-    if (millis() < 8000)
-    {
+  if (INTRO) {
+    if (millis() < 8000) {
       imageMode(CENTER);
       image(intro, width/2, height/2, 150, 150);
     }
-    else
-    {
+    else {
       introTime = millis()+4000;
       INTRO = false;
       player.close();
@@ -66,13 +79,16 @@ void intro() {
     }
   }
 }
+
 void draw() {
   background(0);
   intro();
   menu();
 }
+
 void stop() { 
   player.close();
   minim.stop();
   super.stop();
 }
+

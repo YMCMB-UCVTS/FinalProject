@@ -19,7 +19,7 @@ int introTime;
 int mainmenux, mainmenuy;
 
 void setup() {
-  size(600, 600);
+  size(550, 550);
   intro = loadImage("Intro.jpeg");
   start = false;
   gameover = false;
@@ -38,19 +38,20 @@ void menu() {
   if (!INTRO)
   {
     background(0);
+    frameRate(7);
     fill(random(255), random(255), random(255));
     textAlign(CENTER);
     textSize(64);
-    text("Main Menu", mainmenux, mainmenuy - 130);
+    text("Main Menu", mainmenux, mainmenuy - 145);
     textSize(16);
     fill(255);
-    text("Choose What You Want To Play", mainmenux, mainmenuy - 90);
+    text("Choose What You Want To Play", mainmenux, mainmenuy - 105);
   }
 }
 void intro() {
   if (INTRO)
   {
-    if (millis() < 7000)
+    if (millis() < 8000)
     {
       imageMode(CENTER);
       image(intro, width/2, height/2, 150, 150);

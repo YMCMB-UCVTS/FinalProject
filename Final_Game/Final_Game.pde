@@ -22,6 +22,10 @@ boolean pause;
 boolean music;
 boolean INTRO;
 boolean run;
+boolean game1;
+boolean game2;
+boolean game3;
+boolean game4;
 int introTime;
 int mainmenux, mainmenuy;
 
@@ -35,6 +39,10 @@ void setup() {
   music = false;
   INTRO = true;
   run = true;
+  game1 = false;
+  game2 = false;
+  game3 = false;
+  game4 = false;
   mainmenux = width/2;
   mainmenuy = height/2;
   minim = new Minim(this);
@@ -48,8 +56,7 @@ void setup() {
 }
 
 void menu() {
-  if (!INTRO)
-  {
+  if (!INTRO) {
     background(0);
     frameRate(7);
     fill(random(255), random(255), random(255));
@@ -63,6 +70,10 @@ void menu() {
     b2.display();
     b3.display();
     b4.display();
+    b1.chooseGame1(g1);
+    b2.chooseGame2(g2);
+    b3.chooseGame3(g3);
+    b4.chooseGame4(g4);
   }
 }
 
@@ -86,14 +97,6 @@ void draw() {
   background(0);
   intro();
   menu();
-  g1.display();
-  g1.move();
-  g2.display();
-  g2.move();
-  g3.display();
-  g3.move();
-  g4.display();
-  g4.move();
 }
 
 void stop() { 

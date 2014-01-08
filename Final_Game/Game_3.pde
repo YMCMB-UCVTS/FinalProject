@@ -14,7 +14,7 @@ class Game3 {
   }
 
   void move() {
-    if (run) {
+    if (game3 == true) {
       loc.add(vel);
       if (loc.y > height-d || loc.y <0) {
         vel.mult(-1);

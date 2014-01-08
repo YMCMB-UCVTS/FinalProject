@@ -71,10 +71,10 @@ void menu() {
     b2.display();
     b3.display();
     b4.display();
-    checkbutton(b1,game1);
-    checkbutton(b2,game2);
-    checkbutton(b3,game3);
-    checkbutton(b4,game4);
+    checkButton(b1, game1);
+    checkButton(b2, game2);
+    checkButton(b3, game3);
+    checkButton(b4, game4);
     b1.chooseGame1(g1);
     b2.chooseGame2(g2);
     b3.chooseGame3(g3);
@@ -111,17 +111,8 @@ void stop() {
 }
 
 void checkButton(Button b, boolean game) {
-  if (mousePressed && mouseX>b1.loc.x&&mouseX<b1.loc.x+s&&mouseY>b1.loc.y&&mouseY<b1.loc.y+s) {
-    game1 = true;
-  }
-  if (mousePressed && mouseX>b2.loc.x&&mouseX<b2.loc.x+s&&mouseY>b2.loc.y&&mouseY<b2.loc.y+s) {
-    game2 = true;
-  }
-  if (mousePressed && mouseX>b3.loc.x&&mouseX<b3.loc.x+s&&mouseY>b3.loc.y&&mouseY<b3.loc.y+s) {
-    game3 = true;
-  }
-  if (mousePressed && mouseX>b4.loc.x&&mouseX<b4.loc.x+s&&mouseY>b4.loc.y&&mouseY<b4.loc.y+s) {
-    game4 = true;
+  if (mousePressed && mouseX>b.loc.x&&mouseX<b.loc.x+s&&mouseY>b.loc.y&&mouseY<b.loc.y+s) {
+    game = true;
   }
 }
 

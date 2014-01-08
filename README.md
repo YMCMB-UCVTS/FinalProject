@@ -8,9 +8,9 @@ The soccer game will be a game where a player will control a soccer player whose
 
 The Shooting Gallery game will be a game that gives the player a shooter as they view a background of targets.  It's their job to shoot at the right time in order to hit a target. Each time they hit a target, their score increases. Each time they mistakenly hit an incorrect target, their lives decrease.
 
-**Jobs**
-Project Manager - Annaliese Mugele
-Graphic Designer - Jane Castro
-Bug Tester - Andy Val
-UI Designer - Michael Ioannou 
-Code Monkey - Chris Mendoza
+| **Jobs** |
+ Project Manager - Annaliese Mugele |
+ Graphic Designer - Jane Castro |
+ Bug Tester - Andy Val |
+ UI Designer - Michael Ioannou |
+ Code Monkey - Chris Mendoza |

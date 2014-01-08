@@ -14,9 +14,11 @@ class Game1 {
   }
 
   void move() {
-    loc.add(vel);
-    if (loc.x > width-d || loc.x <0) {
-      vel.mult(-1);
+    if (run) {
+      loc.add(vel);
+      if (loc.x > width-d || loc.x <0) {
+        vel.mult(-1);
+      }
     }
   }
 }

@@ -21,6 +21,7 @@ boolean win;
 boolean pause;
 boolean music;
 boolean INTRO;
+boolean run;
 int introTime;
 int mainmenux, mainmenuy;
 
@@ -33,6 +34,7 @@ void setup() {
   pause = true;
   music = false;
   INTRO = true;
+  run = true;
   mainmenux = width/2;
   mainmenuy = height/2;
   minim = new Minim(this);
@@ -84,6 +86,14 @@ void draw() {
   background(0);
   intro();
   menu();
+  g1.display();
+  g1.move();
+  g2.display();
+  g2.move();
+  g3.display();
+  g3.move();
+  g4.display();
+  g4.move();
 }
 
 void stop() { 

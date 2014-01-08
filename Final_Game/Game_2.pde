@@ -12,11 +12,13 @@ class Game2 {
   void display() {
     ellipse(loc.x, loc.y, d, d);
   }
-  
+
   void move() {
-    loc.add(vel);
-    if (loc.x > width-d || loc.x <0) {
-      vel.mult(-1);
+    if (run) {
+      loc.add(vel);
+      if (loc.x > width-d || loc.x <0) {
+        vel.mult(-1);
+      }
     }
   }
 }

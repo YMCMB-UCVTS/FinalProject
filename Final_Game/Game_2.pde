@@ -10,6 +10,7 @@ class Game2 {
   }
 
   void display() {
+    fill(55, 0, 100);
     ellipse(loc.x, loc.y, d, d);
   }
 

@@ -4,10 +4,11 @@ class Button {
 
   Button(int x, int y) {
     loc = new PVector((width/2) - x, (height/2)- y);
-    s = 40;
+    s = 80;
   }
 
   void display() {
+    rectMode(CENTER);
     rect(loc.x, loc.y, s, s);
   }
 
@@ -37,4 +38,3 @@ class Button {
     }
   }
 }
-

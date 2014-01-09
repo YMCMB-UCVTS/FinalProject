@@ -50,10 +50,10 @@ void setup() {
   player = minim.loadFile("PYD.mp3"); 
   player.play(); 
   //loc = new PVector((width/2) - x, (height/2)- y);
-  b1 = new Button(30, 0);
-  b2 = new Button(-30, 0);
-  b3 = new Button(30, -60);
-  b4 = new Button(-30, -60);
+  b1 = new Button(70, 0);
+  b2 = new Button(-70, 0);
+  b3 = new Button(70, -120);
+  b4 = new Button(-70, -120);
 }
 
 void menu() {
@@ -115,4 +115,3 @@ void checkButton(Button b, boolean game) {
     game = true;
   }
 }
-

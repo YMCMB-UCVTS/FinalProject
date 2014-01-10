@@ -71,14 +71,31 @@ void menu() {
     b2.display();
     b3.display();
     b4.display();
-    checkButton(b1, game1);
-    checkButton(b2, game2);
-    checkButton(b3, game3);
-    checkButton(b4, game4);
-    b1.chooseGame1(g1);
-    b2.chooseGame2(g2);
-    b3.chooseGame3(g3);
-    b4.chooseGame4(g4);
+    if (b1.selected()) {
+      game1 = true;
+      game2 = false;
+      game3 = false;
+      game4 = false;
+    }
+    if (b2.selected()) {
+      game2 = true;
+      game1 = false;
+      game3 = false;
+      game4 = false;
+    }
+    if (b3.selected()) {
+      game3 = true;
+      game1 = false;
+      game2 = false;
+      game4 = false;
+    }
+    if (b4.selected()) {
+      game4 = true;
+      game1 = false;
+      game2 = false;
+      game3 = false;
+    }
+    choosegame();
   }
 }
 
@@ -110,8 +127,22 @@ void stop() {
   super.stop();
 }
 
-void checkButton(Button b, boolean game) {
-  if (mousePressed && mouseX>b.loc.x&&mouseX<b.loc.x+s&&mouseY>b.loc.y&&mouseY<b.loc.y+s) {
-    game = true;
+void choosegame() {
+  if (game1 == true) {
+    g1.display();
+    g1.move();
+  }
+  if (game2 == true) {
+    g2.display();
+    g2.move();
+  }
+  if (game3 == true) {
+    g3.display();
+    g3.move();
+  }
+  if (game4 == true) {
+    g4.display();
+    g4.move();
   }
 }
+

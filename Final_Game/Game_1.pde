@@ -29,6 +29,7 @@ class ShootingGallery {
     image(notduck, TargetLoc.x, TargetLoc.y, Target, Target);
   }
 
+<<<<<<< HEAD
   void moveTarget() {
     if (ShootingGallery == true) {
       TargetLoc.add(TargetVel);
@@ -36,6 +37,12 @@ class ShootingGallery {
         TargetLoc.mult(100);
         TargetVel.set(0, 0);
       }
+=======
+  void move() {
+    loc.add(vel);
+    if (loc.x > width-d || loc.x <0) {
+      vel.mult(-1);
+>>>>>>> Buttons click but game does not show up
     }
   }
 

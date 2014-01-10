@@ -4,7 +4,7 @@ int ballr=15;
 PVector pad1loc;
 int move = 2;
 int padWidth = 10;
-int padHeight = 50;
+int padHeight = 60;
 PVector pad2loc;
 void setup () {
   size(500,500);
@@ -34,20 +34,18 @@ void draw() {
   if (ballloc.y-ballr/2<0) {
     ballvel.y=-ballvel.y;
   }
+  if (keyPressed == true && key == 'w' && pad1loc.y>0){
+      pad1loc.y-=2.5;
+  }
+  if (keyPressed == true && key == 's' && pad1loc.y+padHeight<height){
+      pad1loc.y+=2.5;
+  }
+  if (keyPressed == true && key == 'i' && pad2loc.y>0){
+      pad2loc.y-=2.5;
+  }
+  if (keyPressed == true && key == 'k' && pad2loc.y+padHeight<height){
+      pad2loc.y+=2.5;
+  }
 }
-/*if (b+40>height) {
-  b=-bSpeed;
-}
-if (b-40<0) {
-  b=-bSpeed;
 
-rect (c,d,20,40);
-d+=dSpeed;
-
-if (d+40>height) {
-  d=-dSpeed;
-}
-}
-
-void keyPressed(){*/
 

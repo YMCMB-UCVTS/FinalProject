@@ -8,10 +8,9 @@ class Button {
   }
 
   void display() {
-    // rectMode(CENTER);
     rect(loc.x, loc.y, s, s);
   }
-  
+
   boolean selected() {
     if (mousePressed && mouseX>loc.x&&mouseX<loc.x+s&&mouseY>loc.y&&mouseY<loc.y+s) {
       return true;

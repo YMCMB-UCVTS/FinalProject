@@ -54,6 +54,10 @@ void setup() {
   b2 = new Button(-70, 0);
   b3 = new Button(70, -120);
   b4 = new Button(-70, -120);
+  g1 = new Game1();
+  g2 = new Game2();
+  g3 = new Game3();
+  g4 = new Game4();
 }
 
 void menu() {
@@ -101,7 +105,7 @@ void menu() {
 
 void intro() {
   if (INTRO) {
-    if (millis() < 8000) {
+    if (millis() < 3000) {
       imageMode(CENTER);
       image(intro, width/2, height/2, 150, 150);
     }

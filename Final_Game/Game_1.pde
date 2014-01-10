@@ -10,23 +10,24 @@ class ShootingGallery {
   PVector BulletLoc;
   PVector BulletVel;
   int Bullet;
+  boolean go = false;
 
   ShootingGallery() {
-    TargetLoc = new PVector (0, height*.25);
+    TargetLoc = new PVector (0, height*.50);
     TargetVel = new PVector (3, 0);
     Target = 50;
     duck = loadImage("Duck.png");
     notduck = loadImage("NotDuck.png");
-    ShooterLoc = new PVector (width/2, height - 100);
+    ShooterLoc = new PVector (width/2, height - 50);
     shooter = loadImage("Shooter.png");
     Shooter = 100;
     BulletLoc = new PVector (width/2, height -100);
-    BulletVel = new PVector (0, 3);
-    Bullet = 40;
+    BulletVel = new PVector (0, -20);
+    Bullet = 20;
   }
 
   void displayTarget() {
-    image(duck, TargetLoc.x, TargetLoc.y +150, Target, Target);
+    image(duck, TargetLoc.x - 150, TargetLoc.y, Target, Target);
     image(notduck, TargetLoc.x, TargetLoc.y, Target, Target);
   }
 
@@ -42,20 +43,25 @@ class ShootingGallery {
     image(shooter, ShooterLoc.x, ShooterLoc.y, Shooter, Shooter);
   }
 
-  void displayBullet () {
-    if (mousePressed) {
+  void displayBullet() {
+    if (go) {
       fill(150);
-      ellipse(BulletLoc.x, BulletLoc.y, Bullet + 80, Bullet);
+      ellipse(BulletLoc.x, BulletLoc.y, Bullet, Bullet);
     }
   }
 
-  void moveBullet () {
-    if (mousePressed) {
+  void moveBullet() {
+    if (go){
       BulletLoc.add(BulletVel);
     }
   }
 
-  void CheckContact () {
+  void CheckContact() {
+    if (BulletLoc.dist(TargetLoc) < Bullet/2 + Target/2) {
+      BulletVel.set(0, 0);
+      BulletLoc.y = height*-2;
+      TargetLoc.y = height*-2;
+    }
   }
 }
 

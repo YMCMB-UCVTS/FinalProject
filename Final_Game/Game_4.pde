@@ -10,16 +10,15 @@ class Game4 {
   }
 
   void display() {
+    background(0);
     fill(0, 0, 255);
     ellipse(loc.x, loc.y, d, d);
   }
 
   void move() {
-    if (game4 == true) {
-      loc.add(vel);
-      if (loc.y > height-d || loc.y <0) {
-        vel.mult(-1);
-      }
+    loc.add(vel);
+    if (loc.y > height-d || loc.y <0) {
+      vel.mult(-1);
     }
   }
 }

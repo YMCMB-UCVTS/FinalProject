@@ -9,12 +9,13 @@ Minim minim;
 AudioPlayer player;
 
 Button b1, b2, b3, b4;
-Game1 g1;
+ShootingGallery g1;
 Game2 g2;
 Game3 g3;
 Game4 g4;
 
 PImage intro;
+PImage ShooterBackground;
 boolean start;
 boolean gameover;
 boolean win;
@@ -31,8 +32,9 @@ int s;
 int mainmenux, mainmenuy;
 
 void setup() {
-  size(550, 550);
+  size(550, 500);
   intro = loadImage("Intro.jpeg");
+  ShooterBackground = loadImage("ShooterBackground.png");
   start = false;
   gameover = false;
   win = false;
@@ -49,11 +51,14 @@ void setup() {
   minim = new Minim(this);
   player = minim.loadFile("PYD.mp3"); 
   player.play(); 
-  //loc = new PVector((width/2) - x, (height/2)- y);
   b1 = new Button(70, 0);
   b2 = new Button(-70, 0);
   b3 = new Button(70, -120);
   b4 = new Button(-70, -120);
+  g1 = new ShootingGallery();
+  g2 = new Game2();
+  g3 = new Game3();
+  g4 = new Game4();
 }
 
 void menu() {
@@ -71,20 +76,37 @@ void menu() {
     b2.display();
     b3.display();
     b4.display();
-    checkButton(b1, game1);
-    checkButton(b2, game2);
-    checkButton(b3, game3);
-    checkButton(b4, game4);
-    b1.chooseGame1(g1);
-    b2.chooseGame2(g2);
-    b3.chooseGame3(g3);
-    b4.chooseGame4(g4);
+    if (b1.selected()) {
+      game1 = true;
+      game2 = false;
+      game3 = false;
+      game4 = false;
+    }
+    if (b2.selected()) {
+      game2 = true;
+      game1 = false;
+      game3 = false;
+      game4 = false;
+    }
+    if (b3.selected()) {
+      game3 = true;
+      game1 = false;
+      game2 = false;
+      game4 = false;
+    }
+    if (b4.selected()) {
+      game4 = true;
+      game1 = false;
+      game2 = false;
+      game3 = false;
+    }
+    choosegame();
   }
 }
 
 void intro() {
   if (INTRO) {
-    if (millis() < 8000) {
+    if (millis() < 3000) {
       imageMode(CENTER);
       image(intro, width/2, height/2, 150, 150);
     }
@@ -110,8 +132,27 @@ void stop() {
   super.stop();
 }
 
-void checkButton(Button b, boolean game) {
-  if (mousePressed && mouseX>b.loc.x&&mouseX<b.loc.x+s&&mouseY>b.loc.y&&mouseY<b.loc.y+s) {
-    game = true;
+void choosegame() {
+  if (game1 == true) {
+    background(ShooterBackground);
+    g1.displayTarget();
+    g1.moveTarget();
+    g1.displayShooter();
+    g1.displayBullet();
+    g1.moveBullet();
+    g1.CheckContact();
+  }
+  if (game2 == true) {
+    g2.display();
+    g2.move();
+  }
+  if (game3 == true) {
+    g3.display();
+    g3.move();
+  }
+  if (game4 == true) {
+    g4.display();
+    g4.move();
   }
 }
+

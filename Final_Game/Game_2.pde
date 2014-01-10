@@ -10,16 +10,16 @@ class Game2 {
   }
 
   void display() {
+    background(0);
     fill(55, 0, 100);
     ellipse(loc.x, loc.y, d, d);
   }
 
   void move() {
-    if (game2 == true) {
-      loc.add(vel);
-      if (loc.x > width-d || loc.x <0) {
-        vel.mult(-1);
-      }
+    loc.add(vel);
+    if (loc.x > width-d || loc.x <0) {
+      vel.mult(-1);
     }
   }
 }
+

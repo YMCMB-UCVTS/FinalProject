@@ -62,8 +62,10 @@ void setup() {
 }
 
 void menu() {
+
   if (!INTRO) {
     background(0);
+
     frameRate(7);
     fill(random(255), random(255), random(255));
     textAlign(CENTER);
@@ -100,8 +102,12 @@ void menu() {
       game2 = false;
       game3 = false;
     }
+<<<<<<< HEAD
     choosegame();
+=======
+>>>>>>> 5e4d59fcdbf30cb2f00e32726a36edd76c59b4e9
   }
+  choosegame();
 }
 
 void intro() {
@@ -139,8 +145,13 @@ void choosegame() {
     g1.moveTarget();
     g1.displayShooter();
     g1.displayBullet();
+<<<<<<< HEAD
     g1.moveBullet();
     g1.CheckContact();
+=======
+    g1.CheckContact();
+    g1.moveBullet();
+>>>>>>> 5e4d59fcdbf30cb2f00e32726a36edd76c59b4e9
   }
   if (game2 == true) {
     g2.display();
@@ -155,4 +166,14 @@ void choosegame() {
     g4.move();
   }
 }
+<<<<<<< HEAD
+=======
+void mousePressed()
+{
+  if (game1 == true)
+  {
+    g1.go = true;
+  }
+}
+>>>>>>> 5e4d59fcdbf30cb2f00e32726a36edd76c59b4e9
 

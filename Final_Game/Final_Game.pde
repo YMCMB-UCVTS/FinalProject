@@ -62,8 +62,10 @@ void setup() {
 }
 
 void menu() {
+
   if (!INTRO) {
     background(0);
+
     frameRate(7);
     fill(random(255), random(255), random(255));
     textAlign(CENTER);
@@ -100,8 +102,8 @@ void menu() {
       game2 = false;
       game3 = false;
     }
-    choosegame();
   }
+  choosegame();
 }
 
 void intro() {
@@ -139,8 +141,8 @@ void choosegame() {
     g1.moveTarget();
     g1.displayShooter();
     g1.displayBullet();
-    g1.moveBullet();
     g1.CheckContact();
+    g1.go();
   }
   if (game2 == true) {
     g2.display();
@@ -153,6 +155,13 @@ void choosegame() {
   if (game4 == true) {
     g4.display();
     g4.move();
+  }
+}
+void mousePressed()
+{
+  if (game1 == true)
+  {
+    g1.wtf = true;
   }
 }
 

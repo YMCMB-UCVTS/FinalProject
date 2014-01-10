@@ -10,6 +10,7 @@ class ShootingGallery {
   PVector BulletLoc;
   PVector BulletVel;
   int Bullet;
+  boolean wtf = false;
 
   ShootingGallery() {
     TargetLoc = new PVector (0, height*.25);
@@ -23,11 +24,9 @@ class ShootingGallery {
     shooter = loadImage("Shooter.png");
     Shooter = 100;
     BulletLoc = new PVector (width/2, height -100);
-    BulletVel = new PVector (0, 3);
-
-    Bullet = 40;
+    BulletVel = new PVector (0, -20);
+    Bullet = 20;
   }
-
 
   void displayTarget() {
     image(duck, TargetLoc.x, TargetLoc.y +150, Target, Target);
@@ -42,20 +41,18 @@ class ShootingGallery {
     }
   }
 
-
   void displayShooter () {
     image(shooter, ShooterLoc.x, ShooterLoc.y, Shooter, Shooter);
   }
 
-  void displayBullet () {
-    if (mousePressed) {
-      fill(150);
-      ellipse(BulletLoc.x, BulletLoc.y, Bullet + 80, Bullet);
-    }
+  void displayBullet() {
+    fill(150);
+    ellipse(BulletLoc.x, BulletLoc.y, Bullet, Bullet);
   }
 
-  void moveBullet () {
-    if (mousePressed) {
+  void go() {
+    if (wtf)
+    {
       BulletLoc.add(BulletVel);
     }
   }

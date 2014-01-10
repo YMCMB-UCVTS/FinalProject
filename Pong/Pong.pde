@@ -11,9 +11,7 @@ void setup () {
   ballloc= new PVector(width/2,height/2);
   ballvel= new PVector(2,2.5);
   pad1loc= new PVector(0,height/2);
-  pad2loc= new PVector(width-padWidth,height/2);
-  
-  
+  pad2loc= new PVector(width-padWidth,height/2); 
 }
 
 void draw() {
@@ -47,5 +45,3 @@ void draw() {
       pad2loc.y+=2.5;
   }
 }
-
-

@@ -49,7 +49,6 @@ void setup() {
   minim = new Minim(this);
   player = minim.loadFile("PYD.mp3"); 
   player.play(); 
-  //loc = new PVector((width/2) - x, (height/2)- y);
   b1 = new Button(70, 0);
   b2 = new Button(-70, 0);
   b3 = new Button(70, -120);

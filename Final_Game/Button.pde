@@ -8,7 +8,7 @@ class Button {
   }
 
   void display() {
-    rectMode(CENTER);
+    //rectMode(CENTER);
     rect(loc.x, loc.y, s, s);
   }
 

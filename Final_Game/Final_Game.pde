@@ -9,12 +9,13 @@ Minim minim;
 AudioPlayer player;
 
 Button b1, b2, b3, b4;
-Game1 g1;
+ShootingGallery g1;
 Game2 g2;
 Game3 g3;
 Game4 g4;
 
 PImage intro;
+PImage ShooterBackground;
 boolean start;
 boolean gameover;
 boolean win;
@@ -31,8 +32,9 @@ int s;
 int mainmenux, mainmenuy;
 
 void setup() {
-  size(550, 550);
+  size(550, 500);
   intro = loadImage("Intro.jpeg");
+  ShooterBackground = loadImage("ShooterBackground.png");
   start = false;
   gameover = false;
   win = false;
@@ -53,7 +55,7 @@ void setup() {
   b2 = new Button(-70, 0);
   b3 = new Button(70, -120);
   b4 = new Button(-70, -120);
-  g1 = new Game1();
+  g1 = new ShootingGallery();
   g2 = new Game2();
   g3 = new Game3();
   g4 = new Game4();
@@ -132,8 +134,13 @@ void stop() {
 
 void choosegame() {
   if (game1 == true) {
-    g1.display();
-    g1.move();
+    background(ShooterBackground);
+    g1.displayTarget();
+    g1.moveTarget();
+    g1.displayShooter();
+    g1.displayBullet();
+    g1.moveBullet();
+    g1.CheckContact();
   }
   if (game2 == true) {
     g2.display();

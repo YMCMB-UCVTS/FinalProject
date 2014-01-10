@@ -2,29 +2,29 @@ class ShootingGallery {
   PVector TargetLoc;
   PVector TargetVel;
   int Target;
-  PImage = duck;
-  PImage = notduck;
-  PVector = ShooterLoc;
-  PImage = shooter;
-  PVector = BulletLoc;
-  PVector = BulletVel;
-  PImage = bullet;
+  PImage duck;
+  PImage notduck;
+  PVector ShooterLoc;
+  PImage shooter;
+  int Shooter;
+  PVector BulletLoc;
+  PVector BulletVel;
+  PImage bullet;
 
   ShootingGallery() {
     TargetLoc = new PVector (0, height*.25);
     TargetVel = new PVector (3, 0);
     Target = 50;
-    loadImage = 
-    loadImage =
+    duck = loadImage("");
+    notduck = loadImage("");
     ShooterLoc = new PVector (width/2, height - 100);
-    loadImage =
-    Shooter = 100
-    BulletLoc = new PVector (width/2. height -100);
+    shooter = loadImage("");
+    Shooter = 100;
+    BulletLoc = new PVector (width/2, height -100);
     BulletVel = new PVector (0, 3);
-    loadImage =
+    bullet = loadImage("");
   }
 
-<<<<<<< HEAD
   void display() {
     background(0);
     fill(255, 0, 0);
@@ -35,7 +35,9 @@ class ShootingGallery {
     loc.add(vel);
     if (loc.x > width-d || loc.x <0) {
       vel.mult(-1);
-=======
+    }
+  }
+
   void displayTarget() {
     image(duck, TargetLoc.x, Targetloc.y, Target, Target);
     image(notduck, TargetLoc.x, TargetLoc.y, Target, Target);
@@ -48,7 +50,6 @@ class ShootingGallery {
         TargetLoc.mult(100);
         TargetVel.set(0, 0);
       }
->>>>>>> origin/Shooting-Gallery
     }
   }
 
@@ -57,7 +58,7 @@ class ShootingGallery {
   }
 
   void displayBullet () {
-    if mousePressed {
+    if (mousePressed) {
       image(bullet, BulletLoc.x, BulletLoc.y, Bullet, Bullet);
     }
   }

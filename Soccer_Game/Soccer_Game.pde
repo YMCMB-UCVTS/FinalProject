@@ -4,8 +4,9 @@ PVector loc;
 PVector velG;
 PVector vel;
 PVector acc;
-PVector negG;
+float NegAccB;
 int d;
+int speed=10;
 PImage goal;
 PImage ball;
 PImage Field;
@@ -22,9 +23,9 @@ void setup () {
   locGoal = new PVector(150,175);
   loc = new PVector (100, 100);
   velG =new PVector(0, 1);
-  vel = new PVector (1, 1);
-  acc = new PVector (.1,.1);
-  negG = new PVector(0, -1);
+  vel = new PVector (speed, speed);
+  NegAccB = .1;
+  acc = new PVector (0,0);
   d = 50;
 }
 
@@ -34,30 +35,38 @@ void draw() {
   image(ball, loc.x, loc.y, d, d);
   image(goalie,locGoal.x, locGoal.y,150, 200);
   loc.add(vel);
-  vel.add(acc);
+  vel.sub(acc);
   locGoal.add(velG);
-  if (locG.y>height) {
-    locG.add(velG);
+  if (locGoal.y+200>height) {
+    velG.y*=-1;
   }
-  if (locG.y<0) {
-    velG.add(negG);
+  if (locGoal.y<0) {
+    velG.y*=-1;
   }
 }
 void keyPressed() {
   if (key=='a') {
-    vel.x=-1;
+    vel.x=-speed;
+    acc.x=-NegAccB;
+    acc.y= 0;
     vel.y=0;
   }
   if (key=='d') {
-    vel.x=1;
+    vel.x=speed;
+    acc.x=NegAccB;
+    acc.y=0;
     vel.y=0;
   }
   if (key=='w') {
-    vel.y=-1;
+    vel.y=-speed;
+    acc.y=-NegAccB;
+    acc.x=0;
     vel.x=0;
   }
   if (key=='s') {
-    vel.y=1;
+    vel.y=speed;
+    acc.y=NegAccB;
+    acc.x=0;
     vel.x=0;
   }
 }

@@ -29,6 +29,10 @@ boolean game2;
 boolean game3;
 boolean game4;
 boolean instructions;
+boolean menuB;
+PVector locmenuB;
+int menuBH;
+int menuBW;
 int introTime;
 int s;
 int mainmenux, mainmenuy;
@@ -49,6 +53,10 @@ void setup() {
   game3 = false;
   game4 = false;
   instructions = false;
+  menuB = false;
+  menuBW = 50;
+  menuBH = 30;
+  locmenuB = new PVector(width-(menuBW+20), menuBH + 30);
   mainmenux = width/2;
   mainmenuy = height/2;
   minim = new Minim(this);
@@ -65,6 +73,7 @@ void setup() {
   g4 = new Game4();
   text = new Instructions();
 }
+
 
 void menu() {
   if (!INTRO) {
@@ -148,6 +157,22 @@ void stop() {
   player.close();
   minim.stop();
   super.stop();
+}
+
+
+void mousePressed() {
+  if (mouseX > locmenuB.x && mouseX < locmenuB.x + menuBW  && mouseY > locmenuB.y && mouseY < locmenuB.y + menuBH) {
+    menuB = true;
+    game1 = false;
+    game2 = false;
+    game3 = false;
+    game4 = false;
+    instructions = false;
+    player.close();
+    player = minim.loadFile("All That Matters.mp3");
+    player.play();
+    player.loop();
+  }
 }
 
 void choosegame() {

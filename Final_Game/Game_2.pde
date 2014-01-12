@@ -13,6 +13,7 @@ class Game2 {
     background(0);
     fill(55, 0, 100);
     ellipse(loc.x, loc.y, d, d);
+    rect(locmenuB.x, locmenuB.y, menuBW, menuBH);
   }
 
   void move() {

@@ -1,5 +1,5 @@
 class Instructions {
-  
+
   PVector loc;
 
   Instructions() {
@@ -17,6 +17,7 @@ class Instructions {
     text("Maze Game : \n Here will be how to play the Maze Game.", loc.x, loc.y + 150);
     text("Pong Game : \n Here will be how to play the Pong Game.", loc.x, loc.y + 200);
     text("Soccer Game : \n Here will be how to play the Soccer Game.", loc.x, loc.y + 250);
+    rect(locmenuB.x, locmenuB.y, menuBW, menuBH);
   }
 }
 

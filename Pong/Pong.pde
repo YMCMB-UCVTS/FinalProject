@@ -68,10 +68,7 @@ void draw() {
     rect(pad1loc.x, pad1loc.y, padWidth, padHeight);
     rect(pad2loc.x, pad2loc.y, padWidth, padHeight);
     ballloc.add(ballvel); 
-    if (ballloc.x+ballr/2>width) {
-      ballvel.x*=-1;
-    }
-    if (ballloc.x-ballr/2<0) {
+    if (ballloc.x+ballr/2 >width || ballloc.x-ballr/2<0) {
       ballvel.x*=-1;
     }
     if (ballloc.y+ballr/2>height) {
@@ -91,6 +88,12 @@ void draw() {
     }
     if (keyPressed == true && key == 'k' && pad2loc.y+padHeight<height) {
       pad2loc.y+=2.5;
+    }
+    if (ballloc.dist(pad1loc) < padWidth + ballr/2) {
+      ballvel.x*=-1;
+    }
+    if (ballloc.dist(pad2loc)< padWidth + ballr/2) {
+      ballvel.x*=-1;
     }
   }
 }

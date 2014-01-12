@@ -8,11 +8,12 @@ import ddf.minim.effects.*;
 Minim minim;
 AudioPlayer player;
 
-Button b1, b2, b3, b4;
+Button b1, b2, b3, b4, b5;
 ShootingGallery g1;
 Game2 g2;
 Game3 g3;
 Game4 g4;
+Instructions text;
 
 PImage intro;
 PImage ShooterBackground;
@@ -27,6 +28,7 @@ boolean game1;
 boolean game2;
 boolean game3;
 boolean game4;
+boolean instructions;
 int introTime;
 int s;
 int mainmenux, mainmenuy;
@@ -46,6 +48,7 @@ void setup() {
   game2 = false;
   game3 = false;
   game4 = false;
+  instructions = false;
   mainmenux = width/2;
   mainmenuy = height/2;
   minim = new Minim(this);
@@ -53,12 +56,14 @@ void setup() {
   player.play(); 
   b1 = new Button(70, 0);
   b2 = new Button(-70, 0);
-  b3 = new Button(70, -120);
-  b4 = new Button(-70, -120);
+  b3 = new Button(70, 120);
+  b4 = new Button(-70, 120);
+  b5 = new Button(80, -70);
   g1 = new ShootingGallery();
   g2 = new Game2();
   g3 = new Game3();
   g4 = new Game4();
+  text = new Instructions();
 }
 
 void menu() {
@@ -72,33 +77,45 @@ void menu() {
     textSize(16);
     fill(255);
     text("Choose What You Want To Play", mainmenux, mainmenuy - 105);
-    b1.display();
-    b2.display();
-    b3.display();
-    b4.display();
+    b1.display(0, 0);
+    b2.display(0, 0);
+    b3.display(0, 0);
+    b4.display(0, 0);
+    b5.display(60, -40);
     if (b1.selected()) {
       game1 = true;
       game2 = false;
       game3 = false;
       game4 = false;
+      instructions = false;
     }
     if (b2.selected()) {
       game2 = true;
       game1 = false;
       game3 = false;
       game4 = false;
+      instructions = false;
     }
     if (b3.selected()) {
       game3 = true;
       game1 = false;
       game2 = false;
       game4 = false;
+      instructions = false;
     }
     if (b4.selected()) {
       game4 = true;
       game1 = false;
       game2 = false;
       game3 = false;
+      instructions = false;
+    }
+    if (b5.selected()) {
+      instructions = true;
+      game1 = false;
+      game2 = false;
+      game3 = false;
+      game4 = false;
     }
     choosegame();
   }
@@ -116,6 +133,7 @@ void intro() {
       player.close();
       player = minim.loadFile("All That Matters.mp3");
       player.play();
+      player.loop();
     }
   }
 }
@@ -153,6 +171,9 @@ void choosegame() {
   if (game4 == true) {
     g4.display();
     g4.move();
+  }
+  if (instructions == true) {
+    text.display();
   }
 }
 

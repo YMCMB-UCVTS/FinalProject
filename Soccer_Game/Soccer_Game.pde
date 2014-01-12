@@ -1,3 +1,13 @@
+import ddf.minim.spi.*;
+import ddf.minim.signals.*;
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.ugens.*;
+import ddf.minim.effects.*;
+
+Minim minim;
+AudioPlayer player;
+
 PVector locGoal;
 PVector locGoalie;
 PVector locBall;
@@ -18,8 +28,8 @@ int d;
 int speed;
 int IntroSoccerTime;
 int LoadBarH;
-int LoadBarW;
-int LoadBar2W;
+float LoadBarW;
+float LoadBar2W;
 int LoadBar2H;
 boolean goalieup;
 boolean goaliedown;
@@ -50,11 +60,14 @@ void setup () {
   INTROSOCCER = true;
   goalieup = false;
   goaliedown = false;
+  minim = new Minim(this);
+  player = minim.loadFile("LoadScreenSoccerMusic.mp3"); 
+  player.play();
 }
 
 void introsoccer() {
   if (INTROSOCCER) {
-    if (millis() < 7000) {
+    if (millis() < 10000) {
       background(SoccerLoadingScreen);
       textAlign(CENTER);
       fill(255, 0, 0);
@@ -65,14 +78,18 @@ void introsoccer() {
       rect(locLoadBar.x, locLoadBar.y, LoadBarW, LoadBarH);
       fill(255, 0, 0);
       rect(locLoadBar2.x, locLoadBar2.y, LoadBar2W, LoadBar2H);
-      LoadBar2W+=1;
+      LoadBar2W+=.7;
       if (LoadBar2W == LoadBarW) {
-        LoadBar2W-=1;
+        LoadBar2W-=.7;
       }
     }
     else {
       IntroSoccerTime = millis()+4000;
       INTROSOCCER = false;
+      player.close();
+      player = minim.loadFile("SoccerGameMusic.mp3");
+      player.play();
+      player.loop();
     }
   }
 }
@@ -130,5 +147,11 @@ void keyPressed() {
     acc.x=0;
     velBall.x=0;
   }
+}
+
+void stop() { 
+  player.close();
+  minim.stop();
+  super.stop();
 }
 

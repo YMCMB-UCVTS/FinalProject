@@ -78,9 +78,9 @@ void introsoccer() {
       rect(locLoadBar.x, locLoadBar.y, LoadBarW, LoadBarH);
       fill(255, 0, 0);
       rect(locLoadBar2.x, locLoadBar2.y, LoadBar2W, LoadBar2H);
-      LoadBar2W+=.7;
+      LoadBar2W+=.6;
       if (LoadBar2W == LoadBarW) {
-        LoadBar2W-=.7;
+        LoadBar2W-=.6;
       }
     }
     else {

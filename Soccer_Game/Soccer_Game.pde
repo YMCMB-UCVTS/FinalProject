@@ -98,6 +98,7 @@ void introsoccer() {
 
 void draw() {
   introsoccer();
+  catchBall();
   if (!INTROSOCCER) {
     background(Field);
     image(Goal, locGoal.x, locGoal.y, 70, height/1.27);
@@ -156,3 +157,10 @@ void stop() {
   super.stop();
 }
 
+void catchBall() {     
+    if (locGoalie.dist(locBall) < 70 + d/2) {
+      velBall.set(0, 0);
+      acc.set(0, 0);
+      locBall.set(width*10,-300);
+    }
+}

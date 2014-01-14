@@ -99,6 +99,8 @@ void introsoccer() {
 void draw() {
   introsoccer();
   catchBall();
+  catchGoal();
+  OutOfBounds();
   if (!INTROSOCCER) {
     background(Field);
     image(Goal, locGoal.x, locGoal.y, 70, height/1.27);
@@ -137,12 +139,6 @@ void keyPressed() {
     acc.y= 0;
     velBall.y=0;
   }
-  if (key=='d') {
-    velBall.x=speed;
-    acc.x=NegAccB;
-    acc.y=0;
-    velBall.y=0;
-  }
 if (key=='w') {
     velBall.y=-speed;
     acc.y=-NegAccB;
@@ -169,4 +165,20 @@ void catchBall() {
       acc.set(0, 0);
       locBall.set((Field.width/2)-(d/2), (Field.height/2)-(d/2));
     }
+}
+
+void catchGoal() {
+  if(locGoal.dist(locBall)<40+d/2){
+    velBall.set(0, 0);
+      acc.set(0, 0);
+      locBall.set((Field.width/2)-(d/2), (Field.height/2)-(d/2));
+  }
+}
+
+void OutOfBounds() {
+  if(locBall.x+35<0){   
+      velBall.set(0, 0);
+      acc.set(0, 0);
+      locBall.set((Field.width/2)-(d/2), (Field.height/2)-(d/2));
+  }
 }

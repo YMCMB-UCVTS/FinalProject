@@ -4,6 +4,10 @@ class ShootingGallery {
   int Target;
   PImage duck;
   PImage notduck;
+  PImage waves;
+  PVector WavesLoc;
+  int WavesW;
+  int WavesH;
   PVector ShooterLoc;
   PImage shooter;
   int Shooter;
@@ -13,13 +17,17 @@ class ShootingGallery {
   boolean go = false;
 
   ShootingGallery() {
-    TargetLoc = new PVector (0, height*.50);
+    TargetLoc = new PVector (0, height*.57);
     TargetVel = new PVector (3, 0);
-    Target = 50;
+    Target = 80;
     duck = loadImage("Duck.png");
     notduck = loadImage("NotDuck.png");
     ShooterLoc = new PVector (width/2, height - 50);
     shooter = loadImage("Shooter.png");
+    waves = loadImage("Waves.png");
+    WavesLoc = new PVector (width/2, height/2);
+    WavesW = 390;
+    WavesH = 50;
     Shooter = 100;
     BulletLoc = new PVector (width/2, height -100);
     BulletVel = new PVector (0, -20);
@@ -39,6 +47,12 @@ class ShootingGallery {
     }
   }
 
+  void displayWaves() {
+    imageMode(CENTER);
+    image(waves, WavesLoc.x, WavesLoc.y+60, WavesW, WavesH);
+    image(waves, WavesLoc.x, WavesLoc.y+200, WavesW, WavesH);
+  }
+
   void displayShooter () {
     image(shooter, ShooterLoc.x, ShooterLoc.y, Shooter, Shooter);
   }
@@ -51,7 +65,7 @@ class ShootingGallery {
   }
 
   void moveBullet() {
-    if (go){
+    if (go) {
       BulletLoc.add(BulletVel);
     }
   }

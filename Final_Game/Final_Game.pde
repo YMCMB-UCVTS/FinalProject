@@ -139,6 +139,7 @@ void choosegame() {
     background(ShooterBackground);
     g1.displayTarget();
     g1.moveTarget();
+    g1.displayWaves();
     g1.displayShooter();
     g1.displayBullet();
     g1.CheckContact();

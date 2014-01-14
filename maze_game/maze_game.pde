@@ -1,4 +1,5 @@
 PImage mazeLevel1;
+PImage mazeLevel2;                                        
 boolean endScreen = false; 
 PImage LoadingScreenMaze;
 boolean INTROMAZE;
@@ -13,6 +14,7 @@ int LoadBar2H;
 void setup() {
   size(550, 500);
   mazeLevel1 = loadImage ("maze.png");
+  mazeLevel2 = loadImage ("elephant.png");
   LoadingScreenMaze = loadImage("LoadingScreenMaze.png");
   LoadBarH = 20;
   LoadBarW = 300;
@@ -53,15 +55,21 @@ void draw() {
  // intromaze();
   if (!INTROMAZE) {
     background (mazeLevel1);
+    fill (0); 
+    rect (495, 280, 50, 40);
     if ( get (mouseX, mouseY) == color(133, 161, 84)) {
       endScreen = true;
     }
     if (endScreen == true) {
       background (0);
+      fill(255);
       textSize(50);
       textAlign(CENTER);
       text("Game Over", width/2, height/2); 
     }
+  }
+  if ( get (mouseX, mouseY) == color (0)) {
+    background (mazeLevel2); 
   }
 }
 

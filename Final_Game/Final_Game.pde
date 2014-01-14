@@ -103,6 +103,7 @@ void menu() {
       game3 = false;
     }
   }
+  choosegame();
 }
 
 void intro() {
@@ -140,8 +141,8 @@ void choosegame() {
     g1.moveTarget();
     g1.displayShooter();
     g1.displayBullet();
-    g1.moveBullet();
     g1.CheckContact();
+    g1.moveBullet();
   }
   if (game2 == true) {
     g2.display();
@@ -156,9 +157,10 @@ void choosegame() {
     g4.move();
   }
 }
-
-void mousePressed() {
-  if (game1 == true) {
+void mousePressed()
+{
+  if (game1 == true)
+  {
     g1.go = true;
   }
 }

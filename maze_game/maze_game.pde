@@ -1,4 +1,5 @@
 PImage mazeLevel1;
+boolean endScreen = false; 
 PImage LoadingScreenMaze;
 boolean INTROMAZE;
 int IntroMazeTime;
@@ -19,7 +20,7 @@ void setup() {
   LoadBar2H = LoadBarH;
   locLoadBar = new PVector((width/2), (height/2)-160);
   locLoadBar2 = new PVector((width/2), (height/2)-160);
-  INTROMAZE = true;
+  INTROMAZE = false;
 }
 
 void intromaze() {
@@ -49,11 +50,17 @@ void intromaze() {
 }
 
 void draw() {
-  intromaze();
+ // intromaze();
   if (!INTROMAZE) {
     background (mazeLevel1);
     if ( get (mouseX, mouseY) == color(133, 161, 84)) {
+      endScreen = true;
+    }
+    if (endScreen == true) {
       background (0);
+      textSize(50);
+      textAlign(CENTER);
+      text("Game Over", width/2, height/2); 
     }
   }
 }

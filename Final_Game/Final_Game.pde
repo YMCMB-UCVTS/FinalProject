@@ -144,6 +144,7 @@ void choosegame() {
     g1.displayBullet();
     g1.CheckContact();
     g1.moveBullet();
+    g1.Cycle();
   }
   if (game2 == true) {
     g2.display();

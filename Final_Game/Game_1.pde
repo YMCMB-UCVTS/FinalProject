@@ -15,9 +15,12 @@ class ShootingGallery {
   PVector BulletVel;
   int Bullet;
   boolean go = false;
+  PVector LineLoc;
+  int lineH;
+  int lineW;
 
   ShootingGallery() {
-    TargetLoc = new PVector (0, height*.57);
+    TargetLoc = new PVector (110, height*.57);
     TargetVel = new PVector (3, 0);
     Target = 80;
     duck = loadImage("Duck.png");
@@ -32,11 +35,21 @@ class ShootingGallery {
     BulletLoc = new PVector (width/2, height -100);
     BulletVel = new PVector (0, -20);
     Bullet = 20;
+    LineLoc = new PVector (400, 40);
+    lineH = 300;
+    lineW = 10;
   }
 
   void displayTarget() {
-    image(duck, TargetLoc.x - 150, TargetLoc.y, Target, Target);
+    image(duck, TargetLoc.x+Target+20, TargetLoc.y, Target, Target);
     image(notduck, TargetLoc.x, TargetLoc.y, Target, Target);
+    line(LineLoc.x, LineLoc.y, lineW, lineH);
+  }
+
+  void Cycle() {
+    if (TargetLoc.dist(LineLoc) < Target/2 + 100) {
+      TargetLoc.x = 110*500;
+    }
   }
 
   void moveTarget() {

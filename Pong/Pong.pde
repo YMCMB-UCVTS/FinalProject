@@ -15,9 +15,11 @@ int LoadBarH;
 float LoadBarW;
 float LoadBar2W;
 int LoadBar2H;
+float padSpeed = 2.5
 
 void setup () {
   size(550, 500);
+  BlackBox.init(this);
   ballloc= new PVector(width/2, height/2);
   ballvel= new PVector(2, 2.5);
   pad1loc= new PVector(30, height/2);
@@ -65,6 +67,7 @@ void draw() {
     fill(255);
     background (12, 242, 167);
     ellipse (ballloc.x, ballloc.y, ballr, ballr);
+    
     rect(pad1loc.x, pad1loc.y, padWidth, padHeight);
     rect(pad2loc.x, pad2loc.y, padWidth, padHeight);
     ballloc.add(ballvel); 
@@ -78,16 +81,40 @@ void draw() {
       ballvel.y=-ballvel.y;
     }
     if (keyPressed == true && key == 'w' && pad1loc.y>0) {
-      pad1loc.y-=2.5;
+      pad1loc.y-=padSpeed;
     }
     if (keyPressed == true && key == 's' && pad1loc.y+padHeight<height) {
-      pad1loc.y+=2.5;
+      pad1loc.y+=padSpeed;
     }
     if (keyPressed == true && key == 'i' && pad2loc.y>0) {
-      pad2loc.y-=2.5;
+      pad2loc.y-=padSpeed;
     }
     if (keyPressed == true && key == 'k' && pad2loc.y+padHeight<height) {
-      pad2loc.y+=2.5;
+      pad2loc.y+=padSpeed;
+    }
+    if(BlackBox.isKeyDown(BlackBox.VK_W) && BlackBox.isKeyDown(BlackBox.VK_I) && pad1loc.y>0){
+      pad1loc.y-=padSpeed;
+    }
+    if(BlackBox.isKeyDown(BlackBox.VK_W) && BlackBox.isKeyDown(BlackBox.VK_K) && pad1loc.y>0){
+      pad1loc.y-=padSpeed;
+    }
+    if(BlackBox.isKeyDown(BlackBox.VK_S) && BlackBox.isKeyDown(BlackBox.VK_I) && pad1loc.y+padHeight<height){
+      pad1loc.y+=padSpeed;
+    }
+    if(BlackBox.isKeyDown(BlackBox.VK_S) && BlackBox.isKeyDown(BlackBox.VK_K) && pad1loc.y+padHeight<height){
+      pad1loc.y+=padSpeed;
+    }
+    if(BlackBox.isKeyDown(BlackBox.VK_I) && BlackBox.isKeyDown(BlackBox.VK_W) && pad2loc.y>0){
+      pad2loc.y-=padSpeed;
+    }
+    if(BlackBox.isKeyDown(BlackBox.VK_I) && BlackBox.isKeyDown(BlackBox.VK_S) && pad2loc.y>0){
+      pad2loc.y-=padSpeed;
+    }
+    if(BlackBox.isKeyDown(BlackBox.VK_K) && BlackBox.isKeyDown(BlackBox.VK_W) && pad2loc.y+padHeight<height){
+      pad2loc.y+=padSpeed;
+    }
+    if(BlackBox.isKeyDown(BlackBox.VK_K) && BlackBox.isKeyDown(BlackBox.VK_S) && pad2loc.y+padHeight<height){
+      pad2loc.y+=padSpeed;
     }
     if (ballloc.dist(pad1loc) < padWidth + ballr/2) {
       ballvel.x*=-1;

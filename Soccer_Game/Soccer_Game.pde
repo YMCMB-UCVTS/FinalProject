@@ -53,8 +53,8 @@ void setup () {
   d = 35;
   locBall = new PVector ((Field.width/2)-(d/2), (Field.height/2)-(d/2));
   velGoalie =new PVector(0, 1);
-  speed = 5;
-  velBall = new PVector (0, 0);
+  speed = 10;
+  velBall = new PVector (0,0);
   NegAccB = .1;
   acc = new PVector (0, 0);
   INTROSOCCER = true;
@@ -106,6 +106,12 @@ void draw() {
     image(GoalieUp, locGoalie.x, locGoalie.y, 70, 100);
     locBall.add(velBall);
     velBall.sub(acc);
+    if(locBall.y<=100){
+    velBall.y=speed;
+    }
+    if(locBall.y>=350){
+    velBall.y=-speed;
+    }
     locGoalie.add(velGoalie);
     if (locGoalie.y+200 > height) {
       goalieup = true;
@@ -137,7 +143,7 @@ void keyPressed() {
     acc.y=0;
     velBall.y=0;
   }
-  if (key=='w') {
+if (key=='w') {
     velBall.y=-speed;
     acc.y=-NegAccB;
     acc.x=0;
@@ -158,9 +164,9 @@ void stop() {
 }
 
 void catchBall() {     
-    if (locGoalie.dist(locBall) < 70 + d/2) {
+    if (locGoalie.dist(locBall) < 30 + d/2) {
       velBall.set(0, 0);
       acc.set(0, 0);
-      locBall.set(width*10,-300);
+      locBall.set((Field.width/2)-(d/2), (Field.height/2)-(d/2));
     }
 }

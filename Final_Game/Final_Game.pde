@@ -62,10 +62,10 @@ void setup() {
   minim = new Minim(this);
   player = minim.loadFile("PYD.mp3"); 
   player.play(); 
-  b1 = new Button(70, 0);
-  b2 = new Button(-70, 0);
-  b3 = new Button(70, 120);
-  b4 = new Button(-70, 120);
+  b1 = new Button(120, 0);
+  b2 = new Button(-20, 0);
+  b3 = new Button(120, 120);
+  b4 = new Button(-20, 120);
   b5 = new Button(80, -70);
   g1 = new ShootingGallery();
   g2 = new Game2();
@@ -91,6 +91,7 @@ void menu() {
     b3.display(0, 0);
     b4.display(0, 0);
     b5.display(60, -40);
+    mainmenutext();
     if (b1.selected()) {
       game1 = true;
       game2 = false;
@@ -200,5 +201,15 @@ void choosegame() {
   if (instructions == true) {
     text.display();
   }
+}
+
+void mainmenutext() {
+  fill(0);
+  textAlign(CENTER);
+  text("INSTRUCTIONS", width/2-10, height/2 - 45);
+  text("Game 1", width/2-80, height/2+40);
+  text("Game 2", width/2+60, height/2+40);
+  text("Game 3", width/2-80, height/2+160);
+  text("Game 4", width/2+60, height/2+160);
 }
 

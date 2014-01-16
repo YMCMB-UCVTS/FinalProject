@@ -54,9 +54,9 @@ void setup () {
   locLoadBar2 = new PVector((width/2), (height/2)-120);
   d = 35;
   locBall = new PVector ((Field.width/2)-(d/2), (Field.height/2)-(d/2));
-  velGoalie =new PVector(0, 1);
+  velGoalie =new PVector(0, 5);
   speed = 10;
-  velBall = new PVector (0, 0);
+  velBall = new PVector (0, 10);
   NegAccB = .1;
   acc = new PVector (0, 0);
   INTROSOCCER = true;
@@ -143,18 +143,7 @@ void keyPressed() {
     acc.y= 0;
     velBall.y=0;
   }
-  if (key=='w') {
-    velBall.y=-speed;
-    acc.y=-NegAccB;
-    acc.x=0;
-    velBall.x=0;
-  }
-  if (key=='s') {
-    velBall.y=speed;
-    acc.y=NegAccB;
-    acc.x=0;
-    velBall.x=0;
-  }
+  
 }
 
 void stop() { 
@@ -165,7 +154,7 @@ void stop() {
 
 void catchBall() {     
   if (locBall.x<locGoalie.x+70 && locBall.y>locGoalie.y && locBall.y<locGoalie.y+100) {
-    velBall.set(0, 0);
+    velBall.set(0, 10);
     acc.set(0, 0);
     locBall.set((Field.width/2)-(d/2), (Field.height/2)-(d/2));
     lives--;
@@ -174,7 +163,7 @@ void catchBall() {
 
 void catchGoal() {
   if (locBall.x<locGoal.x+30 && locBall.y>locGoal.y && locBall.y<locGoal.y+height/1.27) {
-    velBall.set(0, 0);
+    velBall.set(0, 10);
     acc.set(0, 0);
     score++;
     locBall.set((Field.width/2)-(d/2), (Field.height/2)-(d/2));
@@ -183,7 +172,7 @@ void catchGoal() {
 
 void OutOfBounds() {
   if (locBall.x+35<0) {   
-    velBall.set(0, 0);
+    velBall.set(0, 10);
     acc.set(0, 0);
     locBall.set((Field.width/2)-(d/2), (Field.height/2)-(d/2));
   }

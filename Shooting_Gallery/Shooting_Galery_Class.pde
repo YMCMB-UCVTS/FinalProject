@@ -1,3 +1,7 @@
+ArrayList<ShootingGallery> objecs = new ArrayList<ShootingGallery>();
+
+int index;
+
 class ShootingGallery {
   PVector TargetLoc;
   PVector TargetVel;
@@ -15,9 +19,6 @@ class ShootingGallery {
   PVector BulletVel;
   int Bullet;
   boolean go = false;
-  //PVector LineLoc;
-  //int lineH;
-  //int lineW;
 
   ShootingGallery() {
     TargetLoc = new PVector (110, height*.57);
@@ -35,27 +36,11 @@ class ShootingGallery {
     BulletLoc = new PVector (width/2, height -100);
     BulletVel = new PVector (0, -20);
     Bullet = 20;
-    //LineLoc = new PVector (400, 40);
-    //lineH = 300;
-    //lineW = 10;
   }
 
   void displayTarget() {
     image(duck, TargetLoc.x+Target+20, TargetLoc.y, Target, Target);
     image(notduck, TargetLoc.x, TargetLoc.y, Target, Target);
-    //line(LineLoc.x, LineLoc.y, lineW, lineH);
-  }
-
-  void Cycle() {
-    //if (TargetLoc.dist(LineLoc) < Target/2 + 100) {
-      //TargetLoc.x = 110*500;
-    //}
-    if( TargetLoc.x >= 160){
-     image( duck, TargetLoc.x, TargetLoc.y, Target, Target);
-    }
-    if(TargetLoc.x >= 340){
-     TargetLoc.set(1000,1000); 
-    }
   }
 
   void moveTarget() {
@@ -88,7 +73,16 @@ class ShootingGallery {
       BulletLoc.add(BulletVel);
     }
   }
-
+  
+  void Cycle() {
+    if ( TargetLoc.x >= 160) {
+      image( duck, TargetLoc.x, TargetLoc.y, Target, Target);
+    }
+    if (TargetLoc.x >= 340) {
+      TargetLoc.set(1000, 1000);
+    }
+  }
+  
   void CheckContact() {
     if (BulletLoc.dist(TargetLoc) < Bullet/2 + Target/2) {
       BulletVel.set(0, 0);

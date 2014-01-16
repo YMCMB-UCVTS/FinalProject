@@ -33,6 +33,7 @@ float LoadBar2W;
 int LoadBar2H;
 boolean goalieup;
 boolean goaliedown;
+boolean setLevel;
 int score;
 int lives=3;
 
@@ -59,9 +60,10 @@ void setup () {
   velBall = new PVector (0, 10);
   NegAccB = .1;
   acc = new PVector (0, 0);
-  INTROSOCCER = true;
+  INTROSOCCER = false;
   goalieup = false;
   goaliedown = false;
+  setLevel = false;
   minim = new Minim(this);
   player = minim.loadFile("LoadScreenSoccerMusic.mp3"); 
   player.play();
@@ -99,7 +101,7 @@ void introsoccer() {
 
 
 void draw() {
-  introsoccer();
+  //introsoccer();
   catchBall();
   catchGoal();
   OutOfBounds();
@@ -177,20 +179,33 @@ void OutOfBounds() {
     locBall.set((Field.width/2)-(d/2), (Field.height/2)-(d/2));
   }
 }
-
 void levels() {
-  if (score>2) {
-    velBall.set(0, 10);
+  if (score>=1) {
+    if (!setLevel)
+    {
+      velBall.set(0, 10);
+    }
+    setLevel = true;
     acc.set(0, 0);
     locBall.x=Field.width/2; 
+    if (locBall.y<100) {
+      velBall.y=speed;
     }
-  }
-   if (score>4) {
+    if (locBall.y>350) {
+      velBall.y=-speed;
+    }
+     locBall.add(velBall);
+    
+}
+  
+  
+  
+  if (score>4) {
     velBall.set(0, 10);
     acc.set(0, 0);
     locBall.x=Field.width/2+d/2;
   }
-   if (score>6) {
+  if (score>6) {
     velBall.set(0, 10);
     acc.set(0, 0);
     locBall.x=Field.width/2+2*d/2;

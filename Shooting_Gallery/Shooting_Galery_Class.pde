@@ -38,21 +38,26 @@ class ShootingGallery {
     if (go) {
       fill(150);
       ellipse(BulletLoc.x, BulletLoc.y, Bullet, Bullet);
-    }
-  }
-
-  void moveBullet() {
-    if (go) {
       BulletLoc.add(BulletVel);
     }
   }
 
-  void CheckContact() {
-    if (BulletLoc.dist(TargetLoc) < Bullet/2 + Target/2) {
-      BulletVel.set(0, 0);
-      BulletLoc.y = height*-2;
-      TargetLoc.y = height*-2;
+  void moveBullet() {
+    if (mousePressed) {
+      go=true;
     }
   }
-}
+    void mouseReleased() {
+      go=false;
+      if(go==false){
+       BulletVel.set(0,0);
+      }
+    }
+
+    void OutOfBounds() {
+      if (BulletLoc.y<0) {
+        BulletLoc.set(width/2, height -100);
+      }
+    }
+  }
 

@@ -54,7 +54,7 @@ void setup () {
   locLoadBar2 = new PVector((width/2), (height/2)-120);
   d = 35;
   locBall = new PVector ((Field.width/2)-(d/2), (Field.height/2)-(d/2));
-  velGoalie =new PVector(0, 5);
+  velGoalie =new PVector(0, 3);
   speed = 10;
   velBall = new PVector (0, 10);
   NegAccB = .1;
@@ -103,6 +103,7 @@ void draw() {
   catchBall();
   catchGoal();
   OutOfBounds();
+  levels();
   if (!INTROSOCCER) {
     background(Field);
     image(Goal, locGoal.x, locGoal.y, 70, height/1.27);
@@ -110,11 +111,11 @@ void draw() {
     image(GoalieUp, locGoalie.x, locGoalie.y, 70, 100);
     locBall.add(velBall);
     velBall.sub(acc);
-    if (locBall.y<=100) {
-      velBall.y=speed;
+    if (locBall.y<100) {
+      velBall.y*=-1;
     }
-    if (locBall.y>=350) {
-      velBall.y=-speed;
+    if (locBall.y>350) {
+      velBall.y*=-1;
     }
     text("Score " + score, 0+ width/2, 100);
     text("Lives " + lives, 0+ width/1.2, 100);
@@ -143,7 +144,6 @@ void keyPressed() {
     acc.y= 0;
     velBall.y=0;
   }
-  
 }
 
 void stop() { 
@@ -175,6 +175,25 @@ void OutOfBounds() {
     velBall.set(0, 10);
     acc.set(0, 0);
     locBall.set((Field.width/2)-(d/2), (Field.height/2)-(d/2));
+  }
+}
+
+void levels() {
+  if (score>2) {
+    velBall.set(0, 10);
+    acc.set(0, 0);
+    locBall.x=Field.width/2; 
+    }
+  }
+   if (score>4) {
+    velBall.set(0, 10);
+    acc.set(0, 0);
+    locBall.x=Field.width/2+d/2;
+  }
+   if (score>6) {
+    velBall.set(0, 10);
+    acc.set(0, 0);
+    locBall.x=Field.width/2+2*d/2;
   }
 }
 

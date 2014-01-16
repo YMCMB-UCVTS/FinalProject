@@ -34,6 +34,7 @@ int LoadBar2H;
 boolean goalieup;
 boolean goaliedown;
 int score;
+int lives=3;
 
 void setup () {
   Field = loadImage("Field.png");
@@ -115,7 +116,8 @@ void draw() {
     if (locBall.y>=350) {
       velBall.y=-speed;
     }
-    text("score " + score, 0+ width/2, 100);
+    text("Score " + score, 0+ width/2, 100);
+    text("Lives " + lives, 0+ width/1.2, 100);
     locGoalie.add(velGoalie);
     if (locGoalie.y+200 > height) {
       goalieup = true;
@@ -162,20 +164,20 @@ void stop() {
 }
 
 void catchBall() {     
-  if (locGoalie.dist(locBall) < 30 + d/2) {
+  if (locBall.x<locGoalie.x+70 && locBall.y>locGoalie.y && locBall.y<locGoalie.y+100) {
     velBall.set(0, 0);
     acc.set(0, 0);
-    score++;
     locBall.set((Field.width/2)-(d/2), (Field.height/2)-(d/2));
+    lives--;
   }
 }
 
 void catchGoal() {
-  if (locGoal.dist(locBall)<40+d/2) {
+  if (locBall.x<locGoal.x+30 && locBall.y>locGoal.y && locBall.y<locGoal.y+height/1.27) {
     velBall.set(0, 0);
     acc.set(0, 0);
+    score++;
     locBall.set((Field.width/2)-(d/2), (Field.height/2)-(d/2));
-    
   }
 }
 

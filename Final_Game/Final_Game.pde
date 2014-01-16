@@ -167,8 +167,8 @@ void choosegame() {
     g1.CheckContact();
   }
   if (game2 == true) {
+    g2.intromaze();
     g2.display();
-    g2.move();
   }
   if (game3 == true) {
     g3.display();

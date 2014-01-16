@@ -17,13 +17,7 @@ Instructions text;
 
 PImage intro;
 PImage ShooterBackground;
-boolean start;
-boolean gameover;
-boolean win;
-boolean pause;
-boolean music;
 boolean INTRO;
-boolean run;
 boolean game1;
 boolean game2;
 boolean game3;
@@ -41,13 +35,7 @@ void setup() {
   size(550, 500);
   intro = loadImage("Intro.jpeg");
   ShooterBackground = loadImage("ShooterBackground.png");
-  start = false;
-  gameover = false;
-  win = false;
-  pause = true;
-  music = false;
   INTRO = true;
-  run = true;
   game1 = false;
   game2 = false;
   game3 = false;
@@ -78,14 +66,6 @@ void setup() {
 void menu() {
   if (!INTRO) {
     background(0);
-    frameRate(7);
-    fill(random(255), random(255), random(255));
-    textAlign(CENTER);
-    textSize(64);
-    text("Main Menu", mainmenux, mainmenuy - 145);
-    textSize(16);
-    fill(255);
-    text("Choose What You Want To Play", mainmenux, mainmenuy - 105);
     b1.display(0, 0);
     b2.display(0, 0);
     b3.display(0, 0);
@@ -211,5 +191,12 @@ void mainmenutext() {
   text("Game 2", width/2+60, height/2+40);
   text("Game 3", width/2-80, height/2+160);
   text("Game 4", width/2+60, height/2+160);
+  frameRate(7);
+  fill(random(255), random(255), random(255));
+  textSize(64);
+  text("Main Menu", mainmenux, mainmenuy - 145);
+  textSize(16);
+  fill(255);
+  text("Choose What You Want To Play", mainmenux, mainmenuy - 105);
 }
 

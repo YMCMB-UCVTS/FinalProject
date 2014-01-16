@@ -15,7 +15,7 @@ int LoadBarH;
 float LoadBarW;
 float LoadBar2W;
 int LoadBar2H;
-float padSpeed = 2.5
+float padSpeed = 2.5;
 
 void setup () {
   size(550, 500);
@@ -67,7 +67,8 @@ void draw() {
     fill(255);
     background (12, 242, 167);
     ellipse (ballloc.x, ballloc.y, ballr, ballr);
-    
+    pad1loc.y = constrain(pad1loc.y, 0, height - padHeight);
+    pad2loc.y = constrain(pad2loc.y, 0, height - padHeight);
     rect(pad1loc.x, pad1loc.y, padWidth, padHeight);
     rect(pad2loc.x, pad2loc.y, padWidth, padHeight);
     ballloc.add(ballvel); 
@@ -80,46 +81,38 @@ void draw() {
     if (ballloc.y-ballr/2<0) {
       ballvel.y=-ballvel.y;
     }
-    if (keyPressed == true && key == 'w' && pad1loc.y>0) {
+    if (BlackBox.isKeyDown(BlackBox.VK_W) && BlackBox.isKeyDown(BlackBox.VK_I)) {
       pad1loc.y-=padSpeed;
+      pad2loc.y -= padSpeed;
     }
-    if (keyPressed == true && key == 's' && pad1loc.y+padHeight<height) {
+    else if (BlackBox.isKeyDown(BlackBox.VK_S) && BlackBox.isKeyDown(BlackBox.VK_K)) {
       pad1loc.y+=padSpeed;
-    }
-    if (keyPressed == true && key == 'i' && pad2loc.y>0) {
-      pad2loc.y-=padSpeed;
-    }
-    if (keyPressed == true && key == 'k' && pad2loc.y+padHeight<height) {
       pad2loc.y+=padSpeed;
     }
-    if(BlackBox.isKeyDown(BlackBox.VK_W) && BlackBox.isKeyDown(BlackBox.VK_I) && pad1loc.y>0){
+    else if (BlackBox.isKeyDown(BlackBox.VK_W) && BlackBox.isKeyDown(BlackBox.VK_K)) {
       pad1loc.y-=padSpeed;
-    }
-    if(BlackBox.isKeyDown(BlackBox.VK_W) && BlackBox.isKeyDown(BlackBox.VK_K) && pad1loc.y>0){
-      pad1loc.y-=padSpeed;
-    }
-    if(BlackBox.isKeyDown(BlackBox.VK_S) && BlackBox.isKeyDown(BlackBox.VK_I) && pad1loc.y+padHeight<height){
-      pad1loc.y+=padSpeed;
-    }
-    if(BlackBox.isKeyDown(BlackBox.VK_S) && BlackBox.isKeyDown(BlackBox.VK_K) && pad1loc.y+padHeight<height){
-      pad1loc.y+=padSpeed;
-    }
-    if(BlackBox.isKeyDown(BlackBox.VK_I) && BlackBox.isKeyDown(BlackBox.VK_W) && pad2loc.y>0){
-      pad2loc.y-=padSpeed;
-    }
-    if(BlackBox.isKeyDown(BlackBox.VK_I) && BlackBox.isKeyDown(BlackBox.VK_S) && pad2loc.y>0){
-      pad2loc.y-=padSpeed;
-    }
-    if(BlackBox.isKeyDown(BlackBox.VK_K) && BlackBox.isKeyDown(BlackBox.VK_W) && pad2loc.y+padHeight<height){
       pad2loc.y+=padSpeed;
     }
-    if(BlackBox.isKeyDown(BlackBox.VK_K) && BlackBox.isKeyDown(BlackBox.VK_S) && pad2loc.y+padHeight<height){
+    else if (BlackBox.isKeyDown(BlackBox.VK_S) && BlackBox.isKeyDown(BlackBox.VK_I)) {
+      pad1loc.y+=padSpeed;
+      pad2loc.y-=padSpeed;
+    }
+    else if (keyPressed == true && key == 'w') {
+      pad1loc.y-=padSpeed;
+    }
+    else if (keyPressed == true && key == 's' ) {
+      pad1loc.y+=padSpeed;
+    }
+    else if (keyPressed == true && key == 'i') {
+      pad2loc.y-=padSpeed;
+    }
+    else if (keyPressed == true && key == 'k') {
       pad2loc.y+=padSpeed;
     }
-    if (ballloc.dist(pad1loc) < padWidth + ballr/2) {
+    if (ballloc.x-ballr/2<pad1loc.x+padWidth && ballloc.y-ballr/2 > pad1loc.y && ballloc.y+ballr/2 < pad1loc.y + padHeight) {
       ballvel.x*=-1;
     }
-    if (ballloc.dist(pad2loc)< padWidth + ballr/2) {
+    if (ballloc.x+ballr/2>pad2loc.x && ballloc.y-ballr/2 > pad2loc.y && ballloc.y+ballr/2 < pad2loc.y + padHeight) {
       ballvel.x*=-1;
     }
   }

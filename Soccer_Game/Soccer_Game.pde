@@ -35,7 +35,7 @@ boolean goalieup;
 boolean goaliedown;
 boolean setLevel;
 int score;
-int lives=3;
+int lives;
 
 void setup () {
   Field = loadImage("Field.png");
@@ -57,10 +57,11 @@ void setup () {
   locBall = new PVector ((Field.width/2)-(d/2), (Field.height/2)-(d/2));
   velGoalie =new PVector(0, 3);
   speed = 10;
+  lives = 3;
   velBall = new PVector (0, 10);
   NegAccB = .1;
   acc = new PVector (0, 0);
-  INTROSOCCER = false;
+  INTROSOCCER = true;
   goalieup = false;
   goaliedown = false;
   setLevel = false;
@@ -101,7 +102,7 @@ void introsoccer() {
 
 
 void draw() {
-  //introsoccer();
+  introsoccer();
   catchBall();
   catchGoal();
   OutOfBounds();
@@ -197,9 +198,6 @@ void levels() {
      locBall.add(velBall);
     
 }
-  
-  
-  
   if (score>4) {
     velBall.set(0, 10);
     acc.set(0, 0);

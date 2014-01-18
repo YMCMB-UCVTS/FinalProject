@@ -47,17 +47,17 @@ class ShootingGallery {
       go=true;
     }
   }
-    void mouseReleased() {
-      go=false;
-      if(go==false){
-       BulletVel.set(0,0);
-      }
-    }
-
-    void OutOfBounds() {
-      if (BulletLoc.y<0) {
-        BulletLoc.set(width/2, height -100);
-      }
+  void mouseReleased() {
+    go=false;
+    if (go==false) {
+      BulletVel.set(0, 0);
     }
   }
+
+  void OutOfBounds() {
+    if (BulletLoc.y<0) {
+      BulletLoc.set(width/2, height -100);
+    }
+  }
+}
 

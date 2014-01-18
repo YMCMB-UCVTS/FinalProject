@@ -27,16 +27,15 @@ void draw() {
     d[i].moveTarget();
   }
   // index++;
-  if(millis() > time)
+  if (millis() > time)
   {
-  d = (Duck[]) append(d, new Duck());
-  time+=3000;
+    d = (Duck[]) append(d, new Duck());
+    time+=3000;
   }
   s.displayWaves();
   s.displayShooter();
   s.displayBullet();
   s.OutOfBounds();
-  
   s.moveBullet();
 }
 

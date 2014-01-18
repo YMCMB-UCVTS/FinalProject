@@ -20,7 +20,6 @@ class Game3 {
 
   Game3() {
     size(550, 500);
-    BlackBox.init(this);
     ballloc= new PVector(width/2, height/2);
     ballvel= new PVector(2, 2.5);
     pad1loc= new PVector(30, height/2);

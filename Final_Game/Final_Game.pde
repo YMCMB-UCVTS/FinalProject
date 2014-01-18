@@ -171,12 +171,18 @@ void choosegame() {
     g2.display();
   }
   if (game3 == true) {
+    BlackBox.init(this);
     g3.intropong();
     g3.display();
   }
   if (game4 == true) {
     g4.introsoccer();
     g4.display();
+    g4.catchBall();
+    g4.catchGoal();
+    g4.OutOfBounds();
+    g4.levels();
+    player.close();
     minim = new Minim(this);
     player = minim.loadFile("LoadScreenSoccerMusic.mp3"); 
     player.play();

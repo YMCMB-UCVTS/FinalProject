@@ -10,12 +10,6 @@ class Game3 {
   PVector pad2loc;
   boolean INTROPONG;
   int IntroPongTime;
-  PVector locLoadBar;
-  PVector locLoadBar2;
-  int LoadBarH;
-  float LoadBarW;
-  float LoadBar2W;
-  int LoadBar2H;
   float padSpeed = 2.5;
 
   Game3() {
@@ -25,12 +19,6 @@ class Game3 {
     pad1loc= new PVector(30, height/2);
     pad2loc= new PVector(width-30, height/2); 
     LoadingScreenPong = loadImage("LoadingScreenPong.png");
-    LoadBarH = 20;
-    LoadBarW = 300;
-    LoadBar2W = 0;
-    LoadBar2H = LoadBarH;
-    locLoadBar = new PVector((width/2), (height/2)-160);
-    locLoadBar2 = new PVector((width/2), (height/2)-160);
     INTROPONG = true;
   }
 

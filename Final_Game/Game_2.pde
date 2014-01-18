@@ -8,12 +8,6 @@ class Game2 {
   PImage LoadingScreenMaze;
   boolean INTROMAZE;
   int IntroMazeTime;
-  PVector locLoadBar;
-  PVector locLoadBar2;
-  int LoadBarH;
-  float LoadBarW;
-  float LoadBar2W;
-  int LoadBar2H;
 
   Game2() {
     size(550, 500);
@@ -21,12 +15,6 @@ class Game2 {
     mazeLevel2 = loadImage ("elephant.png");
     mazeLevel3 = loadImage ("lion.png");
     LoadingScreenMaze = loadImage("LoadingScreenMaze.png");
-    LoadBarH = 20;
-    LoadBarW = 300;
-    LoadBar2W = 0;
-    LoadBar2H = LoadBarH;
-    locLoadBar = new PVector((width/2), (height/2)-160);
-    locLoadBar2 = new PVector((width/2), (height/2)-160);
     INTROMAZE = true;
   }
 

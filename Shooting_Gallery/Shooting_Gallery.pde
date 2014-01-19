@@ -25,6 +25,7 @@ void draw() {
   for (int i=0; i< d.length; i++) { 
     d[i].displayTarget();
     d[i].moveTarget();
+    s.catchBullet(d[i]);
   }
   // index++;
   if (millis() > time)

@@ -20,7 +20,7 @@ class ShootingGallery {
     WavesH = 50;
     Shooter = 100;
     BulletLoc = new PVector (width/2, height -100);
-    BulletVel = new PVector (0, -20);
+    BulletVel = new PVector (0, -10);
     Bullet = 20;
   }
 
@@ -43,19 +43,25 @@ class ShootingGallery {
   }
 
   void moveBullet() {
-    if (mousePressed) {
+    if (key =='w') {
       go=true;
     }
-  }
-  void mouseReleased() {
-    go=false;
-    if (go==false) {
-      BulletVel.set(0, 0);
+
+    if (mousePressed) {
+      go=false;
+      if (go==false) {
+        BulletVel.set(0, 0);
+      }
     }
   }
-
   void OutOfBounds() {
     if (BulletLoc.y<0) {
+      BulletLoc.set(width/2, height -100);
+    }
+  }
+  void catchBullet(Duck moveTarget) {     
+    if (BulletLoc.y < TargetLoc.y+80) {
+      BulletVel.set(0, -10);
       BulletLoc.set(width/2, height -100);
     }
   }

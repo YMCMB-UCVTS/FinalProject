@@ -29,7 +29,12 @@ void draw() {
     if (d.TargetLoc.x > width-135) {
       ducks.remove(i);
     }
-  } 
+    for (int u = bullets.size() - 1; u > 0; u--) { 
+      if (d.checkBullet(bullets.get(u))) {
+        ducks.remove(i);
+      }
+    }
+  }
   if (millis() > time) {
     ducks.add(new Duck());
     time+=2000;

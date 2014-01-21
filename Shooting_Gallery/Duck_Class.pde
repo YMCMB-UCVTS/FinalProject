@@ -18,5 +18,14 @@ class Duck {
   void moveTarget() {
     TargetLoc.add(TargetVel);
   }
+
+  boolean checkBullet(Bullet b) {
+    if (TargetLoc.dist(b.BulletLoc) < Target/8 + b.Bullet/2) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 }
 

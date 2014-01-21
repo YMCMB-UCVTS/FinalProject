@@ -31,12 +31,5 @@ class Bullet {
       }
     }
   }
-
-  void catchBullet(Duck moveTarget) {     
-    if (BulletLoc.y < TargetLoc.y+80) {
-      BulletVel.set(0, -10);
-      BulletLoc.set(width/2, height -100);
-    }
-  }
 }
 

@@ -2,6 +2,9 @@ PImage mazeLevel1;
 PImage mazeLevel2;
 PImage mazeLevel3;
 boolean endScreen = false; 
+PImage winScreenimage;
+boolean winScreen = false;
+PImage circusElephant; 
 int x; 
 PImage LoadingScreenMaze;
 boolean INTROMAZE;
@@ -19,13 +22,15 @@ void setup() {
   mazeLevel2 = loadImage ("elephant.png");
   mazeLevel3 = loadImage ("lion.png");
   LoadingScreenMaze = loadImage("LoadingScreenMaze.png");
+  winScreenimage = loadImage ("winScreen.jpg");
+  circusElephant = loadImage ("for mouse.png");
   LoadBarH = 20;
   LoadBarW = 300;
   LoadBar2W = 0;
   LoadBar2H = LoadBarH;
   locLoadBar = new PVector((width/2), (height/2)-160);
   locLoadBar2 = new PVector((width/2), (height/2)-160);
-  INTROMAZE = false;
+  INTROMAZE = true;
 }
 
 void intromaze() {
@@ -55,12 +60,17 @@ void intromaze() {
 }
 
 void draw() {
-  // intromaze();
+  
+  intromaze();
   if (!INTROMAZE) { 
     if (x == 0) {
       background (mazeLevel1);
+      fill (133, 161, 84);
+      noStroke();
+      rect (520,277,22, 50); 
       fill (84, 160, 141); 
-      rect (495, 280, 50, 40);
+      stroke(2);
+      rect (475, 285, 35, 80); //coordinates of the teal box
       if ( get (mouseX, mouseY) == color(133, 161, 84)) { //when you hit maze levels in level 1 (green)
         endScreen = true;
       }
@@ -80,8 +90,13 @@ void draw() {
     }
     if (x == 2) {
       background (mazeLevel3);
+      fill (0);
+      rect (430, 425, 74, 50);
     }
-    if (get (mouseX, mouseY) == color (212,153, 9)) {
+    if (get(mouseX, mouseY) == color (0)) {
+      winScreen = true;
+    }
+    if (get (mouseX, mouseY) == color (212, 153, 9)) {
       endScreen = true;
     }
     if (endScreen == true) {
@@ -92,8 +107,17 @@ void draw() {
       text("Game Over", width/2, height/2);
     }
   }
+  if (winScreen == true) {
+    background (winScreenimage);
+    textSize(50);
+    textAlign(CENTER);
+    text("YOU WON!", width/2, height/2);
+    //Brandon was here
+  }
   if (get (mouseX, mouseY) == color (46, 108, 164)) { //when you hit maze walls in level 2 (blue)
     endScreen = true;
   }
+  imageMode(CENTER);
+  image(circusElephant,mouseX,mouseY); 
 }
 

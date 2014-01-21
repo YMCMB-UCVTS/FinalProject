@@ -6,10 +6,6 @@ class ShootingGallery {
   PVector ShooterLoc;
   PImage shooter;
   int Shooter;
-  PVector BulletLoc;
-  PVector BulletVel;
-  int Bullet;
-  boolean go = false;
 
   ShootingGallery() {
     ShooterLoc = new PVector (width/2, height - 50);
@@ -19,9 +15,6 @@ class ShootingGallery {
     WavesW = 390;
     WavesH = 50;
     Shooter = 100;
-    BulletLoc = new PVector (width/2, height -100);
-    BulletVel = new PVector (0, -10);
-    Bullet = 20;
   }
 
   void displayWaves() {
@@ -32,38 +25,6 @@ class ShootingGallery {
 
   void displayShooter () {
     image(shooter, ShooterLoc.x, ShooterLoc.y, Shooter, Shooter);
-  }
-
-  void displayBullet() {
-    if (go) {
-      fill(150);
-      ellipse(BulletLoc.x, BulletLoc.y, Bullet, Bullet);
-      BulletLoc.add(BulletVel);
-    }
-  }
-
-  void moveBullet() {
-    if (key =='w') {
-      go=true;
-    }
-
-    if (mousePressed) {
-      go=false;
-      if (go==false) {
-        BulletVel.set(0, 0);
-      }
-    }
-  }
-  void OutOfBounds() {
-    if (BulletLoc.y<0) {
-      BulletLoc.set(width/2, height -100);
-    }
-  }
-  void catchBullet(Duck moveTarget) {     
-    if (BulletLoc.y < TargetLoc.y+80) {
-      BulletVel.set(0, -10);
-      BulletLoc.set(width/2, height -100);
-    }
   }
 }
 

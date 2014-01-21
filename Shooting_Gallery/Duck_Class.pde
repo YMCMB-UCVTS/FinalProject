@@ -1,7 +1,7 @@
 class Duck {
   PVector TargetLoc = new PVector (110, height*.57);
   PVector  TargetVel = new PVector (2, 0);
-int Target = 80;
+  int Target = 80;
   PImage duck;
 
   Duck() {

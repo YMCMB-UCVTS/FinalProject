@@ -34,6 +34,7 @@ int LoadBar2H;
 boolean goalieup;
 boolean goaliedown;
 boolean setLevel;
+boolean shot;
 int score;
 int lives;
 
@@ -61,7 +62,7 @@ void setup () {
   velBall = new PVector (0, 10);
   NegAccB = .1;
   acc = new PVector (0, 0);
-  INTROSOCCER = true;
+  INTROSOCCER = false;
   goalieup = false;
   goaliedown = false;
   setLevel = false;
@@ -102,11 +103,13 @@ void introsoccer() {
 
 
 void draw() {
-  introsoccer();
+ love();
+  //introsoccer();
   catchBall();
   catchGoal();
   OutOfBounds();
   levels();
+  Bounce();
   if (!INTROSOCCER) {
     background(Field);
     image(Goal, locGoal.x, locGoal.y, 70, height/1.27);
@@ -114,12 +117,6 @@ void draw() {
     image(GoalieUp, locGoalie.x, locGoalie.y, 70, 100);
     locBall.add(velBall);
     velBall.sub(acc);
-    if (locBall.y<100) {
-      velBall.y*=-1;
-    }
-    if (locBall.y>350) {
-      velBall.y*=-1;
-    }
     text("Score " + score, 0+ width/2, 100);
     text("Lives " + lives, 0+ width/1.2, 100);
     locGoalie.add(velGoalie);
@@ -181,32 +178,30 @@ void OutOfBounds() {
   }
 }
 void levels() {
-  if (score>=1) {
-    if (!setLevel)
-    {
-      velBall.set(0, 10);
-    }
-    setLevel = true;
-    acc.set(0, 0);
-    locBall.x=Field.width/2; 
-    if (locBall.y<100) {
-      velBall.y=speed;
-    }
-    if (locBall.y>350) {
-      velBall.y=-speed;
-    }
-     locBall.add(velBall);
-    
-}
-  if (score>4) {
-    velBall.set(0, 10);
-    acc.set(0, 0);
-    locBall.x=Field.width/2+d/2;
-  }
-  if (score>6) {
-    velBall.set(0, 10);
-    acc.set(0, 0);
-    locBall.x=Field.width/2+2*d/2;
+  if (score>=4){
+    setLevel=true;
   }
 }
 
+void love(){
+  if (setLevel){
+    HouseMusic();
+    locGoalie.add(velGoalie);
+}
+}
+void Bounce() {
+  if (locBall.y<100) {
+    velBall.y*=-1;
+  }
+  if (locBall.y>350) {
+    velBall.y*=-1;
+  }
+}
+ void HouseMusic(){
+ if (locBall.y<0) {
+    velBall.y*=-1;
+  }
+  if (locBall.y>500) {
+    velBall.y*=-1;
+  }
+ }

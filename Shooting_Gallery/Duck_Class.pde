@@ -1,10 +1,13 @@
 class Duck {
-  PVector TargetLoc = new PVector (110, height*.57);
-  PVector  TargetVel = new PVector (2, 0);
-  int Target = 80;
+  PVector TargetLoc;
+  PVector  TargetVel;
+  int Target ;
   PImage duck;
 
   Duck() {
+    TargetLoc = new PVector (110, height*.57);
+    TargetVel = new PVector (2, 0);
+    Target = 80;
     duck = loadImage("Duck.png");
   }
 

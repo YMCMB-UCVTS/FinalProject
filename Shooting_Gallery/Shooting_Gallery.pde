@@ -22,7 +22,6 @@ void setup() {
 
 void draw() {
   background(ShooterBackground);
-
   for (int i = ducks.size() - 1; i>0; i--) { 
     Duck d = ducks.get(i);
     d.displayTarget();
@@ -30,7 +29,13 @@ void draw() {
     if (d.TargetLoc.x > width-135) {
       ducks.remove(i);
     }
+  } 
+  if (millis() > time) {
+    ducks.add(new Duck());
+    time+=2000;
   }
+  s.displayWaves();
+  s.displayShooter();
   for (int u = bullets.size() - 1; u > 0; u--) { 
     Bullet b = bullets.get(u);
     b.moveBullet();
@@ -38,18 +43,13 @@ void draw() {
     if (b.BulletLoc.y < 0) {
       bullets.remove(u);
     }
-  }  
-  if (millis() > time) {
-    ducks.add(new Duck());
-    time+=2000;
   }
-  s.displayWaves();
-  s.displayShooter();
 }
+
 void keyPressed()
 {
-  if(key == 'w') {
-   bullets.add(new Bullet());
-
+  if (key == 'w') {
+    bullets.add(new Bullet());
   }
 }
+

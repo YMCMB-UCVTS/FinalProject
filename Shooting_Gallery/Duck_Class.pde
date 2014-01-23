@@ -17,6 +17,9 @@ class Duck {
 
   void moveTarget() {
     TargetLoc.add(TargetVel);
+    if (score>=5) {
+      TargetVel = new PVector(3.8, 0);
+    }
   }
 
   boolean checkBullet(Bullet b) {

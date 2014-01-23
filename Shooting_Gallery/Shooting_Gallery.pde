@@ -7,6 +7,7 @@ PVector TargetLoc;
 PVector TargetVel;
 int time;
 int Target;
+int score;
 ShootingGallery s;
 
 void setup() {
@@ -32,6 +33,7 @@ void draw() {
     for (int u = bullets.size() - 1; u > 0; u--) { 
       if (d.checkBullet(bullets.get(u))) {
         ducks.remove(i);
+        score ++;
       }
     }
   }
@@ -40,7 +42,6 @@ void draw() {
     time+=2000;
   }
   s.displayWaves();
-  s.displayShooter();
   for (int u = bullets.size() - 1; u > 0; u--) { 
     Bullet b = bullets.get(u);
     b.moveBullet();
@@ -49,6 +50,8 @@ void draw() {
       bullets.remove(u);
     }
   }
+  s.displayShooter();
+  s.displayScore();
 }
 
 void keyPressed()

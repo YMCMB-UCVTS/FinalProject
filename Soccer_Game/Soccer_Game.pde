@@ -56,7 +56,7 @@ void setup () {
   locLoadBar2 = new PVector((width/2), (height/2)-120);
   d = 35;
   locBall = new PVector ((Field.width/2)-(d/2), (Field.height/2)-(d/2));
-  velGoalie =new PVector(0, 3);
+  velGoalie =new PVector(0, 4);
   speed = 10;
   lives = 3;
   velBall = new PVector (0, 10);
@@ -114,7 +114,7 @@ void draw() {
     locGoalie.add(velGoalie);
     HouseMusic();
   }
-  if(score>4){
+  if(score>2){
   setLevel=false;
   }
   if (!INTROSOCCER) {
@@ -160,7 +160,7 @@ void stop() {
 }
 
 void catchBall() {     
-  if (locBall.x<locGoalie.x+70 && locBall.y>locGoalie.y && locBall.y<locGoalie.y+100) {
+  if (locBall.x<locGoalie.x+70 && locBall.y>locGoalie.y && locBall.y<locGoalie.y+80) {
     velBall.set(0, 10);
     acc.set(0, 0);
     locBall.set((Field.width/2)-(d/2), (Field.height/2)-(d/2));
@@ -169,7 +169,7 @@ void catchBall() {
 }
 
 void catchGoal() {
-  if (locBall.x<locGoal.x+30 && locBall.y>locGoal.y && locBall.y<locGoal.y+height/1.27) {
+  if (locBall.x<locGoal.x+30 && locBall.y>locGoal.y+70 && locBall.y<locGoal.y+height/1.37) {
     velBall.set(0, 10);
     acc.set(0, 0);
     score++;
@@ -182,6 +182,7 @@ void OutOfBounds() {
     velBall.set(0, 10);
     acc.set(0, 0);
     locBall.set((Field.width/2)-(d/2), (Field.height/2)-(d/2));
+    lives--;
   }
 }
 
@@ -189,7 +190,7 @@ void Bounce() {
   if (locBall.y<100) {
     velBall.y*=-1;
   }
-  if (locBall.y>350) {
+  if (locBall.y>375) {
     velBall.y*=-1;
   }
 }
@@ -197,7 +198,7 @@ void Bounce() {
  if (locBall.y<0) {
     velBall.y*=-1;
   }
-  if (locBall.y>400) {
+  if (locBall.y>500) {
     velBall.y*=-1;
   }
  }

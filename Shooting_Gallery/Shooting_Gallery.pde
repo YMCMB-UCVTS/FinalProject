@@ -8,6 +8,7 @@ PVector TargetVel;
 int time;
 int Target;
 int score;
+int BulletTime;
 ShootingGallery s;
 
 void setup() {
@@ -19,6 +20,7 @@ void setup() {
   ducks.add(new Duck());
   bullets.add(new Bullet());
   time = 0;
+  BulletTime = 0;
 }
 
 void draw() {
@@ -44,7 +46,6 @@ void draw() {
   s.displayWaves();
   for (int u = bullets.size() - 1; u > 0; u--) { 
     Bullet b = bullets.get(u);
-    b.moveBullet();
     b.displayBullet();
     if (b.BulletLoc.y < 0) {
       bullets.remove(u);
@@ -52,12 +53,33 @@ void draw() {
   }
   s.displayShooter();
   s.displayScore();
+  if (BulletTime - millis() > 0) {
+    fill(255);
+    textSize(24);
+    text("Wait....", width-100, 100);
+  }
+  else {
+    fill(255);
+    textSize(24);
+    text("RELOADED", width-100, 100);
+  }
 }
 
-void keyPressed()
-{
+void keyPressed() {
   if (key == 'w') {
-    bullets.add(new Bullet());
+    if (Shoot()) {
+      bullets.add(new Bullet());
+    }
+  }
+}
+
+boolean Shoot() {
+  if (BulletTime - millis() > 0) {
+    return false;
+  }
+  else {
+    BulletTime = millis() + 3000;
+    return true;
   }
 }
 

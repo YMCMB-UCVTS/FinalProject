@@ -26,8 +26,9 @@ class Elephant {
         ElephantLoc.x++;
       }
       if (keyCode == DOWN) {
-       ElephantLoc.y++;
+        ElephantLoc.y++;
       }
     }
   }
 }
+

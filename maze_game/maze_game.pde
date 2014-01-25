@@ -1,4 +1,4 @@
-Elephant e;
+Elephant object;
 
 PImage mazeLevel1; 
 PImage mazeLevel2;
@@ -10,6 +10,7 @@ int x;
 PImage LoadingScreenMaze;
 boolean INTROMAZE;
 int IntroMazeTime;
+PVector ElephantLoc;
 
 void setup() {
   size(550, 500);
@@ -18,6 +19,7 @@ void setup() {
   mazeLevel3 = loadImage ("lion.png");
   LoadingScreenMaze = loadImage("LoadingScreenMaze.png");
   winScreenimage = loadImage ("winScreen.jpg");
+  ElephantLoc = new PVector(width/2, height/2);
   INTROMAZE = true;
 }
 
@@ -38,8 +40,8 @@ void draw() {
   if (!INTROMAZE) { 
     if (x == 0) {
       background (mazeLevel1);          //intial background is maze level 1
-      e.display();
-      e.move();
+      object.display();
+      object.move();
       fill (0);      
       text ("Get to the teal box", width/2, 35);
       fill (133, 161, 84);                                                                           //exact color of the wall 
@@ -48,10 +50,10 @@ void draw() {
       fill (84, 160, 141); 
       stroke(2);
       rect (475, 285, 30, 80);        //coordinates of the teal box
-      if ( get (mouseX, mouseY) == color(133, 161, 84)) {                                               //when you hit maze levels in level 1 (green)
+      if ( get (ElephantLoc.x, ElephantLoc.y) == color(133, 161, 84)) {                                               //when you hit maze levels in level 1 (green)
         endScreen = true;                                                                            //game over screen
       }
-      if (get (mouseX, mouseY) == color (84, 160, 141)) {                                           //getting to the teal box increases the value of x
+      if (get (ElephantLoc.x, ElephantLoc.y) == color (84, 160, 141)) {                                           //getting to the teal box increases the value of x
         x++;
       }
     }
@@ -61,10 +63,10 @@ void draw() {
       text("Get to the lavender box", width/2, 469);
       fill (128, 128, 255);                                                                               //lavender box
       rect ( 120, 0, 80, 30);
-      if  (get (mouseX, mouseY) == color (84, 160, 141)) {
+      if  (get (ElephantLoc.x, ElephantLoc.y) == color (84, 160, 141)) {
       }
     }
-    if (get (mouseX, mouseY) == color (128, 128, 255)) {                                               //getting to the lavender box increases the value of x
+    if (get (ElephantLoc.x, ElephantLoc.y) == color (128, 128, 255)) {                                               //getting to the lavender box increases the value of x
       x++;
     }
     if (x == 2) {                                                                               //increasing the value of x, x equals 2, bringing you to maze level 3
@@ -72,10 +74,10 @@ void draw() {
       fill (0);
       rect (430, 425, 74, 50);                                                                               //black square
     }
-    if (get(mouseX, mouseY) == color (0)) {
+    if (get(ElephantLoc.x, ElephantLoc.y) == color (0)) {
       winScreen = true;                                                                             //when you get to black box, winScreen equals true
     }
-    if (get (mouseX, mouseY) == color (212, 153, 9)) {                                                     //when you touch the walls of the third maze, game over
+    if (get (ElephantLoc.x, ElephantLoc.y) == color (212, 153, 9)) {                                                     //when you touch the walls of the third maze, game over
       endScreen = true;
     }
     if (endScreen == true) {                                                                         //effects of endScreen equaling true below
@@ -92,7 +94,7 @@ void draw() {
     textAlign(CENTER);
     text("YOU WON!", width/2, height/2);                                                                         //text loads when winScreen boolean is true
   }
-  if (get (mouseX, mouseY) == color (46, 108, 164)) {                                                         //when you hit maze walls in level 2 (blue)
+  if (get (ElephantLoc.x, ElephantLoc.y) == color (46, 108, 164)) {                                                         //when you hit maze walls in level 2 (blue)
     endScreen = true;                                                                                          //...game over
   }                                                                                    //"puts image on mouse"
 }

@@ -1,11 +1,9 @@
 class Elephant {
-  PVector ElephantLoc;
   PImage Elephant;
   int ElephantSize;
 
   Elephant() {
-    ElephantLoc = new PVector(width/2, height/2);
-    Elephant = loadImage ("for mouse.png");
+    Elephant = loadImage ("Object.png");
     ElephantSize = 30;
   }
 

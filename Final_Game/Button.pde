@@ -11,12 +11,12 @@ class Button {
   }
 
   void display(int x, int y) {
-    //rectMode(CENTER);
     rect(loc.x, loc.y, rectw + x, recth + y);
   }
 
   boolean selected() {
     if (mousePressed && mouseX>loc.x && mouseX<loc.x+rectw && mouseY>loc.y && mouseY<loc.y+recth) {
+      timer = new Timer();
       return true;
     }
     else {

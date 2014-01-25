@@ -1,5 +1,4 @@
 //establishes variables for pong game
-PImage PongBackground;
 PImage LoadingScreenPong; //loading screen image
 PVector ballloc; 
 PVector ballvel; 
@@ -22,16 +21,17 @@ int score2 = 0;
 int scoreSize = 70;
 boolean ballmove;
 PVector ballacc;
+int rectS = 10;
 
 void setup () {
   size(550, 500);
+  background(0);
   BlackBox.init(this); //initializes Paras Jha's BlackBox Program, which allows for multiple keys to be pressed simultaneously
   ballloc= new PVector(width/2, height/2); //location and speed of ball
   ballvel= new PVector(random(2, 3), random(2, 3));
   ballacc = new PVector(.001, .001); //acceleration of the ball
   pad1loc= new PVector(0, height/2); //location of paddles on each side
   pad2loc= new PVector(width, height/2); 
-  PongBackground = loadImage("PongBackground.png");
   LoadingScreenPong = loadImage("LoadingScreenPong.png");
   LoadBarH = 20; //dimensions of loading bar on load screen
   LoadBarW = 300;
@@ -76,13 +76,18 @@ void draw() {
     if (keyPressed == true && key == ' ') { //spacebar must be pressed for ball to move to start each point
       ballmove = true;
     }
-    background (PongBackground);
+    for (int i = 0; i < 40; i++) {
+      fill(255); 
+      rect(width/2, i*20, rectS, rectS);
+    }
+    fill(0, 50);
+    rect(0, 0, width, height);
     fill(255);
     textAlign(CENTER);
     textSize(scoreSize);
     text(score1, width/2-55, 85); //text for scores
     text(score2, width/2+50, 85);
-    ellipse (ballloc.x, ballloc.y, ballr, ballr); //creates ball
+    ellipse (ballloc.x + (ballr/2), ballloc.y, ballr, ballr); //creates ball
     pad1loc.y = constrain(pad1loc.y, 0, height - padHeight); //keeps paddles from going above or below screen
     pad2loc.y = constrain(pad2loc.y, 0, height - padHeight); 
     rect(pad1loc.x, pad1loc.y, padWidth, padHeight); //creates left paddle

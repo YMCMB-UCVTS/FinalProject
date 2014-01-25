@@ -40,7 +40,7 @@ void draw() {
   intromaze();
   if (!INTROMAZE) { 
     if (level == 0) {
-      background (mazeLevel1);          //intial background is maze level 1
+      background (mazeLevel1);                                                                      //intial background is maze level 1
       fill (0);      
       text ("Get to the teal box", width/2, 35);
       fill (133, 161, 84);                                                                           //exact color of the wall 
@@ -48,13 +48,16 @@ void draw() {
       rect (520, 277, 22, 50);                                                                       //rectangle that is the same color of wall in maze 1 that prevents cheating
       fill (84, 160, 141); 
       stroke(2);
-      rect (475, 285, 30, 80);        //coordinates of the teal box
+      rect (475, 285, 30, 80);                                                                          //coordinates of the teal box
       first.checkElephant();
       first.display();
       first.move();
     }
     if (level==1) {                                                                                //since intial value of x is 0, getting to teal box gets to 1, bringing you to level 2
       background (mazeLevel2);
+      noStroke();
+      fill(46, 108, 164);
+      rect(500, 400, 25, 70);                                                               //prevents cheating
       fill (0);
       text("Get to the lavender box", width/2, 469);
       fill (128, 128, 255);                                                                               //lavender box
@@ -65,9 +68,13 @@ void draw() {
     }
     if (level == 2) {                                                                               //increasing the value of x, x equals 2, bringing you to maze level 3
       background (mazeLevel3);
+      noStroke();
+      fill(212, 153, 9);
+      rect(50, 0, 25, 70);                                                                       //prevents cheating
+      rect(100, 0, 25, 70);                                                                                //prevents cheating
       fill (0);
-      rect (430, 425, 74, 50);        //black square
-      third.checkElephant();
+      rect (430, 425, 74, 50);                                                                      //black square
+      third.checkElephant();  
       third.display();
       third.move();
     }

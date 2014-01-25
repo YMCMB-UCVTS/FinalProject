@@ -49,9 +49,9 @@ void draw() {
       fill (84, 160, 141); 
       stroke(2);
       rect (475, 285, 30, 80);        //coordinates of the teal box
+      first.checkElephant();
       first.display();
       first.move();
-      first.checkElephant();
     }
     if (level==1) {                                                                                //since intial value of x is 0, getting to teal box gets to 1, bringing you to level 2
       background (mazeLevel2);
@@ -59,17 +59,17 @@ void draw() {
       text("Get to the lavender box", width/2, 469);
       fill (128, 128, 255);                                                                               //lavender box
       rect ( 120, 0, 80, 30);
+      second.checkElephant();
       second.display();
       second.move();
-      second.checkElephant();
     }
     if (level == 2) {                                                                               //increasing the value of x, x equals 2, bringing you to maze level 3
       background (mazeLevel3);
       fill (0);
       rect (430, 425, 74, 50);        //black square
+      third.checkElephant();
       third.display();
       third.move();
-      third.checkElephant();
     }
     if (endScreen == true) {                                                                         //effects of endScreen equaling true below
       background (0);

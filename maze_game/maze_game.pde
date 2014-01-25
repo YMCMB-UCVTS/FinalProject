@@ -73,7 +73,7 @@ void draw() {
       rect (520,277,22, 50);                                                                       //rectangle that is the same color of wall in maze 1 that prevents cheating
       fill (84, 160, 141); 
       stroke(2);
-      rect (475, 285, 35, 80);                                                                           //coordinates of the teal box
+      rect (475, 285, 30, 80);                                                                           //coordinates of the teal box
       if ( get (mouseX, mouseY) == color(133, 161, 84)) {                                               //when you hit maze levels in level 1 (green)
         endScreen = true;                                                                            //game over screen 
       }

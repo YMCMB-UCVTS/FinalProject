@@ -186,11 +186,12 @@ void stop() {
 
 
 /*This function allows the ball and goalie to interact.
-When they do, the ball's location and velocity resets back
-to its original location and lives go down*/
+When they do, the ball's location, velocity and acceleration
+resets back to its original location and lives go down*/
 void catchBall() {     
   if (locBall.x<locGoalie.x+70 && locBall.y>locGoalie.y && locBall.y<locGoalie.y+80) {
     velBall.set(0, 10);
+    acc.set(0,0);
     locBall.set((Field.width/2)-(d/2), (Field.height/2)-(d/2));
     lives--;
   }
@@ -198,11 +199,12 @@ void catchBall() {
 
 
 /*This function allows the ball and goal to interact.
-When they do, the ball's location and velocity resets back
-to its original location and score goes up*/
+When they do, the ball's location, velocity and acceleration
+resets back to its original location and score goes up*/
 void catchGoal() {
   if (locBall.x<locGoal.x+25 && locBall.y>locGoal.y+60 && locBall.y<locGoal.y+height/1.37) {
     velBall.set(0, 10);
+    acc.set(0,0);
     score++;
     locBall.set((Field.width/2)-(d/2), (Field.height/2)-(d/2));
   }
@@ -211,11 +213,12 @@ void catchGoal() {
 
 /*This function occurs when the ball's x location is
 less than 0, and the ball goes off the screen.
-When it does, the ball's location and velocity resets back
-to its original location and lives go down*/
+When it does, the ball's location, velocity, and acceleraction
+resets back to its original location and lives go down*/
 void OutOfBounds() {
   if (locBall.x+35<0) {   
     velBall.set(0, 10);
+    acc.set(0,0);
     locBall.set((Field.width/2)-(d/2), (Field.height/2)-(d/2));
     lives--;
   }

@@ -25,7 +25,7 @@ void setup () {
   size(550, 500);
   BlackBox.init(this); //initializes Paras Jha's BlackBox Program, which allows for multiple keys to be pressed simultaneously
   ballloc= new PVector(width/2, height/2); //location and speed of ball
-  ballvel= new PVector(2, 2.2);
+  ballvel= new PVector(random(2,3), random(2,3));
   ballacc = new PVector(.001,.001); //acceleration of the ball
   pad1loc= new PVector(15, height/2); //location of paddles on each side
   pad2loc= new PVector(width-15, height/2); 
@@ -91,14 +91,14 @@ void draw() {
     if (ballloc.x+ballr/2 >width) { //if the ball goes past the right side of the screen
       ballmove = false; //stops moving
       ballloc.set(width/2, height/2); //returns to center of the screen
-      ballvel.set(2, 2.2);
+      ballvel.set(random(2,3), random(2,3));
       ballacc.set(.001,.001);
       score1+=1; //player 1 receives a point
     }
     if (ballloc.x-ballr/2<0) { //if the ball goes past the left side of the screen
       ballmove = false; //stops moving
       ballloc.set(width/2, height/2); //returns to center of the screen 
-      ballvel.set(2, 2.2);
+      ballvel.set(random(2,3), random(2,3));
       ballacc.set(.001,.001);
       score2+=1; //player 2 receives a point
     }

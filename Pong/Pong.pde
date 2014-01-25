@@ -78,8 +78,10 @@ void draw() {
     }
     for (int i = 0; i < 40; i++) {
       fill(255); 
+      rectMode(CENTER);
       rect(width/2, i*20, rectS, rectS);
     }
+    rectMode(CORNER);
     fill(0, 50);
     rect(0, 0, width, height);
     fill(255);
@@ -87,7 +89,7 @@ void draw() {
     textSize(scoreSize);
     text(score1, width/2-55, 85); //text for scores
     text(score2, width/2+50, 85);
-    ellipse (ballloc.x + (ballr/2), ballloc.y, ballr, ballr); //creates ball
+    ellipse (ballloc.x, ballloc.y, ballr, ballr); //creates ball
     pad1loc.y = constrain(pad1loc.y, 0, height - padHeight); //keeps paddles from going above or below screen
     pad2loc.y = constrain(pad2loc.y, 0, height - padHeight); 
     rect(pad1loc.x, pad1loc.y, padWidth, padHeight); //creates left paddle

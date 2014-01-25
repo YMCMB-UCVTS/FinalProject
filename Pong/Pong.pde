@@ -27,8 +27,8 @@ void setup () {
   ballloc= new PVector(width/2, height/2); //location and speed of ball
   ballvel= new PVector(random(2,3), random(2,3));
   ballacc = new PVector(.001,.001); //acceleration of the ball
-  pad1loc= new PVector(15, height/2); //location of paddles on each side
-  pad2loc= new PVector(width-15, height/2); 
+  pad1loc= new PVector(0, height/2); //location of paddles on each side
+  pad2loc= new PVector(width, height/2); 
   LoadingScreenPong = loadImage("LoadingScreenPong.png");
   LoadBarH = 20; //dimensions of loading bar on load screen
   LoadBarW = 300;

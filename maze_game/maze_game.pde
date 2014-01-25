@@ -1,20 +1,21 @@
+Elephant e;
+
 PImage mazeLevel1; 
 PImage mazeLevel2;
 PImage mazeLevel3;
 boolean endScreen = false; 
 PImage winScreenimage;
-boolean winScreen = false;
-PImage circusElephant; 
+boolean winScreen = false; 
 int x; 
 PImage LoadingScreenMaze;
 boolean INTROMAZE;
 int IntroMazeTime;
-PVector locLoadBar;
-PVector locLoadBar2;
-int LoadBarH;
-float LoadBarW;
-float LoadBar2W;
-int LoadBar2H;
+/*PVector locLoadBar;
+ PVector locLoadBar2;
+ int LoadBarH;
+ float LoadBarW;
+ float LoadBar2W;
+ int LoadBar2H; */
 
 void setup() {
   size(550, 500);
@@ -23,13 +24,12 @@ void setup() {
   mazeLevel3 = loadImage ("lion.png");
   LoadingScreenMaze = loadImage("LoadingScreenMaze.png");
   winScreenimage = loadImage ("winScreen.jpg");
-  circusElephant = loadImage ("for mouse.png");
-  LoadBarH = 20;
-  LoadBarW = 300;
-  LoadBar2W = 0;
-  LoadBar2H = LoadBarH;
-  locLoadBar = new PVector((width/2), (height/2)-160);
-  locLoadBar2 = new PVector((width/2), (height/2)-160);
+  /*LoadBarH = 20;
+   LoadBarW = 300;
+   LoadBar2W = 0;
+   LoadBar2H = LoadBarH;
+   locLoadBar = new PVector((width/2), (height/2)-160);
+   locLoadBar2 = new PVector((width/2), (height/2)-160);*/
   INTROMAZE = true;
 }
 
@@ -40,18 +40,18 @@ void intromaze() {
       textAlign(CENTER);
       fill(255, 0, 0);
       textSize(30);
-      text("Loading. . .", locLoadBar.x+10, locLoadBar.y - 30);
-      text("Start with mouse outside of screen!", width/2, 469); 
-      fill(255);
-      rectMode(CENTER);
-      rect(locLoadBar.x, locLoadBar.y, LoadBarW, LoadBarH);
-      fill(255, 0, 0);
-      rectMode(CORNER);
-      rect(locLoadBar2.x-(LoadBarW/2), locLoadBar2.y-(LoadBarH/2), LoadBar2W, LoadBar2H);
-      LoadBar2W+=0.8;
-      if (LoadBar2W == LoadBarW) {
-        LoadBar2W-=0.8;
-      }
+      /*text("Loading. . .", locLoadBar.x+10, locLoadBar.y - 30);
+       text("Start with mouse outside of screen!", width/2, 469); 
+       fill(255);
+       rectMode(CENTER);
+       rect(locLoadBar.x, locLoadBar.y, LoadBarW, LoadBarH);
+       fill(255, 0, 0);
+       rectMode(CORNER);
+       rect(locLoadBar2.x-(LoadBarW/2), locLoadBar2.y-(LoadBarH/2), LoadBar2W, LoadBar2H);
+       LoadBar2W+=0.8;
+       if (LoadBar2W == LoadBarW) {
+       LoadBar2W-=0.8;
+       } */
     }
     else {
       IntroMazeTime = millis()+4000;
@@ -61,21 +61,22 @@ void intromaze() {
 }
 
 void draw() {
-  
   intromaze();
   if (!INTROMAZE) { 
     if (x == 0) {
-      background (mazeLevel1);                                                                         //intial background is maze level 1
+      background (mazeLevel1);          //intial background is maze level 1
+      e.display();
+      e.move();
       fill (0);      
       text ("Get to the teal box", width/2, 35);
       fill (133, 161, 84);                                                                           //exact color of the wall 
       noStroke(); 
-      rect (520,277,22, 50);                                                                       //rectangle that is the same color of wall in maze 1 that prevents cheating
+      rect (520, 277, 22, 50);                                                                       //rectangle that is the same color of wall in maze 1 that prevents cheating
       fill (84, 160, 141); 
       stroke(2);
-      rect (475, 285, 30, 80);                                                                           //coordinates of the teal box
+      rect (475, 285, 30, 80);        //coordinates of the teal box
       if ( get (mouseX, mouseY) == color(133, 161, 84)) {                                               //when you hit maze levels in level 1 (green)
-        endScreen = true;                                                                            //game over screen 
+        endScreen = true;                                                                            //game over screen
       }
       if (get (mouseX, mouseY) == color (84, 160, 141)) {                                           //getting to the teal box increases the value of x
         x++;
@@ -120,8 +121,6 @@ void draw() {
   }
   if (get (mouseX, mouseY) == color (46, 108, 164)) {                                                         //when you hit maze walls in level 2 (blue)
     endScreen = true;                                                                                          //...game over
-  }
-  imageMode(CENTER);                                                                                          //puts picture on center of mouse
-  image(circusElephant,mouseX,mouseY);                                                                              //"puts image on mouse"
+  }                                                                                    //"puts image on mouse"
 }
 

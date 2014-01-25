@@ -14,6 +14,7 @@ Game2 g2;
 Game3 g3;
 Game4 g4;
 Instructions text;
+Timer timer;
 
 PImage intro;
 PImage ShooterBackground;
@@ -72,6 +73,7 @@ void setup() {
   LoadBar2H = LoadBarH;
   locLoadBar = new PVector((width/2), (height/2)-160);
   locLoadBar2 = new PVector((width/2), (height/2)-160);
+  timer = new Timer();
 }
 
 
@@ -177,6 +179,7 @@ void choosegame() {
     g1.displayBullet();
     g1.moveBullet();
     g1.CheckContact();
+    timer.display();
   }
   if (game2 == true) {
     g2.intromaze();

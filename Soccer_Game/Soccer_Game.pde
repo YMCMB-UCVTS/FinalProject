@@ -62,10 +62,10 @@ void setup () {
   velBall = new PVector (0, 10);
   NegAccB = .1;
   acc = new PVector (0, 0);
-  INTROSOCCER = false;
+  INTROSOCCER = true;
   goalieup = false;
   goaliedown = false;
-  setLevel = false;
+  setLevel = true;
   minim = new Minim(this);
   player = minim.loadFile("LoadScreenSoccerMusic.mp3"); 
   player.play();
@@ -103,13 +103,20 @@ void introsoccer() {
 
 
 void draw() {
- love();
-  //introsoccer();
+  introsoccer();
   catchBall();
   catchGoal();
   OutOfBounds();
-  levels();
+  if(setLevel==true){
   Bounce();
+  }
+  else{
+    locGoalie.add(velGoalie);
+    HouseMusic();
+  }
+  if(score>4){
+  setLevel=false;
+  }
   if (!INTROSOCCER) {
     background(Field);
     image(Goal, locGoal.x, locGoal.y, 70, height/1.27);
@@ -177,18 +184,7 @@ void OutOfBounds() {
     locBall.set((Field.width/2)-(d/2), (Field.height/2)-(d/2));
   }
 }
-void levels() {
-  if (score>=4){
-    setLevel=true;
-  }
-}
 
-void love(){
-  if (setLevel){
-    HouseMusic();
-    locGoalie.add(velGoalie);
-}
-}
 void Bounce() {
   if (locBall.y<100) {
     velBall.y*=-1;
@@ -201,7 +197,7 @@ void Bounce() {
  if (locBall.y<0) {
     velBall.y*=-1;
   }
-  if (locBall.y>500) {
+  if (locBall.y>400) {
     velBall.y*=-1;
   }
  }

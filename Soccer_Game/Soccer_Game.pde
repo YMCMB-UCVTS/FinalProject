@@ -1,4 +1,4 @@
-import ddf.minim.spi.*;
+import ddf.minim.spi.*;    //This is where the music is uploaded
 import ddf.minim.signals.*;
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -8,7 +8,10 @@ import ddf.minim.effects.*;
 Minim minim;
 AudioPlayer player;
 
-PVector locGoal;
+
+/*This where the variables, images, PVectors, and booleans
+are intialized*/
+PVector locGoal; 
 PVector locGoalie;
 PVector locBall;
 PVector velGoalie;
@@ -38,6 +41,9 @@ boolean shot;
 int score;
 int lives;
 
+
+/*This block of code is where all the 
+varaibles that are intialized are given a value*/
 void setup () {
   Field = loadImage("Field.png");
   size(Field.width, Field.height);
@@ -71,9 +77,38 @@ void setup () {
   player.play();
 }
 
+
+/*This function is where the other functions that were created
+are placed. This allows all the functions to run*/
+void draw() {
+  introsoccer();
+  catchBall();
+  catchGoal();
+  OutOfBounds();
+  StartGame();
+ /*This part changes the diffculty of the game. When the score
+ is greatrer than a certain number, setLevel changes from true
+ to false*/
+  if(setLevel==true){
+  Bounce();
+  }
+  else{
+    locGoalie.add(velGoalie);
+    BounceLEVELTWO();
+  }
+  if(score>2){
+  setLevel=false;
+  }
+}
+
+
+/*void introsoccer is a function that runs in the beginning 
+of the program. it is controlled by a boolean called INTROSOCCER,
+and when this boolean is true, a loading screen will display on
+the screen until it becomes false*/
 void introsoccer() {
   if (INTROSOCCER) {
-    if (millis() < 10000) {
+    if (millis() < 15000) {
       background(SoccerLoadingScreen);
       textAlign(CENTER);
       fill(255, 0, 0);
@@ -101,22 +136,10 @@ void introsoccer() {
   }
 }
 
-
-void draw() {
-  introsoccer();
-  catchBall();
-  catchGoal();
-  OutOfBounds();
-  if(setLevel==true){
-  Bounce();
-  }
-  else{
-    locGoalie.add(velGoalie);
-    HouseMusic();
-  }
-  if(score>2){
-  setLevel=false;
-  }
+/*This function is what happens when INTROSOCCER is false.
+The game is able to be played now.
+*/
+void StartGame(){
   if (!INTROSOCCER) {
     background(Field);
     image(Goal, locGoal.x, locGoal.y, 70, height/1.27);
@@ -144,8 +167,10 @@ void draw() {
   }
 }
 
+/*This keyPressed function allows the player to control
+when the ball moves toward the goal, using the spacebar key*/
 void keyPressed() {
-  if (key=='a') {
+  if (key==' ') {
     velBall.x=-speed;
     acc.x=-NegAccB;
     acc.y= 0;
@@ -159,33 +184,47 @@ void stop() {
   super.stop();
 }
 
+
+/*This function allows the ball and goalie to interact.
+When they do, the ball's location and velocity resets back
+to its original location and lives go down*/
 void catchBall() {     
   if (locBall.x<locGoalie.x+70 && locBall.y>locGoalie.y && locBall.y<locGoalie.y+80) {
     velBall.set(0, 10);
-    acc.set(0, 0);
     locBall.set((Field.width/2)-(d/2), (Field.height/2)-(d/2));
     lives--;
   }
 }
 
+
+/*This function allows the ball and goal to interact.
+When they do, the ball's location and velocity resets back
+to its original location and score goes up*/
 void catchGoal() {
-  if (locBall.x<locGoal.x+30 && locBall.y>locGoal.y+70 && locBall.y<locGoal.y+height/1.37) {
+  if (locBall.x<locGoal.x+25 && locBall.y>locGoal.y+60 && locBall.y<locGoal.y+height/1.37) {
     velBall.set(0, 10);
-    acc.set(0, 0);
     score++;
     locBall.set((Field.width/2)-(d/2), (Field.height/2)-(d/2));
   }
 }
 
+
+/*This function occurs when the ball's x location is
+less than 0, and the ball goes off the screen.
+When it does, the ball's location and velocity resets back
+to its original location and lives go down*/
 void OutOfBounds() {
   if (locBall.x+35<0) {   
     velBall.set(0, 10);
-    acc.set(0, 0);
     locBall.set((Field.width/2)-(d/2), (Field.height/2)-(d/2));
     lives--;
   }
 }
 
+/*This function allows the ball to move up and down in the y
+dircetion to resemble a ball bouncing. the velocity of the ball
+changes when it reaches a certian hieght, changing its direction.
+This function runs when setLevel is true*/
 void Bounce() {
   if (locBall.y<100) {
     velBall.y*=-1;
@@ -194,11 +233,17 @@ void Bounce() {
     velBall.y*=-1;
   }
 }
- void HouseMusic(){
- if (locBall.y<0) {
+
+/*THis function allows the ball to move up and down in the y
+dircetion as well the velocity of the ball changes when it 
+reaches a certian hieght which is much wider than in the 
+function bounce, changing its direction.This function runs 
+when setLevel is false*/
+ void BounceLEVELTWO(){
+ if (locBall.y<50) {
     velBall.y*=-1;
   }
-  if (locBall.y>500) {
+  if (locBall.y>450) {
     velBall.y*=-1;
   }
  }

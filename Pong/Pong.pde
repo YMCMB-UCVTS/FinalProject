@@ -1,4 +1,5 @@
 //establishes variables for pong game
+PImage PongBackground;
 PImage LoadingScreenPong; //loading screen image
 PVector ballloc; 
 PVector ballvel; 
@@ -18,17 +19,19 @@ int LoadBar2H;
 float padSpeed = 2.5; //how fast the paddles move up and down
 int score1 = 0; //initial starting scores
 int score2 = 0;
-int scoreSize = 30;
+int scoreSize = 70;
 boolean ballmove;
 PVector ballacc;
+
 void setup () {
   size(550, 500);
   BlackBox.init(this); //initializes Paras Jha's BlackBox Program, which allows for multiple keys to be pressed simultaneously
   ballloc= new PVector(width/2, height/2); //location and speed of ball
-  ballvel= new PVector(random(2,3), random(2,3));
-  ballacc = new PVector(.001,.001); //acceleration of the ball
+  ballvel= new PVector(random(2, 3), random(2, 3));
+  ballacc = new PVector(.001, .001); //acceleration of the ball
   pad1loc= new PVector(0, height/2); //location of paddles on each side
   pad2loc= new PVector(width, height/2); 
+  PongBackground = loadImage("PongBackground.png");
   LoadingScreenPong = loadImage("LoadingScreenPong.png");
   LoadBarH = 20; //dimensions of loading bar on load screen
   LoadBarW = 300;
@@ -38,7 +41,6 @@ void setup () {
   locLoadBar2 = new PVector((width/2), (height/2)-160);
   INTROPONG = true; //determines what state game is in, load screen or actually playing
   ballmove = false; //determines the conditions for the ball to move
-  textSize(scoreSize);
 }
 
 void intropong() { //loading screen function
@@ -74,11 +76,12 @@ void draw() {
     if (keyPressed == true && key == ' ') { //spacebar must be pressed for ball to move to start each point
       ballmove = true;
     }
+    background (PongBackground);
     fill(255);
-    background (12, 242, 167);
-    textAlign(CORNER);
-    text("P1 Score:" + score1, width/2-175, scoreSize); //text for scores
-    text("P2 Score:" + score2, width/2+50, scoreSize);
+    textAlign(CENTER);
+    textSize(scoreSize);
+    text(score1, width/2-55, 85); //text for scores
+    text(score2, width/2+50, 85);
     ellipse (ballloc.x, ballloc.y, ballr, ballr); //creates ball
     pad1loc.y = constrain(pad1loc.y, 0, height - padHeight); //keeps paddles from going above or below screen
     pad2loc.y = constrain(pad2loc.y, 0, height - padHeight); 
@@ -91,15 +94,15 @@ void draw() {
     if (ballloc.x+ballr/2 >width) { //if the ball goes past the right side of the screen
       ballmove = false; //stops moving
       ballloc.set(width/2, height/2); //returns to center of the screen
-      ballvel.set(random(2,3), random(2,3));
-      ballacc.set(.001,.001);
+      ballvel.set(random(2, 3), random(2, 3));
+      ballacc.set(.001, .001);
       score1+=1; //player 1 receives a point
     }
     if (ballloc.x-ballr/2<0) { //if the ball goes past the left side of the screen
       ballmove = false; //stops moving
       ballloc.set(width/2, height/2); //returns to center of the screen 
-      ballvel.set(random(2,3), random(2,3));
-      ballacc.set(.001,.001);
+      ballvel.set(random(2, 3), random(2, 3));
+      ballacc.set(.001, .001);
       score2+=1; //player 2 receives a point
     }
     if (ballloc.y+ballr/2>height) { //ball bounces off bottom of screen
@@ -143,7 +146,7 @@ void draw() {
     }
     if (ballloc.x-ballr/2<pad1loc.x+padWidth && ballloc.y-ballr/2 > pad1loc.y && ballloc.y+ballr/2 < pad1loc.y + padHeight) {
       ballvel.x*=-1; //ball bounces off left paddle
-      ballacc.x*=-1; 
+      ballacc.x*=-1;
     }
     if (ballloc.x+ballr/2>pad2loc.x-padWidth && ballloc.y-ballr/2 > pad2loc.y && ballloc.y+ballr/2 < pad2loc.y + padHeight) {
       ballvel.x*=-1; //ball bounces off right paddle

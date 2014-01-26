@@ -35,7 +35,7 @@ void SoccerSetup() {
   locBall = new PVector ((width/2)-(d/2), (height/2)-(d/2));
   velGoalie =new PVector(0, 4);
   speed = 10;
-  lives = 3;
+  lives = 10;
   level = 1;
   velBall = new PVector (0, 10);
   NegAccB = .1;
@@ -68,12 +68,13 @@ void Soccer() {
   }   
   if (score >= 10) {
     setLevel=false;
+    level = 2;
   }
-  if (score ==20){
-  win = true;
+  if (score ==20) {
+    win = true;
   }
-  if(lives == 0){
-  lose = true;
+  if (lives == 0) {
+    lose = true;
   }
 }
 
@@ -117,10 +118,6 @@ void StartGame() {
     text(255, 0, 0);
     textSize(30);
     text("Level: " + level, width/2+80, height/2); 
-    if (score == 10) {
-      level = 2;
-      text("Level: " + level, width/2+80, height/2);
-    }   
     if (locGoalie.y+200 > height) {
       velGoalie.y*=-1;
     }
@@ -189,7 +186,6 @@ void Bounce() {
  function bounce, changing its direction.This function runs 
  when setLevel is false*/
 void BounceLEVELTWO() {
-  lives = 5;
   if (locBall.y<50) {
     velBall.y*=-1;
   }

@@ -50,7 +50,7 @@ void setup() {
   mainmenux = width/2;
   mainmenuy = height/2;
   minim = new Minim(this);
-  player = minim.loadFile("PYD.mp3"); 
+  player = minim.loadFile("Intro.mp3"); 
   player.play(); 
   b1 = new Button(140, -20, "SGButton.png");
   b2 = new Button(-40, -20, "MazeButton.png");
@@ -80,7 +80,7 @@ void menu() {
 
 void intro() {
   if (INTRO) {
-    if (millis() < 3000) {
+    if (millis() < 5000) {
       imageMode(CENTER);
       image(intro, width/2, height/2, 150, 150);
     }
@@ -88,7 +88,7 @@ void intro() {
       introTime = millis()+4000;
       INTRO = false;
       player.close();
-      player = minim.loadFile("All That Matters.mp3");
+      player = minim.loadFile("MainMenuMusic.mp3");
       player.loop();
     }
   }
@@ -124,7 +124,7 @@ void mousePressed() {
       win = false;
       lose = false;
       player.close();
-      player = minim.loadFile("All That Matters.mp3");
+      player = minim.loadFile("MainMenuMusic.mp3");
       player.loop();
     }
   }
@@ -262,6 +262,9 @@ void lose() {
   if (lose == true) {
     background(LoseScreen);
     text.returntomainmenubutton();
+    player.close();
+    player = minim.loadFile("GameOverMusic.mp3");
+    player.loop();
   }
 }
 

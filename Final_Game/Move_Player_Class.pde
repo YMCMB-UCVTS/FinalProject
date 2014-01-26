@@ -7,7 +7,7 @@ class Elephant {
 
   Elephant(int x, int y) {
     Elephant = loadImage ("Object.png");
-    ElephantS = 23;
+    ElephantS = 20;
     ElephantLoc = new PVector(x, y);
     ElephantVel = new PVector(0, 0);
     ElephantAcc = new PVector(0, 0);

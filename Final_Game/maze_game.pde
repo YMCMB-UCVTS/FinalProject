@@ -34,6 +34,9 @@ void intromaze() {
       loadbar2.displayBar();
     }
     else {
+      player.close();
+      player = minim.loadFile("MazeMusic.mp3");
+      player.loop();
       IntroMazeTime = millis()+4000;
       INTROMAZE = false;
     }

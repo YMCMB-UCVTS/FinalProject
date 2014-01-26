@@ -12,11 +12,11 @@ class LoadBar {
     LoadBarW = 300;
     LoadBar2W = 0;
     LoadBar2H = LoadBarH;
-    locLoadBar = new PVector((width/2), (height/2)-120);
-    locLoadBar2 = new PVector((width/2), (height/2)-120);
+    locLoadBar = new PVector((width/2), (height/2)-140);
+    locLoadBar2 = new PVector((width/2), (height/2)-140);
   }
   
-  void display() {
+  void displayBar() {
     textAlign(CENTER);
     fill(255, 0, 0);
     textSize(30);

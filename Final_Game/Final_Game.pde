@@ -9,14 +9,9 @@ Minim minim;
 AudioPlayer player;
 
 Button b1, b2, b3, b4, b5;
-ShootingGallery g1;
-Maze g2;
-Pong g3;
-Soccer g4;
 Instructions text;
 
 PImage intro;
-PImage ShooterBackground;
 boolean INTRO;
 boolean game1;
 boolean game2;
@@ -28,8 +23,11 @@ PVector locmenuB;
 int menuBH;
 int menuBW;
 int introTime;
-int s;
 int mainmenux, mainmenuy;
+int score;
+int level;
+int StartMiniGame;
+boolean Mainmenugoaway;
 
 void setup() {
   size(550, 500);
@@ -55,16 +53,13 @@ void setup() {
   b3 = new Button(120, 120);
   b4 = new Button(-20, 120);
   b5 = new Button(80, -70);
-  g1 = new ShootingGallery();
-  g2 = new Game2();
-  g3 = new Game3();
-  g4 = new Game4();
   text = new Instructions();
+  Mainmenugoaway = false;
 }
 
 
 void menu() {
-  if (!INTRO) {
+  if (!INTRO && Mainmenugoaway == false) {
     background(0);
     b1.display(0, 0);
     b2.display(0, 0);
@@ -72,42 +67,6 @@ void menu() {
     b4.display(0, 0);
     b5.display(60, -40);
     mainmenutext();
-    if (b1.selected()) {
-      game1 = true;
-      game2 = false;
-      game3 = false;
-      game4 = false;
-      instructions = false;
-    }
-    if (b2.selected()) {
-      game2 = true;
-      game1 = false;
-      game3 = false;
-      game4 = false;
-      instructions = false;
-    }
-    if (b3.selected()) {
-      game3 = true;
-      game1 = false;
-      game2 = false;
-      game4 = false;
-      instructions = false;
-    }
-    if (b4.selected()) {
-      game4 = true;
-      game1 = false;
-      game2 = false;
-      game3 = false;
-      instructions = false;
-    }
-    if (b5.selected()) {
-      instructions = true;
-      game1 = false;
-      game2 = false;
-      game3 = false;
-      game4 = false;
-    }
-    choosegame();
   }
 }
 
@@ -132,6 +91,7 @@ void draw() {
   background(0);
   intro();
   menu();
+  choosegame();
 }
 
 void stop() { 
@@ -154,30 +114,69 @@ void mousePressed() {
     player.play();
     player.loop();
   }
+  if (b1.selected()) {
+    Mainmenugoaway = true;
+    game1 = true;
+    StartMiniGame = millis() + 10000;
+    ShootingGallerySetup();
+    game2 = false;
+    game3 = false;
+    game4 = false;
+    instructions = false;
+  }
+  if (b2.selected()) {
+    Mainmenugoaway = true;
+    game2 = true;
+    StartMiniGame = millis() + 10000;
+    MazeSetup();
+    game1 = false;
+    game3 = false;
+    game4 = false;
+    instructions = false;
+  }
+  if (b3.selected()) {
+    Mainmenugoaway = true;
+    game3 = true;
+    StartMiniGame = millis() + 10000;
+    PongSetup();
+    game1 = false;
+    game2 = false;
+    game4 = false;
+    instructions = false;
+  }
+  if (b4.selected()) {
+    Mainmenugoaway = true;
+    game4 = true;
+    StartMiniGame = millis() + 10000;
+    SoccerSetup();
+    game1 = false;
+    game2 = false;
+    game3 = false;
+    instructions = false;
+  }
+  if (b5.selected()) {
+    Mainmenugoaway = true;
+    instructions = true;
+    game1 = false;
+    game2 = false;
+    game3 = false;
+    game4 = false;
+  }
 }
+
 
 void choosegame() {
   if (game1 == true) {
-    background(ShooterBackground);
-    g1.displayTarget();
-    g1.moveTarget();
-    g1.displayShooter();
-    g1.displayBullet();
-    g1.moveBullet();
-    g1.CheckContact();
+    ShootingGallery();
   }
   if (game2 == true) {
-    g2.intromaze();
-    g2.display();
+    Maze();
   }
   if (game3 == true) {
-    BlackBox.init(this);
-    g3.intropong();
-    g3.display();
+    Pong();
   }
   if (game4 == true) {
-    g4.introsoccer();
-    g4.display();
+    Soccer();
     player.close();
     minim = new Minim(this);
     player = minim.loadFile("LoadScreenSoccerMusic.mp3"); 
@@ -204,3 +203,25 @@ void mainmenutext() {
   fill(255);
   text("Choose What You Want To Play", mainmenux, mainmenuy - 105);
 }
+
+
+void keyPressed() {
+  if (game1 == true) {
+    if (key == ' ') {
+      if (Shoot()) {
+        bullets.add(new Bullet());
+      }
+    }
+  }
+  if (game4 == true) {
+    if (key==' ') {
+      velBall.x=-speed;
+      acc.x=-NegAccB;
+      acc.y= 0;
+      velBall.y=0;
+    }
+  }
+}
+
+/*This keyPressed function allows the player to control
+ when the ball moves toward the goal, using the spacebar key*/

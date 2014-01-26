@@ -7,6 +7,6 @@ class Timer{
   }
   
   void display(){
-  text((startgame - millis())/1000, width - 100, 100);
+  text((startgame - millis())/1000, 100, 100);
   }
 }

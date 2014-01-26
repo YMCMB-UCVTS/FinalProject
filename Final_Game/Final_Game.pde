@@ -31,12 +31,6 @@ int menuBW;
 int introTime;
 int s;
 int mainmenux, mainmenuy;
-PVector locLoadBar;
-PVector locLoadBar2;
-int LoadBarH;
-float LoadBarW;
-float LoadBar2W;
-int LoadBar2H;
 
 void setup() {
   size(550, 500);
@@ -67,12 +61,6 @@ void setup() {
   g3 = new Game3();
   g4 = new Game4();
   text = new Instructions();
-  LoadBarH = 20;
-  LoadBarW = 300;
-  LoadBar2W = 0;
-  LoadBar2H = LoadBarH;
-  locLoadBar = new PVector((width/2), (height/2)-160);
-  locLoadBar2 = new PVector((width/2), (height/2)-160);
   timer = new Timer();
 }
 

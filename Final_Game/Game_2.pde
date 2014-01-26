@@ -22,20 +22,6 @@ class Game2 {
     if (INTROMAZE) {
       if (millis() < 10000) {
         background(LoadingScreenMaze);
-        textAlign(CENTER);
-        fill(255, 0, 0);
-        textSize(30);
-        text("Loading. . .", locLoadBar.x+10, locLoadBar.y - 30);
-        fill(255);
-        rectMode(CENTER);
-        rect(locLoadBar.x, locLoadBar.y, LoadBarW, LoadBarH);
-        fill(255, 0, 0);
-        rectMode(CORNER);
-        rect(locLoadBar2.x-(LoadBarW/2), locLoadBar2.y-(LoadBarH/2), LoadBar2W, LoadBar2H);
-        LoadBar2W+=1;
-        if (LoadBar2W == LoadBarW) {
-          LoadBar2W-=1;
-        }
       }
       else {
         IntroMazeTime = millis()+4000;

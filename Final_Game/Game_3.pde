@@ -26,20 +26,6 @@ class Game3 {
     if (INTROPONG) {
       if (millis() < 10000) {
         background(LoadingScreenPong);
-        textAlign(CENTER);
-        fill(255, 0, 0);
-        textSize(30);
-        text("Loading. . .", locLoadBar.x+10, locLoadBar.y - 30);
-        fill(255);
-        rectMode(CENTER);
-        rect(locLoadBar.x, locLoadBar.y, LoadBarW, LoadBarH);
-        fill(255, 0, 0);
-        rectMode(CORNER);
-        rect(locLoadBar2.x-(LoadBarW/2), locLoadBar2.y-(LoadBarH/2), LoadBar2W, LoadBar2H);
-        LoadBar2W+=0.8;
-        if (LoadBar2W == LoadBarW) {
-          LoadBar2W-=0.8;
-        }
       }
       else {
         IntroPongTime = millis()+4000;

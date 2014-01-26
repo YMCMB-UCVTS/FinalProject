@@ -48,7 +48,7 @@ void setup () {
   locBall = new PVector ((Field.width/2)-(d/2), (Field.height/2)-(d/2));
   velGoalie =new PVector(0, 4);
   speed = 10;
-  lives = 3;
+  lives = 5;
   level = 1;
   velBall = new PVector (0, 10);
   NegAccB = .1;
@@ -80,6 +80,7 @@ void draw() {
     BounceLEVELTWO();
   }   
   if (score>=10) {
+    level=2;
     setLevel=false;
   }
 }
@@ -124,10 +125,6 @@ void StartGame() {
     text(255, 0, 0);
     textSize(30);
     text("Level: " + level, width/2+80, height/2); 
-    if (score == 10) {
-      level = 2;
-      text("Level: " + level, width/2+80, height/2);
-    }   
     if (locGoalie.y+200 > height) {
       velGoalie.y*=-1;
     }

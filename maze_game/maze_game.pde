@@ -26,7 +26,7 @@ void setup() {
 
 void intromaze() {
   if (INTROMAZE) {
-    if (millis() < 4000) {
+    if (millis() < 1000) {
       background(LoadingScreenMaze);
     }
     else {

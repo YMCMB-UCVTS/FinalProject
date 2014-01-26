@@ -114,53 +114,59 @@ void mousePressed() {
     player.play();
     player.loop();
   }
-  if (b1.selected()) {
-    Mainmenugoaway = true;
-    game1 = true;
-    StartMiniGame = millis() + 10000;
-    ShootingGallerySetup();
-    game2 = false;
-    game3 = false;
-    game4 = false;
-    instructions = false;
-  }
-  if (b2.selected()) {
-    Mainmenugoaway = true;
-    game2 = true;
-    StartMiniGame = millis() + 10000;
-    MazeSetup();
-    game1 = false;
-    game3 = false;
-    game4 = false;
-    instructions = false;
-  }
-  if (b3.selected()) {
-    Mainmenugoaway = true;
-    game3 = true;
-    StartMiniGame = millis() + 10000;
-    PongSetup();
-    game1 = false;
-    game2 = false;
-    game4 = false;
-    instructions = false;
-  }
-  if (b4.selected()) {
-    Mainmenugoaway = true;
-    game4 = true;
-    StartMiniGame = millis() + 10000;
-    SoccerSetup();
-    game1 = false;
-    game2 = false;
-    game3 = false;
-    instructions = false;
-  }
-  if (b5.selected()) {
-    Mainmenugoaway = true;
-    instructions = true;
-    game1 = false;
-    game2 = false;
-    game3 = false;
-    game4 = false;
+  if (Mainmenugoaway == false) {
+    if (b1.selected()) {
+      Mainmenugoaway = true;
+      game1 = true;
+      StartMiniGame = millis() + 10000;
+      ShootingGallerySetup();
+      game2 = false;
+      game3 = false;
+      game4 = false;
+      instructions = false;
+    }
+    if (b2.selected()) {
+      Mainmenugoaway = true;
+      game2 = true;
+      StartMiniGame = millis() + 10000;
+      MazeSetup();
+      game1 = false;
+      game3 = false;
+      game4 = false;
+      instructions = false;
+    }
+    if (b3.selected()) {
+      Mainmenugoaway = true;
+      game3 = true;
+      StartMiniGame = millis() + 10000;
+      PongSetup();
+      game1 = false;
+      game2 = false;
+      game4 = false;
+      instructions = false;
+    }
+    if (b4.selected()) {
+      Mainmenugoaway = true;
+      game4 = true;
+      player.close();
+      player = minim.loadFile("LoadScreenSoccerMusic.mp3");
+      player.play();
+      player.loop();
+      StartMiniGame = millis() + 10000;
+      SoccerSetup();
+      game1 = false;
+      game2 = false;
+      game3 = false;
+      instructions = false;
+    }
+    if (b5.selected()) {
+      Mainmenugoaway = true;
+      instructions = true;
+      game1 = false;
+      game2 = false;
+      game3 = false;
+      game4 = false;
+    }
   }
 }
 

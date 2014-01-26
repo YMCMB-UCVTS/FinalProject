@@ -21,7 +21,7 @@ void ShootingGallerySetup() {
   Target = 80;
   ducks.add(new Duck());
   bullets.add(new Bullet());
-  time = 0;
+  time = millis() + 500;
   BulletTime = 0;
   timer = new Timer();
 }

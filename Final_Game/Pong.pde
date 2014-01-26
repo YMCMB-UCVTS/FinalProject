@@ -16,7 +16,7 @@ int scoreSize = 70;
 boolean ballmove;
 PVector ballacc;
 int rectS = 10;
-LoadBar loadbar;
+LoadBar loadbar3;
 
 void PongSetup () {
   size(550, 500);
@@ -29,14 +29,14 @@ void PongSetup () {
   LoadingScreenPong = loadImage("LoadingScreenPong.png");
   INTROPONG = true; //determines what state game is in, load screen or actually playing
   ballmove = false; //determines the conditions for the ball to move
-  loadbar = new LoadBar();
+  loadbar3 = new LoadBar();
 }
 
 void intropong() { //loading screen function
   if (INTROPONG) {
     if (millis() < 10000) { //timer set at 10 seconds 
       background(LoadingScreenPong); //displays loading screen image and loading bar that fills up 
-      loadbar.displayBar();
+      loadbar3.displayBar();
     }
     else { //establishes conditions for game to run
       IntroPongTime = millis()+4000;

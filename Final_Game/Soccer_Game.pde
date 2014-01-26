@@ -18,6 +18,7 @@ int speed;
 int IntroSoccerTime;
 boolean setLevel;
 int lives;
+LoadBar loadbar4;
 
 
 /*This block of code is where all the 
@@ -41,6 +42,7 @@ void SoccerSetup() {
   acc = new PVector (0, 0);
   INTROSOCCER = true;
   setLevel = true;
+  loadbar4 = new LoadBar();
 }
 
 
@@ -84,6 +86,7 @@ void introsoccer() {
   if (INTROSOCCER) {
     if (millis() < 10000) {
       background(SoccerLoadingScreen);
+      loadbar4.displayBar();
     }
     else {
       IntroSoccerTime = millis()+4000;

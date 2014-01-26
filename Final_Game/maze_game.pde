@@ -10,6 +10,7 @@ PImage LoadingScreenMaze;
 boolean INTROMAZE;
 int IntroMazeTime;
 Timer timer2;
+LoadBar loadbar2;
 
 void MazeSetup() {
   size(550, 500);
@@ -23,12 +24,14 @@ void MazeSetup() {
   second = new Elephant(486, 442);
   third = new Elephant(86, 52);
   timer2 = new Timer();
+  loadbar2 = new LoadBar();
 }
 
 void intromaze() {
   if (INTROMAZE) {
     if (millis() < 10000) {
       background(LoadingScreenMaze);
+      loadbar2.displayBar();
     }
     else {
       IntroMazeTime = millis()+4000;

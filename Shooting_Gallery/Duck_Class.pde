@@ -3,14 +3,24 @@ class Duck {
   PVector  TargetVel;
   int Target ;
   PImage duck;
+  boolean grey;
+  boolean andy;
 
   Duck() {
     TargetLoc = new PVector (110, height*.57);
     TargetVel = new PVector (2, 0);
     Target = 80;
-    number++;
-    if (number == 3) {
-      number = 1;
+    number = int(random(1, 3));
+    grey = false;
+    andy = false;
+    if (number == 1) {
+      grey = true;
+    }
+    if (ducks.size() % 7 == 0) {
+      number = 3;
+      if (number == 3) {
+        andy = true;
+      }
     }
     duck = loadImage("Duck"+number+".png");
   }

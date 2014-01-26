@@ -10,7 +10,10 @@ int Target;
 int score;
 int number;
 int BulletTime;
+int startgame;
+int duckCount;
 ShootingGallery s;
+Timer timer;
 
 void setup() {
   size(550, 500);
@@ -22,10 +25,12 @@ void setup() {
   bullets.add(new Bullet());
   time = 0;
   BulletTime = 0;
+  timer = new Timer();
 }
 
 void draw() {
   background(ShooterBackground);
+  timer.display();
   for (int i = ducks.size() - 1; i>0; i--) { 
     Duck d = ducks.get(i);
     d.displayTarget();
@@ -35,8 +40,13 @@ void draw() {
     }
     for (int u = bullets.size() - 1; u > 0; u--) { 
       if (d.checkBullet(bullets.get(u))) {
+        if (ducks.get(i).grey == true) {
+          score ++;
+        }
+        else {
+          startgame-=20000;
+        }
         ducks.remove(i);
-        score ++;
       }
     }
   }

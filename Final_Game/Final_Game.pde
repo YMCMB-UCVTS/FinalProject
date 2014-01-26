@@ -30,6 +30,8 @@ int score;
 int level;
 int StartMiniGame;
 boolean Mainmenugoaway;
+PImage WinScreen;
+PImage LoseScreen;
 
 void setup() {
   size(550, 500);
@@ -59,6 +61,8 @@ void setup() {
   Mainmenugoaway = false;
   win = false;
   lose = false;
+  WinScreen = loadImage("Winner.png");
+  LoseScreen = loadImage("Loser.png");
 }
 
 
@@ -249,20 +253,14 @@ void keyPressed() {
 
 void win() {
   if (win == true) {
-    background(0);
-    fill(255);
-    textSize(30);
-    text("YOU WIN", width/2, height/2);
+    background(WinScreen);
     text.returntomainmenubutton();
   }
 }
 
 void lose() {
   if (lose == true) {
-    background(0);
-    fill(255);
-    textSize(30);
-    text("YOU LOSE", width/2, height/2);
+    background(LoseScreen);
     text.returntomainmenubutton();
   }
 }

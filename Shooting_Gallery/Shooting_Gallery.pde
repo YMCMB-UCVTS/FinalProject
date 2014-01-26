@@ -11,7 +11,6 @@ int score;
 int number;
 int BulletTime;
 int startgame;
-int duckCount;
 ShootingGallery s;
 Timer timer;
 
@@ -52,7 +51,7 @@ void draw() {
   }
   if (millis() > time) {
     ducks.add(new Duck());
-    time+=2000;
+    time+=1500;
   }
   s.displayWaves();
   for (int u = bullets.size() - 1; u > 0; u--) { 

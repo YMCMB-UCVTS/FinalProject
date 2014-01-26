@@ -16,7 +16,7 @@ class Duck {
     if (number == 1) {
       grey = true;
     }
-    if (ducks.size() % 7 == 0) {
+    if (score == 29) {
       number = 3;
       if (number == 3) {
         andy = true;

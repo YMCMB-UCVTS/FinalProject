@@ -31,7 +31,7 @@ class Duck {
 
   void moveTarget() {
     TargetLoc.add(TargetVel);
-    if (score>=5) {
+    if (score>=15) {
       TargetVel = new PVector(3.8, 0);
     }
   }

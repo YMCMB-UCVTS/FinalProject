@@ -18,6 +18,8 @@ boolean game2;
 boolean game3;
 boolean game4;
 boolean instructions;
+boolean win;
+boolean lose;
 boolean menuB;
 PVector locmenuB;
 int menuBH;
@@ -55,6 +57,8 @@ void setup() {
   b5 = new Button(80, -70);
   text = new Instructions();
   Mainmenugoaway = false;
+  win = false;
+  lose = false;
 }
 
 
@@ -81,7 +85,6 @@ void intro() {
       INTRO = false;
       player.close();
       player = minim.loadFile("All That Matters.mp3");
-      player.play();
       player.loop();
     }
   }
@@ -92,6 +95,8 @@ void draw() {
   intro();
   menu();
   choosegame();
+  win();
+  lose();
 }
 
 void stop() { 
@@ -103,18 +108,22 @@ void stop() {
 
 void mousePressed() {
   if (mouseX > locmenuB.x && mouseX < locmenuB.x + menuBW  && mouseY > locmenuB.y && mouseY < locmenuB.y + menuBH) {
-    menuB = true;
-    game1 = false;
-    game2 = false;
-    game3 = false;
-    game4 = false;
-    instructions = false;
-    player.close();
-    player = minim.loadFile("All That Matters.mp3");
-    player.play();
-    player.loop();
+    if (win == true || lose == true || instructions == true) {
+      menuB = true;
+      Mainmenugoaway = false;
+      game1 = false;
+      game2 = false;
+      game3 = false;
+      game4 = false;
+      instructions = false;
+      win = false;
+      lose = false;
+      player.close();
+      player = minim.loadFile("All That Matters.mp3");
+      player.loop();
+    }
   }
-  if (Mainmenugoaway == false) {
+  if (Mainmenugoaway == false && INTRO == false) {
     if (b1.selected()) {
       Mainmenugoaway = true;
       game1 = true;
@@ -148,11 +157,10 @@ void mousePressed() {
     if (b4.selected()) {
       Mainmenugoaway = true;
       game4 = true;
+      StartMiniGame = millis() + 10000;
       player.close();
       player = minim.loadFile("LoadScreenSoccerMusic.mp3");
-      player.play();
       player.loop();
-      StartMiniGame = millis() + 10000;
       SoccerSetup();
       game1 = false;
       game2 = false;
@@ -183,13 +191,10 @@ void choosegame() {
   }
   if (game4 == true) {
     Soccer();
-    player.close();
-    minim = new Minim(this);
-    player = minim.loadFile("LoadScreenSoccerMusic.mp3"); 
-    player.play();
   }
   if (instructions == true) {
     text.display();
+    text.returntomainmenubutton();
   }
 }
 
@@ -231,3 +236,24 @@ void keyPressed() {
 
 /*This keyPressed function allows the player to control
  when the ball moves toward the goal, using the spacebar key*/
+
+void win() {
+  if (win == true) {
+    background(0);
+    fill(255);
+    textSize(30);
+    text("YOU WIN", width/2, height/2);
+    text.returntomainmenubutton();
+  }
+}
+
+void lose() {
+  if (lose == true) {
+    background(0);
+    fill(255);
+    textSize(30);
+    text("YOU LOSE", width/2, height/2);
+    text.returntomainmenubutton();
+  }
+}
+

@@ -9,6 +9,7 @@ boolean winScreen = false;
 PImage LoadingScreenMaze;
 boolean INTROMAZE;
 int IntroMazeTime;
+Timer timer2;
 
 void MazeSetup() {
   size(550, 500);
@@ -21,6 +22,7 @@ void MazeSetup() {
   first = new Elephant(23, 319);
   second = new Elephant(486, 442);
   third = new Elephant(86, 52);
+  timer2 = new Timer();
 }
 
 void intromaze() {
@@ -78,19 +80,15 @@ void Maze() {
       third.display();
       third.move();
     }
-    if (endScreen == true) {                                                                         //effects of endScreen equaling true below
-      background (0);
-      fill(255);
-      textSize(50);
-      textAlign(CENTER);
-      text("Game Over", width/2, height/2);
+    if (endScreen == true || timer2.startgame - millis() == 0) {                                                                         //effects of endScreen equaling true below
+      lose = true;
     }
-  }
-  if (winScreen == true) {
-    background (winScreenimage);                                                                              //loads new background image when winScreen boolean is true
-    textSize(50);
-    textAlign(CENTER);
-    text("YOU WON!", width/2, height/2);                                                                         //text loads when winScreen boolean is true
+    fill(0);
+    textSize(30);
+    timer2.display();
+    if (winScreen == true) {
+      win = true;
+    }
   }
 }
 

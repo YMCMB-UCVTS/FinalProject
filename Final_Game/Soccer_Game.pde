@@ -31,7 +31,7 @@ void SoccerSetup() {
   locGoal = new PVector(20, 35);
   locGoalie = new PVector(100, 175);
   d = 35;
-  locBall = new PVector ((Field.width/2)-(d/2), (Field.height/2)-(d/2));
+  locBall = new PVector ((width/2)-(d/2), (height/2)-(d/2));
   velGoalie =new PVector(0, 4);
   speed = 10;
   lives = 3;
@@ -47,6 +47,7 @@ void SoccerSetup() {
 /*This function is where the other functions that were created
  are placed. This allows all the functions to run*/
 void Soccer() {
+  imageMode(CORNER);
   frameRate(60);
   introsoccer();
   catchBall();
@@ -63,8 +64,14 @@ void Soccer() {
     locGoalie.add(velGoalie);
     BounceLEVELTWO();
   }   
-  if (score>=10) {
+  if (score >= 10) {
     setLevel=false;
+  }
+  if (score ==20){
+  win = true;
+  }
+  if(lives == 0){
+  lose = true;
   }
 }
 
@@ -83,7 +90,6 @@ void introsoccer() {
       INTROSOCCER = false;
       player.close();
       player = minim.loadFile("SoccerGameMusic.mp3");
-      player.play();
       player.loop();
     }
   }

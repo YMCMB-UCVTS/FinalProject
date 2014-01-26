@@ -73,6 +73,12 @@ void ShootingGallery() {
     textSize(24);
     text("RELOADED", width-100, 100);
   }
+  if(score == 30){
+  win = true;
+  }
+  if(timer.startgame - millis() == 0){
+  lose = true;
+  }
 }
 
 

@@ -140,5 +140,8 @@ void Pong() {
       ballacc.x*=-1;
     }
   }
+  if (score1 == 7 || score2 == 7) {
+    win = true;
+  }
 }
 

@@ -10,9 +10,9 @@ AudioPlayer player;
 
 Button b1, b2, b3, b4, b5;
 ShootingGallery g1;
-Game2 g2;
-Game3 g3;
-Game4 g4;
+Maze g2;
+Pong g3;
+Soccer g4;
 Instructions text;
 
 PImage intro;
@@ -178,10 +178,6 @@ void choosegame() {
   if (game4 == true) {
     g4.introsoccer();
     g4.display();
-    g4.catchBall();
-    g4.catchGoal();
-    g4.OutOfBounds();
-    g4.levels();
     player.close();
     minim = new Minim(this);
     player = minim.loadFile("LoadScreenSoccerMusic.mp3"); 

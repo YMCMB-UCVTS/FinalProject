@@ -8,7 +8,11 @@ class Duck {
     TargetLoc = new PVector (110, height*.57);
     TargetVel = new PVector (2, 0);
     Target = 80;
-    duck = loadImage("Duck.png");
+    number++;
+    if (number == 3) {
+      number = 1;
+    }
+    duck = loadImage("Duck"+number+".png");
   }
 
   void displayTarget() {

@@ -8,6 +8,7 @@ PVector TargetVel;
 int time;
 int Target;
 int score;
+int number;
 int BulletTime;
 ShootingGallery s;
 
@@ -66,7 +67,7 @@ void draw() {
 }
 
 void keyPressed() {
-  if (key == 'w') {
+  if (key == ' ') {
     if (Shoot()) {
       bullets.add(new Bullet());
     }

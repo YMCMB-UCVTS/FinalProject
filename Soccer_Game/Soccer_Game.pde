@@ -16,8 +16,6 @@ PVector locGoalie;
 PVector locBall;
 PVector velGoalie;
 PVector velBall;
-PVector locLoadBar;
-PVector locLoadBar2;
 PVector acc;
 PImage Goal;
 PImage Ball;
@@ -29,14 +27,10 @@ float NegAccB;
 int d;
 int speed;
 int IntroSoccerTime;
-int LoadBarH;
-float LoadBarW;
-float LoadBar2W;
-int LoadBar2H;
 boolean setLevel;
-boolean shot;
 int score;
 int lives;
+int level;
 
 
 /*This block of code is where all the 
@@ -50,17 +44,12 @@ void setup () {
   SoccerLoadingScreen = loadImage("Soccer Loading Screen.png");
   locGoal = new PVector(20, 35);
   locGoalie = new PVector(100, 175);
-  LoadBarH = 20;
-  LoadBarW = 300;
-  LoadBar2W = 0;
-  LoadBar2H = LoadBarH;
-  locLoadBar = new PVector((width/2), (height/2)-120);
-  locLoadBar2 = new PVector((width/2), (height/2)-120);
   d = 35;
   locBall = new PVector ((Field.width/2)-(d/2), (Field.height/2)-(d/2));
   velGoalie =new PVector(0, 4);
   speed = 10;
   lives = 3;
+  level = 1;
   velBall = new PVector (0, 10);
   NegAccB = .1;
   acc = new PVector (0, 0);
@@ -89,8 +78,8 @@ void draw() {
   else {
     locGoalie.add(velGoalie);
     BounceLEVELTWO();
-  }
-  if (score>2) {
+  }   
+  if (score>=10) {
     setLevel=false;
   }
 }
@@ -104,20 +93,6 @@ void introsoccer() {
   if (INTROSOCCER) {
     if (millis() < 10000) {
       background(SoccerLoadingScreen);
-      textAlign(CENTER);
-      fill(255, 0, 0);
-      textSize(30);
-      text("Loading. . .", locLoadBar.x+10, locLoadBar.y - 30);
-      fill(0);
-      rectMode(CENTER);
-      rect(locLoadBar.x, locLoadBar.y, LoadBarW, LoadBarH);
-      fill(255, 0, 0);
-      rectMode(CORNER);
-      rect(locLoadBar2.x-(LoadBarW/2), locLoadBar2.y-(LoadBarH/2), LoadBar2W, LoadBar2H);
-      LoadBar2W+=0.8;
-      if (LoadBar2W == LoadBarW) {
-        LoadBar2W-=0.8;
-      }
     }
     else {
       IntroSoccerTime = millis()+4000;
@@ -141,9 +116,18 @@ void StartGame() {
     image(Goalie, locGoalie.x, locGoalie.y, 70, 100);
     locBall.add(velBall);
     velBall.sub(acc);
-    text("Score " + score, 0+ width/2, 100);
-    text("Lives " + lives, 0+ width/1.2, 100);
+    textSize(24);
+    fill(255, 0, 0);
+    text("Score: " + score, width/2 +30, 100);
+    text("Lives: " + lives, width/1.3, 100);
     locGoalie.add(velGoalie);
+    text(255, 0, 0);
+    textSize(30);
+    text("Level: " + level, width/2+80, height/2); 
+    if (score == 10) {
+      level = 2;
+      text("Level: " + level, width/2+80, height/2);
+    }   
     if (locGoalie.y+200 > height) {
       velGoalie.y*=-1;
     }
@@ -229,6 +213,7 @@ void Bounce() {
  function bounce, changing its direction.This function runs 
  when setLevel is false*/
 void BounceLEVELTWO() {
+  lives = 5;
   if (locBall.y<50) {
     velBall.y*=-1;
   }

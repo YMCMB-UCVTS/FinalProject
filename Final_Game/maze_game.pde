@@ -81,13 +81,27 @@ void Maze() {
       third.move();
     }
     if (endScreen == true || timer2.startgame - millis() == 0) {                                                                         //effects of endScreen equaling true below
+      first.ElephantAcc.set(0, 0);
+      first.ElephantVel.set(0, 0);
+      second.ElephantAcc.set(0, 0);
+      second.ElephantVel.set(0, 0);
+      third.ElephantAcc.set(0, 0);
+      third.ElephantVel.set(0, 0);
       lose = true;
+      endScreen = false;
     }
     fill(0);
     textSize(30);
     timer2.display();
     if (winScreen == true) {
+      first.ElephantAcc.set(0, 0);
+      first.ElephantVel.set(0, 0);
+      second.ElephantAcc.set(0, 0);
+      second.ElephantVel.set(0, 0);
+      third.ElephantAcc.set(0, 0);
+      third.ElephantVel.set(0, 0);
       win = true;
+      winScreen = false;
     }
   }
 }

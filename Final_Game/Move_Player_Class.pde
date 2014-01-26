@@ -49,8 +49,8 @@ class Elephant {
       level++;
     }
     if (get(int(ElephantLoc.x), int(ElephantLoc.y + (ElephantS/2))) == color(0) || get(int(ElephantLoc.x), int(ElephantLoc.y- (ElephantS/2))) == color(0) || get(int(ElephantLoc.x+ (ElephantS/2)), int(ElephantLoc.y)) == color(0) || get(int(ElephantLoc.x - (ElephantS/2)), int(ElephantLoc.y)) == color(0)) {
-      winScreen = true;                                                                             //when you get to black box, winScreen equals true
-    }
+      winScreen = true;      //when you get to black box, winScreen equals true
+  }
     if (get(int(ElephantLoc.x), int(ElephantLoc.y + (ElephantS/2))) == color(212, 153, 9) || get(int(ElephantLoc.x), int(ElephantLoc.y- (ElephantS/2))) == color(212, 153, 9) || get(int(ElephantLoc.x+ (ElephantS/2)), int(ElephantLoc.y)) == color(212, 153, 9) || get(int(ElephantLoc.x - (ElephantS/2)), int(ElephantLoc.y)) == color(212, 153, 9)) {                                                     //when you touch the walls of the third maze, game over
       endScreen = true;
     }

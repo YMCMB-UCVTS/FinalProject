@@ -97,6 +97,7 @@ void draw() {
   choosegame();
   win();
   lose();
+  println(lose);
 }
 
 void stop() { 
@@ -181,18 +182,28 @@ void mousePressed() {
 
 void choosegame() {
   if (game1 == true) {
+    lose = false;
+    win = false;
     ShootingGallery();
   }
   if (game2 == true) {
+    lose = false;
+    win = false;
     Maze();
   }
   if (game3 == true) {
+    lose = false;
+    win = false;
     Pong();
   }
   if (game4 == true) {
+    lose = false;
+    win = false;
     Soccer();
   }
   if (instructions == true) {
+    lose = false;
+    win = false;
     text.display();
     text.returntomainmenubutton();
   }

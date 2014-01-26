@@ -3,7 +3,7 @@ class Timer{
   int startgame;
 
   Timer(){
-  startgame = millis() + 1810000; 
+  startgame = millis() + 181000; 
   }
   
   void display(){

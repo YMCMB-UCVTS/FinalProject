@@ -50,11 +50,11 @@ void setup() {
   minim = new Minim(this);
   player = minim.loadFile("PYD.mp3"); 
   player.play(); 
-  b1 = new Button(120, 0);
-  b2 = new Button(-20, 0);
-  b3 = new Button(120, 120);
-  b4 = new Button(-20, 120);
-  b5 = new Button(80, -70);
+  b1 = new Button(140, -20, "SGButton.png");
+  b2 = new Button(-40, -20, "MazeButton.png");
+  b3 = new Button(140, 120, "PongButton.png");
+  b4 = new Button(-40, 120, "SoccerButton.png");
+  b5 = new Button(103, -125, "Instructions.png");
   text = new Instructions();
   Mainmenugoaway = false;
   win = false;
@@ -69,7 +69,7 @@ void menu() {
     b2.display(0, 0);
     b3.display(0, 0);
     b4.display(0, 0);
-    b5.display(60, -40);
+    b5.display(100, -20);
     mainmenutext();
   }
 }
@@ -210,20 +210,19 @@ void choosegame() {
 }
 
 void mainmenutext() {
-  fill(0);
+  fill(255);
   textAlign(CENTER);
-  text("INSTRUCTIONS", width/2-10, height/2 - 45);
-  text("Game 1", width/2-80, height/2+40);
-  text("Game 2", width/2+60, height/2+40);
-  text("Game 3", width/2-80, height/2+160);
-  text("Game 4", width/2+60, height/2+160);
+  text("Shooting Gallery", width/2-90, height/2-30);
+  text("Maze Craze", width/2+90, height/2-30);
+  text("Pong", width/2-90, height/2+105);
+  text("Soccer Shootout", width/2+90, height/2+105);
   frameRate(7);
   fill(random(255), random(255), random(255));
   textSize(64);
-  text("Main Menu", mainmenux, mainmenuy - 145);
+  text("Main Menu", mainmenux, mainmenuy - 165);
   textSize(16);
   fill(255);
-  text("Choose What You Want To Play", mainmenux, mainmenuy - 105);
+  text("Choose What You Want To Play", mainmenux, mainmenuy - 125);
 }
 
 

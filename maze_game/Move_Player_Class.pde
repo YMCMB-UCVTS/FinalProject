@@ -7,7 +7,7 @@ class Elephant {
 
   Elephant(int x, int y) {
     Elephant = loadImage ("Object.png");
-    ElephantS = 30;
+    ElephantS = 25;
     ElephantLoc = new PVector(x, y);
     ElephantVel = new PVector(0, 0);
     ElephantAcc = new PVector(0, 0);
@@ -19,19 +19,24 @@ class Elephant {
   }
 
   void move() {
+    ElephantVel.add(ElephantAcc);
     ElephantLoc.add(ElephantVel);
     if (keyPressed && key == CODED) {
       if (keyCode == LEFT) {
-        ElephantVel = new PVector(-1, 0);
+        ElephantAcc = new PVector(-.01, 0);
+        ElephantVel.y = 0;
       }
       if (keyCode == UP) {
-        ElephantVel = new PVector(0, -1);
+        ElephantAcc = new PVector(0, -.01);
+        ElephantVel.x = 0;
       }
       if (keyCode == RIGHT) {
-        ElephantVel = new PVector(1, 0);
+        ElephantAcc = new PVector(.01, 0);
+        ElephantVel.y = 0;
       }
       if (keyCode == DOWN) {
-        ElephantVel = new PVector(0, 1);
+        ElephantAcc = new PVector(0, .01);
+        ElephantVel.x = 0;
       }
     }
   }
@@ -57,3 +62,4 @@ class Elephant {
     }
   }
 }
+

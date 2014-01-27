@@ -123,7 +123,7 @@ void mousePressed() {
       instructions = false;
       win = false;
       lose = false;
-      player.close();\
+      player.close();
       player = minim.loadFile("MainMenuMusic.mp3");
       player.loop();//loops music playing
     }

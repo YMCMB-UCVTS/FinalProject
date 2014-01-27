@@ -3,7 +3,6 @@ ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 
 PImage ShooterBackground;
 PImage LoadingScreenSG; //loading screen image
-PVector NewTargetLoc;
 PVector TargetLoc;
 PVector TargetVel;
 int time;
@@ -18,7 +17,6 @@ LoadBar loadbar;
 
 void ShootingGallerySetup() {
   size(550, 500);
-  NewTargetLoc = new PVector (110, height*.57);
   s = new ShootingGallery();
   ShooterBackground = loadImage("ShooterBackground.png");
   LoadingScreenSG = loadImage("LoadingScreenSG.jpg");

@@ -85,7 +85,7 @@ void Soccer() {
  the screen until it becomes false*/
 void introsoccer() {
   if (INTROSOCCER) {
-    if (millis() < 10000) {
+    if (millis() < introgametime) {
       background(SoccerLoadingScreen);
       loadbar4.displayBar();
     }

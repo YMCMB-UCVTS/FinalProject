@@ -34,7 +34,7 @@ void PongSetup () {
 
 void intropong() { //loading screen function
   if (INTROPONG) {
-    if (millis() < 10000) { //timer set at 10 seconds 
+    if (millis() < introgametime) { //timer set at 10 seconds 
       background(LoadingScreenPong); //displays loading screen image and loading bar that fills up 
       loadbar3.displayBar();
     }
@@ -143,17 +143,8 @@ void Pong() {
       ballacc.x*=-1;
     }
   }
-  if (score1 == 7) {
+  if (score1 == 7 || score2 == 7) {
     win = true;
-    if (win == true) {
-      text("PLAYER 1 WINS!", width/2, height/2);
-    }
-  }
-  if (score2 == 7) {
-    win = true;
-    if (win == true) {
-      text("PLAYER 2 WINS!", width/2, height/2);
-    }
   }
 }
 

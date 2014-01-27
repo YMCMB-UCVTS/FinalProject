@@ -29,7 +29,7 @@ void MazeSetup() {
 
 void intromaze() {
   if (INTROMAZE) {
-    if (millis() < 10000) {
+    if (millis() < introgametime) {
       background(LoadingScreenMaze);
       loadbar2.displayBar();
     }
@@ -67,7 +67,7 @@ void Maze() {
       fill(46, 108, 164);
       rect(500, 400, 25, 70);                                                               //prevents cheating
       fill (0);
-      text("Get to the lavender box", width/2, 469);
+      text("Get to the lavender box", width/2, 480);
       fill (128, 128, 255);                                                                               //lavender box
       rect ( 120, 0, 80, 30);
       second.checkElephant();
@@ -100,6 +100,7 @@ void Maze() {
     textSize(30);
     timer2.display();
     if (winScreen == true) {
+      level = 0;
       first.ElephantAcc.set(0, 0);
       first.ElephantVel.set(0, 0);
       second.ElephantAcc.set(0, 0);

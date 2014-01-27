@@ -32,6 +32,7 @@ int StartMiniGame;
 boolean Mainmenugoaway;
 PImage WinScreen;
 PImage LoseScreen;
+int introgametime;
 
 void setup() {
   size(550, 500);
@@ -44,8 +45,8 @@ void setup() {
   game4 = false;
   instructions = false;
   menuB = false;
-  menuBW = 50;
-  menuBH = 30;
+  menuBW = 80;
+  menuBH = 40;
   locmenuB = new PVector(width-(menuBW+20), menuBH + 30);
   mainmenux = width/2;
   mainmenuy = height/2;
@@ -101,7 +102,6 @@ void draw() {
   choosegame();
   win();
   lose();
-  println(lose);
 }
 
 void stop() { 
@@ -130,6 +130,7 @@ void mousePressed() {
   }
   if (Mainmenugoaway == false && INTRO == false) {
     if (b1.selected()) {
+      introgametime = millis() + 10000;
       Mainmenugoaway = true;
       game1 = true;
       StartMiniGame = millis() + 10000;
@@ -140,6 +141,7 @@ void mousePressed() {
       instructions = false;
     }
     if (b2.selected()) {
+      introgametime = millis() + 10000;
       Mainmenugoaway = true;
       game2 = true;
       StartMiniGame = millis() + 10000;
@@ -150,6 +152,7 @@ void mousePressed() {
       instructions = false;
     }
     if (b3.selected()) {
+      introgametime = millis() + 10000;
       Mainmenugoaway = true;
       game3 = true;
       StartMiniGame = millis() + 10000;
@@ -160,6 +163,7 @@ void mousePressed() {
       instructions = false;
     }
     if (b4.selected()) {
+      introgametime = millis() + 10000;
       Mainmenugoaway = true;
       game4 = true;
       StartMiniGame = millis() + 10000;
@@ -253,11 +257,31 @@ void keyPressed() {
 
 void win() {
   if (win == true) {
-    background(WinScreen);
-    text.returntomainmenubutton();
-    player.close();
-    player = minim.loadFile("WinningMusic.mp3");
-    player.loop();
+    if (game3 == true) {
+      if (score1 == 7) {
+        background(WinScreen);
+        text("PLAYER 1 WINS!", width/2, height/2);
+        text.returntomainmenubutton();
+        player.close();
+        player = minim.loadFile("WinningMusic.mp3");
+        player.loop();
+      }
+      if (score2 == 7) {
+        background(WinScreen);
+        text("PLAYER 2 WINS!", width/2, height/2);
+        text.returntomainmenubutton();
+        player.close();
+        player = minim.loadFile("WinningMusic.mp3");
+        player.loop();
+      }
+    }
+    else {
+      background(WinScreen);
+      text.returntomainmenubutton();
+      player.close();
+      player = minim.loadFile("WinningMusic.mp3");
+      player.loop();
+    }
   }
 }
 

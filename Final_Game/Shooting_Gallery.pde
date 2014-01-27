@@ -93,7 +93,7 @@ void ShootingGallery() {
 
 void introsg() { //loading screen function
   if (INTROSG) {
-    if (millis() < 10000) { //timer set at 10 seconds 
+    if (millis() < introgametime) { //timer set at 10 seconds 
       background(LoadingScreenSG); //displays loading screen image and loading bar that fills up 
       loadbar.displayBar();
     }

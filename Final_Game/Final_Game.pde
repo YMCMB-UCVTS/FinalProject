@@ -255,6 +255,9 @@ void win() {
   if (win == true) {
     background(WinScreen);
     text.returntomainmenubutton();
+    player.close();
+    player = minim.loadFile("WinningMusic.mp3");
+    player.loop();
   }
 }
 

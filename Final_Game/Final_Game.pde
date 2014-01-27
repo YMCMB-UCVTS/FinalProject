@@ -36,9 +36,9 @@ int introgametime;
 
 void setup() {
   size(550, 500);
-  intro = loadImage("Intro.jpeg");
+  intro = loadImage("Intro.jpeg"); //introdcution image
   ShooterBackground = loadImage("ShooterBackground.png");
-  INTRO = true;
+  INTRO = true; //initial conditions
   game1 = false;
   game2 = false;
   game3 = false;
@@ -53,7 +53,7 @@ void setup() {
   minim = new Minim(this);
   player = minim.loadFile("Intro.mp3"); 
   player.play(); 
-  b1 = new Button(140, -20, "SGButton.png");
+  b1 = new Button(140, -20, "SGButton.png"); //buttons for each game
   b2 = new Button(-40, -20, "MazeButton.png");
   b3 = new Button(140, 120, "PongButton.png");
   b4 = new Button(-40, 120, "SoccerButton.png");
@@ -68,7 +68,7 @@ void setup() {
 
 
 void menu() {
-  if (!INTRO && Mainmenugoaway == false) {
+  if (!INTRO && Mainmenugoaway == false) { //conditions for main menu screen
     background(0);
     b1.display(0, 0);
     b2.display(0, 0);
@@ -80,12 +80,12 @@ void menu() {
 }
 
 void intro() {
-  if (INTRO) {
-    if (millis() < 5000) {
+  if (INTRO) { //introduction to game
+    if (millis() < 5000) { //5 second timer
       imageMode(CENTER);
       image(intro, width/2, height/2, 150, 150);
     }
-    else {
+    else { //if not intro, main menu screen
       introTime = millis()+4000;
       INTRO = false;
       player.close();
@@ -97,11 +97,11 @@ void intro() {
 
 void draw() {
   background(0);
-  intro();
-  menu();
-  choosegame();
-  win();
-  lose();
+  intro(); //intro function
+  menu(); //main menu function
+  choosegame(); //function for selecting each game
+  win(); //function for win conditions
+  lose(); //function for lose conditions
 }
 
 void stop() { 
@@ -128,11 +128,11 @@ void mousePressed() {
       player.loop();
     }
   }
-  if (Mainmenugoaway == false && INTRO == false) {
-    if (b1.selected()) {
-      introgametime = millis() + 10000;
-      Mainmenugoaway = true;
-      game1 = true;
+  if (Mainmenugoaway == false && INTRO == false) { //choosing the button for each game
+    if (b1.selected()) { //shooting gallery button pressed
+      introgametime = millis() + 10000; //intro timer begins
+      Mainmenugoaway = true; //main menu disappears
+      game1 = true; //shooting gallery appears
       StartMiniGame = millis() + 10000;
       ShootingGallerySetup();
       game2 = false;
@@ -140,10 +140,10 @@ void mousePressed() {
       game4 = false;
       instructions = false;
     }
-    if (b2.selected()) {
-      introgametime = millis() + 10000;
-      Mainmenugoaway = true;
-      game2 = true;
+    if (b2.selected()) { //maze button pressed
+      introgametime = millis() + 10000; //intro timer begins
+      Mainmenugoaway = true; //main menu disappears
+      game2 = true; //maze appears
       StartMiniGame = millis() + 10000;
       MazeSetup();
       game1 = false;
@@ -151,10 +151,10 @@ void mousePressed() {
       game4 = false;
       instructions = false;
     }
-    if (b3.selected()) {
-      introgametime = millis() + 10000;
-      Mainmenugoaway = true;
-      game3 = true;
+    if (b3.selected()) { //pong button pressed
+      introgametime = millis() + 10000; //intro timer begins
+      Mainmenugoaway = true; //main menu disappears
+      game3 = true; //pong appears
       StartMiniGame = millis() + 10000;
       PongSetup();
       game1 = false;
@@ -162,10 +162,10 @@ void mousePressed() {
       game4 = false;
       instructions = false;
     }
-    if (b4.selected()) {
-      introgametime = millis() + 10000;
-      Mainmenugoaway = true;
-      game4 = true;
+    if (b4.selected()) { //soccer button pressed
+      introgametime = millis() + 10000; //intro timer begins
+      Mainmenugoaway = true; //main menu disappears
+      game4 = true; //soccer appears
       StartMiniGame = millis() + 10000;
       player.close();
       player = minim.loadFile("LoadScreenSoccerMusic.mp3");
@@ -176,9 +176,9 @@ void mousePressed() {
       game3 = false;
       instructions = false;
     }
-    if (b5.selected()) {
-      Mainmenugoaway = true;
-      instructions = true;
+    if (b5.selected()) { //instructions button pressed
+      Mainmenugoaway = true; //main menu disappears
+      instructions = true; //instructions appear
       game1 = false;
       game2 = false;
       game3 = false;
@@ -188,7 +188,7 @@ void mousePressed() {
 }
 
 
-void choosegame() {
+void choosegame() { //when each game is selected, in playing state, not lose or win screens
   if (game1 == true) {
     lose = false;
     win = false;
@@ -217,7 +217,7 @@ void choosegame() {
   }
 }
 
-void mainmenutext() {
+void mainmenutext() { //text in each button and on menu
   fill(255);
   textAlign(CENTER);
   text("Shooting Gallery", width/2-90, height/2-30);
@@ -255,8 +255,8 @@ void keyPressed() {
 /*This keyPressed function allows the player to control
  when the ball moves toward the goal, using the spacebar key*/
 
-void win() {
-  if (win == true) {
+void win() { //win conditions 
+  if (win == true) { //specifically for pong
     if (game3 == true) {
       if (score1 == 7) {
         background(WinScreen);
@@ -277,7 +277,7 @@ void win() {
         player.loop();
       }
     }
-    else {
+    else { //all other games
       background(WinScreen);
       textSize(14);
       text.returntomainmenubutton();
@@ -288,13 +288,13 @@ void win() {
   }
 }
 
-void lose() {
-  if (lose == true) {
-    background(LoseScreen);
+void lose() { //lose function, what occurs when player fails game
+  if (lose == true) { 
+    background(LoseScreen); //losescreen backround appears
     textSize(14);
     text.returntomainmenubutton();
     player.close();
-    player = minim.loadFile("GameOverMusic.mp3");
+    player = minim.loadFile("GameOverMusic.mp3"); //losing music
     player.loop();
   }
 }

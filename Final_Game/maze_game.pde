@@ -4,7 +4,6 @@ PImage mazeLevel1;
 PImage mazeLevel2;
 PImage mazeLevel3;
 boolean endScreen = false; 
-PImage winScreenimage;
 boolean winScreen = false; 
 PImage LoadingScreenMaze;
 boolean INTROMAZE;
@@ -18,7 +17,6 @@ void MazeSetup() {
   mazeLevel2 = loadImage ("elephant.png");
   mazeLevel3 = loadImage ("lion.png");
   LoadingScreenMaze = loadImage("LoadingScreenMaze.png");
-  winScreenimage = loadImage ("winScreen.jpg");
   INTROMAZE = true;
   first = new Elephant(23, 319);
   second = new Elephant(486, 442);

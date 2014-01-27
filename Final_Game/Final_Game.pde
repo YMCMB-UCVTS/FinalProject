@@ -33,10 +33,12 @@ boolean Mainmenugoaway;
 PImage WinScreen;
 PImage LoseScreen;
 int introgametime;
+PVector INTROIMAGELOC;
+PVector INTROIMAGEVEL;
 
 void setup() {
   size(550, 500);
-  intro = loadImage("Intro.jpeg"); //introdcution image
+  intro = loadImage("Intro.JPG"); //introdcution image
   ShooterBackground = loadImage("ShooterBackground.png");
   INTRO = true; //initial conditions
   game1 = false;
@@ -64,6 +66,8 @@ void setup() {
   lose = false;
   WinScreen = loadImage("Winner.png");
   LoseScreen = loadImage("Loser.png");
+  INTROIMAGELOC = new PVector(-200, height/2);
+  INTROIMAGEVEL = new PVector(1, 0);
 }
 
 
@@ -81,9 +85,16 @@ void menu() {
 
 void intro() {
   if (INTRO) { //introduction to game
-    if (millis() < 5000) { //5 second timer
+    if (millis() < 15000) { //5 second timer
+      textAlign(CENTER);
+      textSize(30);
+      text("A BANG BANG PRODUCTION", INTROIMAGELOC.x, INTROIMAGELOC.y + 200);
       imageMode(CENTER);
-      image(intro, width/2, height/2, 150, 150);
+      image(intro, INTROIMAGELOC.x, INTROIMAGELOC.y, 400, 300);
+      INTROIMAGELOC.add(INTROIMAGEVEL);
+      if (INTROIMAGELOC.x == width/2) {
+        INTROIMAGEVEL.set(0, 0);
+      }
     }
     else { //if not intro, main menu screen
       introTime = millis()+4000;

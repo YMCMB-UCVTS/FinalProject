@@ -98,6 +98,9 @@ void introsg() { //loading screen function
       loadbar.displayBar();
     }
     else { //establishes conditions for game to run
+    player.close();
+      player = minim.loadFile("SGMusic.mp3");
+      player.loop();
       IntroSGTime = millis()+4000;
       INTROSG = false;
     }

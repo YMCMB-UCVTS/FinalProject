@@ -39,6 +39,9 @@ void intropong() { //loading screen function
       loadbar3.displayBar();
     }
     else { //establishes conditions for game to run
+      player.close();
+      player = minim.loadFile("PongMusic.mp3");
+      player.loop();
       IntroPongTime = millis()+4000;
       INTROPONG = false;
     }

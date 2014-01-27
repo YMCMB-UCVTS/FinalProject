@@ -1,4 +1,4 @@
-class LoadBar {
+class LoadBar {//the loading bar class for each game
 
   PVector locLoadBar;
   PVector locLoadBar2;
@@ -16,7 +16,7 @@ class LoadBar {
     locLoadBar2 = new PVector((width/2), (height/2)-140);
   }
   
-  void displayBar() {
+  void displayBar() {//desplays bar
     textAlign(CENTER);
     fill(255, 0, 0);
     textSize(30);

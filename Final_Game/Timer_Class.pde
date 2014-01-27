@@ -1,4 +1,4 @@
-class Timer{
+class Timer{//timer class for games
 
   int startgame;
 
@@ -6,7 +6,7 @@ class Timer{
   startgame = millis() + 190000; 
   }
   
-  void display(){
+  void display(){//displays timer
   text((startgame - millis())/1000, 100, 100);
   }
 }

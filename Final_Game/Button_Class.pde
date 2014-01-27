@@ -1,4 +1,4 @@
-class Button {
+class Button { //class created for button game
 
   PVector loc;
   int rectw;
@@ -12,12 +12,12 @@ class Button {
     Button = loadImage(name);
   }
 
-  void display(int x, int y) {
+  void display(int x, int y) {//displays button
     imageMode(CORNER);
     image(Button, loc.x, loc.y, rectw + x, recth + y);
   }
 
-  boolean selected() {
+  boolean selected() {//what happens when button is pressed
     if (mousePressed && mouseX>loc.x && mouseX<loc.x+rectw && mouseY>loc.y && mouseY<loc.y+recth) {
       return true;
     }

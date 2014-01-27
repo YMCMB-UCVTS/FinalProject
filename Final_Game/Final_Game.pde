@@ -105,9 +105,9 @@ void draw() {
 }
 
 void stop() { 
-  player.close();
-  minim.stop();
-  super.stop();
+  player.close();//music stops playing
+  minim.stop(); //plays one song and stops other
+  super.stop(); //stops all music
 }
 
 
@@ -123,9 +123,9 @@ void mousePressed() {
       instructions = false;
       win = false;
       lose = false;
-      player.close();
+      player.close();\
       player = minim.loadFile("MainMenuMusic.mp3");
-      player.loop();
+      player.loop();//loops music playing
     }
   }
   if (Mainmenugoaway == false && INTRO == false) { //choosing the button for each game
@@ -135,7 +135,7 @@ void mousePressed() {
       game1 = true; //shooting gallery appears
       StartMiniGame = millis() + 10000;
       ShootingGallerySetup();
-      game2 = false;
+      game2 = false; //all other booleans become false when one is true
       game3 = false;
       game4 = false;
       instructions = false;
@@ -167,9 +167,9 @@ void mousePressed() {
       Mainmenugoaway = true; //main menu disappears
       game4 = true; //soccer appears
       StartMiniGame = millis() + 10000;
-      player.close();
+      player.close();//stops music playing before
       player = minim.loadFile("LoadScreenSoccerMusic.mp3");
-      player.loop();
+      player.loop(); 
       SoccerSetup();
       game1 = false;
       game2 = false;

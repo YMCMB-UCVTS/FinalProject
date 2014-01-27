@@ -52,7 +52,7 @@ void ShootingGallery() {
             score ++;
           }
           else {
-            startgame-=20000;
+            timer.startgame-=5000;
           }
           ducks.remove(i);
         }

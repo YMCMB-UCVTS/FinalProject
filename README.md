@@ -6,7 +6,7 @@ The maze game will have a player going through a maze with an initial velocity a
 
 The soccer game will be a game where a player will control a soccer ball that moves vertically across the screen with the intent to get the ball into a goal defended by a moving goalie. The player must press space at the right time to shoot the ball into the goal. A score will be kept and there will be a finite number of lives. As the player reaches ten points, the game gets harder, with the goalie and ball moving faster and the ball moving farther across the screen. The player will win the game when they reach a score of twenty. 
 
-The Shooting Gallery game gives the player a gun to shoot at a line of moving ducks.  They must press space bar at the right time to shoot in order to hit the target. Each time they hit a duck, their score increases. Each time they mistakenly hit an incorrect target, their lives decrease. Once the player reaches a score of fifteen, the targets speed up. At a score of twenty-nine, a new target appears. Once they hit the special target and reach thirty points, they win. 
+The Shooting Gallery game gives the player a gun to shoot at a line of moving ducks.  They must press space bar at the right time to shoot in order to hit the target. Each time they hit a duck, their score increases. Each time they mistakenly hit a gray duck, the timer decreases by five seconds. Once the player reaches a score of fifteen, the targets speed up. At a score of twenty-nine, a new target appears. Once they hit the special target and reach thirty points, they win. 
 
 | **Jobs** |
  Project Manager - Annaliese Mugele |

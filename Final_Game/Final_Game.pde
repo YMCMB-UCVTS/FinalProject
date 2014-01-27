@@ -261,6 +261,7 @@ void win() {
       if (score1 == 7) {
         background(WinScreen);
         text("PLAYER 1 WINS!", width/2, height/2);
+        textSize(14);
         text.returntomainmenubutton();
         player.close();
         player = minim.loadFile("WinningMusic.mp3");
@@ -269,6 +270,7 @@ void win() {
       if (score2 == 7) {
         background(WinScreen);
         text("PLAYER 2 WINS!", width/2, height/2);
+        textSize(14);
         text.returntomainmenubutton();
         player.close();
         player = minim.loadFile("WinningMusic.mp3");
@@ -277,6 +279,7 @@ void win() {
     }
     else {
       background(WinScreen);
+      textSize(14);
       text.returntomainmenubutton();
       player.close();
       player = minim.loadFile("WinningMusic.mp3");
@@ -288,6 +291,7 @@ void win() {
 void lose() {
   if (lose == true) {
     background(LoseScreen);
+    textSize(14);
     text.returntomainmenubutton();
     player.close();
     player = minim.loadFile("GameOverMusic.mp3");

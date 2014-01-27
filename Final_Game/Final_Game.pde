@@ -271,30 +271,23 @@ void win() { //win conditions
     if (game3 == true) {
       if (score1 == 7) {
         background(WinScreen);
+        fill(0);
         text("PLAYER 1 WINS!", width/2, height/2);
         textSize(14);
         text.returntomainmenubutton();
-        player.close();
-        player = minim.loadFile("WinningMusic.mp3");
-        player.loop();
       }
       if (score2 == 7) {
         background(WinScreen);
+        fill(0);
         text("PLAYER 2 WINS!", width/2, height/2);
         textSize(14);
         text.returntomainmenubutton();
-        player.close();
-        player = minim.loadFile("WinningMusic.mp3");
-        player.loop();
       }
     }
     else { //all other games
       background(WinScreen);
       textSize(14);
       text.returntomainmenubutton();
-      player.close();
-      player = minim.loadFile("WinningMusic.mp3");
-      player.loop();
     }
   }
 }
@@ -304,9 +297,6 @@ void lose() { //lose function, what occurs when player fails game
     background(LoseScreen); //losescreen backround appears
     textSize(14);
     text.returntomainmenubutton();
-    player.close();
-    player = minim.loadFile("GameOverMusic.mp3"); //losing music
-    player.loop();
   }
 }
 

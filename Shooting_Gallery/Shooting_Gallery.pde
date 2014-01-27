@@ -9,7 +9,7 @@ int time; //variable used to time the game
 int Target; //variable of target
 int score; //variable used to keep score
 int number; //??
-int BulletTime; //variable used to help control the time the bullet flies
+int BulletTime; //variable used to time the reload for the bullet
 int startgame; //variable used to know when the game has begun
 ShootingGallery s; //declaring class of ShootingGallery
 Timer timer; //declaring class of timer
@@ -43,52 +43,52 @@ void draw() {
           score ++; //score increases
         }
         else {
-          startgame-=20000;  //??
+          startgame-=20000;  //if you hit a grey duck, time decreases by 20 seconds
         }
         ducks.remove(i); //remove duck
       }
     }
   }
-  if (millis() > time) {
-    ducks.add(new Duck());
-    time+=1500;
+  if (millis() > time) { //if the milliseconds are greater than the variable time
+    ducks.add(new Duck()); //add a new duck
+    time+=1500; //increae time by 1500
   }
-  s.displayWaves();
-  for (int u = bullets.size() - 1; u > 0; u--) { 
-    Bullet b = bullets.get(u);
-    b.displayBullet();
-    if (b.BulletLoc.y < 0) {
-      bullets.remove(u);
+  s.displayWaves();  //use the premade function displayWaves
+  for (int u = bullets.size() - 1; u > 0; u--) { //for statement fo the bullet arrayList
+    Bullet b = bullets.get(u); //gets a bullet
+    b.displayBullet(); //displays the bullet
+    if (b.BulletLoc.y < 0) { //if the bullet's location is less than zero
+      bullets.remove(u); //remove it
     }
   }
-  s.displayShooter();
-  s.displayScore();
-  if (BulletTime - millis() > 0) {
-    fill(255);
-    textSize(24);
-    text("Wait....", width-100, 100);
+  s.displayShooter(); //use the premade function displayShooter
+  s.displayScore(); //use the premade function displayScore
+  if (BulletTime - millis() > 0) { //if the bulletTime is greater than the milliseconds
+    fill(255); //fill font
+    textSize(24); //sets text size
+    text("Wait....", width-100, 100); //screen says "Wait...."
   }
-  else {
-    fill(255);
-    textSize(24);
-    text("RELOADED", width-100, 100);
+  else { //if the bulletTime is not greater than the milliseconds
+    fill(255); //fill font
+    textSize(24); //font size
+    text("RELOADED", width-100, 100); //screen says "RELOADED"
   }
 }
 
-void keyPressed() {
-  if (key == ' ') {
-    if (Shoot()) {
-      bullets.add(new Bullet());
+void keyPressed() { //keyPressed funtion 
+  if (key == ' ') { //if the spacebar is pressed
+    if (Shoot()) { //if shoot is true
+      bullets.add(new Bullet()); //add a new bullet to the array
     }
   }
 }
 
-boolean Shoot() {
-  if (BulletTime - millis() > 0) {
+boolean Shoot() { //creating boolean for shoot
+  if (BulletTime - millis() > 0) { //three seconds have not passed and the boolean shoot is false
     return false;
   }
   else {
-    BulletTime = millis() + 3000;
+    BulletTime = millis() + 3000; //three seconds have passed and you can shoot a bullet
     return true;
   }
 }

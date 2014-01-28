@@ -286,12 +286,13 @@ void win() { //win conditions
       }
     }
   }
+}
 
-  void lose() { //lose function, what occurs when player fails game
-    if (lose == true) { 
-      background(LoseScreen); //losescreen backround appears
-      textSize(14);
-      text.returntomainmenubutton(); //return to main menu button displays
-    }
+void lose() { //lose function, what occurs when player fails game
+  if (lose == true) { 
+    background(LoseScreen); //losescreen backround appears
+    textSize(14);
+    text.returntomainmenubutton(); //return to main menu button displays
   }
+}
 

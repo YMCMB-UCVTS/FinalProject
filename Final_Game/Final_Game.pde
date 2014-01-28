@@ -244,12 +244,13 @@ void mainmenutext() { //text in each button and on menu
   text("Choose What You Want To Play", mainmenux, mainmenuy - 125);
 }
 
-
+/*This keyPressed function allows the player to control
+ when the bullet or ball (depending on the game) will be shot, using the spacebar key*/
 void keyPressed() {
   if (game1 == true) {
-    if (key == ' ') {
-      if (Shoot()) {
-        bullets.add(new Bullet());
+    if (key == ' ') { //if the spacebar is pressed
+      if (Shoot()) { //if shoot is true
+        bullets.add(new Bullet()); //add a new bullet to the array
       }
     }
   }

@@ -56,8 +56,8 @@ void Soccer() {
   catchGoal();
   OutOfBounds();
   StartGame();
-  /*This part changes the diffculty of the game. When the score
-   is greatrer than a certain number, setLevel changes from true
+  /*This part changes the difficulty of the game. When the score
+   is greater than a certain number, setLevel changes from true
    to false*/
   if (setLevel==true) {
     Bounce();
@@ -180,8 +180,8 @@ void Bounce() {
   }
 }
 
-/*THis function allows the ball to move up and down in the y
- dircetion as well the velocity of the ball changes when it 
+/*This function allows the ball to move up and down in the y
+ direction as well the velocity of the ball changes when it 
  reaches a certian hieght which is much wider than in the 
  function bounce, changing its direction.This function runs 
  when setLevel is false*/

@@ -129,10 +129,10 @@ void mousePressed() { //function that makes something happen if the mouse is cli
       game3 = false; //boolean is false so the game is no longer playing and the player is returned to the main menu
       game4 = false; //boolean is false so the game is no longer playing and the player is returned to the main menu
       instructions = false; //boolean is false so the instructions is no longer displaying and the player is returned to the main menu
-      win = false;
-      lose = false;
-      player.close();
-      player = minim.loadFile("MainMenuMusic.mp3");
+      win = false; //boolean is false so that the winning screen is no longer displaying and the player is returned to the main menu
+      lose = false;  //boolean is false so that the losing screen is no longer displaying and the player is returned to the main menu
+      player.close();// stops the music that was playing before
+      player = minim.loadFile("MainMenuMusic.mp3"); //loads the main menu music again
       player.loop();//loops music playing
     }
   }
@@ -141,56 +141,56 @@ void mousePressed() { //function that makes something happen if the mouse is cli
       introgametime = millis() + 10000; //intro timer begins
       Mainmenugoaway = true; //main menu disappears
       game1 = true; //shooting gallery appears
-      StartMiniGame = millis() + 10000;
-      ShootingGallerySetup();
+      StartMiniGame = millis() + 10000; //add 10 seconds to the game (allowing for the loadbar to work)
+      ShootingGallerySetup(); //function for the setup of the shooting gallery game
       game2 = false; //all other booleans become false when one is true
-      game3 = false;
-      game4 = false;
-      instructions = false;
+      game3 = false; //all other booleans become false when one is true
+      game4 = false; //all other booleans become false when one is true
+      instructions = false; //all other booleans become false when one is true
     }
     if (b2.selected()) { //maze button pressed
       introgametime = millis() + 10000; //intro timer begins
       Mainmenugoaway = true; //main menu disappears
       game2 = true; //maze appears
-      StartMiniGame = millis() + 10000;
-      MazeSetup();
-      game1 = false;
-      game3 = false;
-      game4 = false;
-      instructions = false;
+      StartMiniGame = millis() + 10000; //add 10 seconds to the game (allowing for the loadbar to work)
+      MazeSetup(); //function for the setup of the maze game
+      game1 = false; //all other booleans become false when one is true
+      game3 = false; //all other booleans become false when one is true
+      game4 = false; //all other booleans become false when one is true
+      instructions = false; //all other booleans become false when one is true
     }
     if (b3.selected()) { //pong button pressed
       introgametime = millis() + 10000; //intro timer begins
       Mainmenugoaway = true; //main menu disappears
       game3 = true; //pong appears
-      StartMiniGame = millis() + 10000;
-      PongSetup();
-      game1 = false;
-      game2 = false;
-      game4 = false;
-      instructions = false;
+      StartMiniGame = millis() + 10000; //add 10 seconds to the game (allowing for the loadbar to work)
+      PongSetup(); //function for the setup of the pong game
+      game1 = false; //all other booleans become false when one is true
+      game2 = false; //all other booleans become false when one is true
+      game4 = false; //all other booleans become false when one is true
+      instructions = false; //all other booleans become false when one is true
     }
     if (b4.selected()) { //soccer button pressed
       introgametime = millis() + 10000; //intro timer begins
       Mainmenugoaway = true; //main menu disappears
       game4 = true; //soccer appears
-      StartMiniGame = millis() + 10000;
+      StartMiniGame = millis() + 10000; //add 10 seconds to the game (allowing for the loadbar to work)
       player.close();//stops music playing before
-      player = minim.loadFile("LoadScreenSoccerMusic.mp3");
-      player.loop(); 
-      SoccerSetup();
-      game1 = false;
-      game2 = false;
-      game3 = false;
-      instructions = false;
+      player = minim.loadFile("LoadScreenSoccerMusic.mp3"); //load the music for the loading screen for soccer
+      player.loop(); //play and loop the music//
+      SoccerSetup(); //function for the setup of the soccer game
+      game1 = false; //all other booleans become false when one is true
+      game2 = false; //all other booleans become false when one is true
+      game3 = false; //all other booleans become false when one is true
+      instructions = false; //all other booleans become false when one is true
     }
     if (b5.selected()) { //instructions button pressed
       Mainmenugoaway = true; //main menu disappears
       instructions = true; //instructions appear
-      game1 = false;
-      game2 = false;
-      game3 = false;
-      game4 = false;
+      game1 = false; //all other booleans become false when one is true
+      game2 = false; //all other booleans become false when one is true
+      game3 = false; //all other booleans become false when one is true
+      game4 = false; //all other booleans become false when one is true
     }
   }
 }
@@ -198,30 +198,30 @@ void mousePressed() { //function that makes something happen if the mouse is cli
 
 void choosegame() { //when each game is selected, in playing state, not lose or win screens
   if (game1 == true) {
-    lose = false;
-    win = false;
-    ShootingGallery();
+    lose = false; //lose is false so the game can restart after playing it once
+    win = false; //win is false so the game can restart after playing it once
+    ShootingGallery(); //when game 1 is true, the shooting gallery game will work
   }
   if (game2 == true) {
-    lose = false;
-    win = false;
-    Maze();
+    lose = false; //lose is false so the game can restart after playing it once
+    win = false; //win is false so the game can restart after playing it once
+    Maze(); //when game 2 is true, the maze game will work
   }
   if (game3 == true) {
-    lose = false;
-    win = false;
-    Pong();
+    lose = false; //lose is false so the game can restart after playing it once
+    win = false; //win is false so the game can restart after playing it once
+    Pong(); //when game 3 is true, the pong game will work
   }
   if (game4 == true) {
-    lose = false;
-    win = false;
-    Soccer();
+    lose = false; //lose is false so the game can restart after playing it once
+    win = false; //win is false so the game can restart after playing it once
+    Soccer(); //when game 4 is true, the soccer game will work
   }
   if (instructions == true) {
-    lose = false;
-    win = false;
-    text.display();
-    text.returntomainmenubutton();
+    lose = false; //lose is false so the game can restart after playing it once
+    win = false; //win is false so the game can restart after playing it once
+    text.display(); 
+    text.returntomainmenubutton(); //when instructions is true, the text and return to main menu button will display
   }
 }
 
@@ -238,7 +238,7 @@ void mainmenutext() { //text in each button and on menu
   text("Main Menu", mainmenux, mainmenuy - 165);
   textSize(16);
   fill(255);
-  text("Choose What You Want To Play", mainmenux, mainmenuy - 125);
+  text("Choose What You Want To Play", mainmenux, mainmenuy - 125); //this is all the text that goes in the main menu screen
 }
 
 /*This keyPressed function allows the player to control
@@ -267,34 +267,31 @@ void keyPressed() {
 void win() { //win conditions 
   if (win == true) { //specifically for pong
     if (game3 == true) {
-      if (score1 == 7) {
+      if (score1 == 7) { //this is the winning screen for player 1 in pong
         background(WinScreen);
         fill(0);
         text("PLAYER 1 WINS!", width/2, height/2);
         textSize(14);
-        text.returntomainmenubutton();
+        text.returntomainmenubutton(); //return to main menu button displays
       }
       if (score2 == 7) {
         background(WinScreen);
         fill(0);
-        text("PLAYER 2 WINS!", width/2, height/2);
+        text("PLAYER 2 WINS!", width/2, height/2); //this is the winning screen for player 1 in pong
+      }
+      else { //universal winning screen for all other games
+        background(WinScreen);
         textSize(14);
-        text.returntomainmenubutton();
+        text.returntomainmenubutton();  //return to main menu button displays
       }
     }
-    else { //all other games
-      background(WinScreen);
+  }
+
+  void lose() { //lose function, what occurs when player fails game
+    if (lose == true) { 
+      background(LoseScreen); //losescreen backround appears
       textSize(14);
-      text.returntomainmenubutton();
+      text.returntomainmenubutton(); //return to main menu button displays
     }
   }
-}
-
-void lose() { //lose function, what occurs when player fails game
-  if (lose == true) { 
-    background(LoseScreen); //losescreen backround appears
-    textSize(14);
-    text.returntomainmenubutton();
-  }
-}
 

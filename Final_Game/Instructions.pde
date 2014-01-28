@@ -1,12 +1,12 @@
 class Instructions {//class for instructions
 
-  PVector loc;
+    PVector loc;
 
   Instructions() {
     loc = new PVector(width/2, 0);
   }
 
-  void display() {//displays objects for shooting gallery
+  void display() {//displays the instructions (text) on how to play each game)
     background(0);
     fill(255);
     textAlign(CENTER);
@@ -23,7 +23,7 @@ class Instructions {//class for instructions
     text("Soccer Shootout : \n Press the Spacebar to shoot. \n Dont let the goalie catch the ball 3 times or it's game over.\n If you get 10 you move on to the next level. Score 20 and you win! \n Good luck!", loc.x, loc.y + 400);
   }
 
-  void returntomainmenubutton() {//returns back to menu
+  void returntomainmenubutton() {//this is the function that displays the button to return back to the main menu
     fill(255);
     rect(locmenuB.x, locmenuB.y, menuBW, menuBH);
     textAlign(CENTER);

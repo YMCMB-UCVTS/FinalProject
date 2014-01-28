@@ -5,7 +5,7 @@ class LoadBar {//the loading bar class for each game
   int LoadBarH;
   float LoadBarW;
   float LoadBar2W;
-  int LoadBar2H;
+  int LoadBar2H; //variables for the loadbar
 
   LoadBar() {
     LoadBarH = 20;
@@ -13,10 +13,10 @@ class LoadBar {//the loading bar class for each game
     LoadBar2W = 0;
     LoadBar2H = LoadBarH;
     locLoadBar = new PVector((width/2), (height/2)-140);
-    locLoadBar2 = new PVector((width/2), (height/2)-140);
+    locLoadBar2 = new PVector((width/2), (height/2)-140); //intialize values for the variables of the load bar
   }
   
-  void displayBar() {//desplays bar
+  void displayBar() {//displays loading bar
     textAlign(CENTER);
     fill(255, 0, 0);
     textSize(30);

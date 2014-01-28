@@ -43,8 +43,8 @@ void ShootingGallery() {
         ducks.remove(i);
       }
       for (int u = bullets.size() - 1; u > 0; u--) { //for statement for the bullet arrayList
-        if (d.checkBullet(bullets.get(u))) { //??
-          if (ducks.get(i).grey == true) { //??
+        if (d.checkBullet(bullets.get(u))) { //allows for if the bullet touches the duck, both will be removed
+          if (ducks.get(i).grey == true) { //grey duck will appear
             score ++; //score increases
           }
           else {
@@ -81,7 +81,7 @@ void ShootingGallery() {
     if (score == 30) {
       win = true;
     }
-    if (timer.startgame - millis() == 0) {
+    if (timer.startgame - millis() <= 0) {
       lose = true;
     }
   }

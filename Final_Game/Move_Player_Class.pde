@@ -3,25 +3,25 @@ class Elephant {
   int ElephantS;
   PVector ElephantLoc;
   PVector ElephantVel;
-  PVector ElephantAcc;
+  PVector ElephantAcc; //declare variables for the elephant (mover)
 
   Elephant(int x, int y) {
     Elephant = loadImage ("Object.png");
     ElephantS = 20;
     ElephantLoc = new PVector(x, y);
     ElephantVel = new PVector(0, 0);
-    ElephantAcc = new PVector(0, 0);
+    ElephantAcc = new PVector(0, 0); //intialize the values for the variables
   }
 
   void display() {
     imageMode(CENTER);
-    image(Elephant, ElephantLoc.x, ElephantLoc.y, ElephantS, ElephantS);
+    image(Elephant, ElephantLoc.x, ElephantLoc.y, ElephantS, ElephantS);//the image (elephant is displayed)
   }
 
-  void move() {
-    ElephantVel.add(ElephantAcc);
-    ElephantLoc.add(ElephantVel);
-    if (keyPressed && key == CODED) {
+  void move() { //this function allows for the elephant (mover) to be moved
+    ElephantVel.add(ElephantAcc); // velocity is added to acceleration
+    ElephantLoc.add(ElephantVel); // location is added to velocity
+    if (keyPressed && key == CODED) { //this allows for the elephant's (mover's) movements to be controlled by the arrow keys
       if (keyCode == LEFT) {
         ElephantAcc = new PVector(-.01, 0);
         ElephantVel.y = 0;
@@ -41,7 +41,7 @@ class Elephant {
     }
   }
 
-  void checkElephant() {
+  void checkElephant() { // this function allows foe the game to be won or lost. if the elephant touches the maze, you lose. if the elephant touches the boxes made, you advance to the next level OR if it is the final one, the game is won.
     if (get(int(ElephantLoc.x), int(ElephantLoc.y + (ElephantS/2))) == color(84, 160, 141) || get(int(ElephantLoc.x), int(ElephantLoc.y- (ElephantS/2))) == color(84, 160, 141) || get(int(ElephantLoc.x+ (ElephantS/2)), int(ElephantLoc.y)) == color(84, 160, 141) || get(int(ElephantLoc.x - (ElephantS/2)), int(ElephantLoc.y)) == color(84, 160, 141)) {                                           //getting to the teal box increases the value of x
       level++;
     }

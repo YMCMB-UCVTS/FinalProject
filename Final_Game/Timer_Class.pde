@@ -1,6 +1,6 @@
 class Timer{//timer class for games
 
-  int startgame;
+  int startgame; //declare variable
 
   Timer(){
   startgame = millis() + 190000; //start game with three minutes

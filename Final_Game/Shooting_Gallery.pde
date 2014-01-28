@@ -16,7 +16,6 @@ Timer timer; //declaring class of timer
 LoadBar loadbar;
 
 void ShootingGallerySetup() {
-  size(550, 500); //display size
   s = new ShootingGallery(); //initializes new ShootingGallery class
   ShooterBackground = loadImage("ShooterBackground.png"); //loads background image
   LoadingScreenSG = loadImage("LoadingScreenSG.jpg"); //loads loadingscreen image

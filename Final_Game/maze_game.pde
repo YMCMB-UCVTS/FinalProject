@@ -12,7 +12,6 @@ Timer timer2;
 LoadBar loadbar2;
 
 void MazeSetup() {
-  size(550, 500);
   mazeLevel1 = loadImage ("maze.png");
   mazeLevel2 = loadImage ("elephant.png");
   mazeLevel3 = loadImage ("lion.png");

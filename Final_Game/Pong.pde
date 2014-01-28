@@ -19,7 +19,6 @@ int rectS = 10;
 LoadBar loadbar3;
 
 void PongSetup () {
-  size(550, 500);
   BlackBox.init(this); //initializes Paras Jha's BlackBox Program, which allows for multiple keys to be pressed simultaneously
   ballloc= new PVector(width/2, height/2); //location and speed of ball
   ballvel= new PVector(random(2, 3), random(2, 3));
